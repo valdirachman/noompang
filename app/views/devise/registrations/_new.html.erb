@@ -1,0 +1,15 @@
+<%= form_for(:user, url: registration_path(:user)) do |f| %>
+   
+     <%= f.text_field :username, autofocus: true %>
+   
+     <%= f.email_field :email %>
+  
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %> 
+      <%= f.password_field :password_confirmation, autocomplete: "off" %> 
+   
+  <%= f.submit "Sign up" %>
+  
+  <% end %>﻿
