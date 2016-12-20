@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
+    byebug
     @post.user_id = current_user.id # assign the post to the user who created it
     respond_to do |f|
       if (@post.save)
@@ -18,8 +19,7 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:user_id, :content)
-    
+    params.require(:post).permit(:user_id, :from, :destination, :date, :time)
   end
 end
   

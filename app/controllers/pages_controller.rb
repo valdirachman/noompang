@@ -3,7 +3,8 @@ class PagesController < ApplicationController
   end
 
   def home
-    @posts = Post.following (current_user and current_user.following)
+    #@posts = Post.following (current_user.following)
+    @posts = Post.all
     @newPost = Post.new
   end
 

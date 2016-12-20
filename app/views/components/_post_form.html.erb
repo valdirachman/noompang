@@ -1,11 +1,23 @@
 <%= form_for(@newPost) do |f| %>
-  <center>
-    <div class="field">
-      <%= f.text_field :content, autofocus: true %>
+  <div class="panel panel-default">
+    <div class="panel-body row">
+      <center>
+        <div class="field">
+          <%= f.text_field :from, placeholder:"from", autofocus: true %>
+        </div>
+        <div class="field">
+          <%= f.text_field :destination, placeholder:"to" %>
+        </div>
+        <div class="field">
+          <%= f.date_select :date %>
+        </div>
+        <div class="field">
+          <%= f.time_select :time %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Create Ride" %>
+        </div>
+      </center>
     </div>
-  
-    <div class="actions">
-      <%= f.submit "Add Post" %>
-    </div>
-  </center>
+  </div>
 <% end %>

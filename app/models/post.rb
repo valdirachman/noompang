@@ -1,7 +1,10 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 } # tweets are limited to 140 char
+  validates :from, presence: true, length: { maximum: 50 } # assuming place consists of maximum 50 chars
+  validates :destination, presence: true, length: { maximum: 50 } # assuming place consists of maximum 50 chars
+  validates :date, presence: true
+  validates :time, presence: true
   default_scope -> { order(created_at: :desc) } # newest posts first
   scope :following, ->(following) { where user_id: following }
 end
