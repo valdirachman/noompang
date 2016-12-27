@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220144729) do
+ActiveRecord::Schema.define(version: 20161227140835) do
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "friendable_id", limit: 4
+    t.integer "friend_id",     limit: 4
+    t.integer "blocker_id",    limit: 4
+    t.boolean "pending",                 default: true
+  end
+
+  add_index "friendships", ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true, using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
