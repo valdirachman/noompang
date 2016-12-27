@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220144729) do
+ActiveRecord::Schema.define(version: 20161227143012) do
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "friendable_id",   limit: 4
+    t.string   "friendable_type", limit: 255
+    t.integer  "friend_id",       limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "blocker_id",      limit: 4
+    t.integer  "status",          limit: 4
+  end
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
