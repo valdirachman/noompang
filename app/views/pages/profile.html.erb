@@ -26,19 +26,18 @@
           </div>
           <div class="col-sm-11">
             <p class="post-title"><span class="post-owner"><%= User.find(@p.user_id).username %></span><span class="post-creation"> - <%= @p.created_at.to_formatted_s(:short) %></span></p>
-            <p class="post-content"><%= @p.content %></p>
+            <p class="post-content">From:  <%= @p.from %></p>
+            <p class="post-content">To:  <%= @p.destination %></p>
+            <p class="post-content">Date:  <%= @p.date %></p>
+            <p class="post-content">Time:  <%= "#{@p.time.hour}:#{@p.time.min}"  %></p>
           </div>
-          <div class="col-sm-12">
-            <p class="post-links">Links</p>
-          </div>
-          
         </div>
       </div>
     <% end %>
     
   </div>
   <div class="col-xs-3">
-    <%= render '/components/follow_button', :user => User.find_by_username(params[:id]) %>
+    <%= render '/components/add_friend_button', :user => User.find_by_username(params[:id]) %>
     <div class="panel panel-default">
       <div class="panel-body">
         <p>trends</p>

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/user/:id' => 'pages#profile'
 
   get '/explore' => 'pages#explore'
+  
+  get '/add/:id', to: 'friends#add', as: 'add_friend'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
