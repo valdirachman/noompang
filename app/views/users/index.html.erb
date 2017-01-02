@@ -1,24 +1,24 @@
 <div class="row">
-  <h1>Friend Requests</h1>
+  <h1>Search Result</h1>
   <br>
   <br>
 </div>
   
 <div class="row">
-  <% if !@requests.empty? %>
-    <% for @r in @requests %>
+  <% if !@users.empty? %>
+    <% for @u in @users %>
       <div class="panel panel-default post-panel">
         <div class="panel-body row">
           <div class="col-sm-1">
             <img src="/avatar.jpg" height="40px" width="40px">
           </div>
           <div class="col-sm-11">
-            <p class="post-title"><span class="post-owner"><%= @r.username %></span><span><%= link_to "Accept", accept_friend_path(@r.id) %></span></p>
+            <p class="post-title"><span class="post-owner"><a href="/user/<%= @u.username %>"><%= @u.username %></a></span><span><%= render '/components/add_friend_button', :user => @u %></span></p>
           </div>
         </div>
       </div>
     <% end %>
   <% else %>
-    <p>There's no friend request yet!</p>
+    <p>User not found</p>
   <% end %>
 </div>
