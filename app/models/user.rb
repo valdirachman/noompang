@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
+  acts_as_messageable
+  
   has_many :posts, dependent: :destroy # remove a user's post if user is deleted
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -13,6 +15,11 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
           
   # helper methods
+  
+  # for sending message
+  def mailboxer_email(object)
+    nil
+  end
           
   # follow another user
   def follow(other)

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   
   resources :posts
   
+  resources :conversations do
+    resources :messages
+  end
+  
   root 'pages#index'
 
   get '/home' => 'pages#home'
