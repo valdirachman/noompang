@@ -3,8 +3,8 @@ class PagesController < ApplicationController
   end
 
   def home
-    @posts = Post.friends (current_user.friends)
-    #@posts = Post.all
+    ids = current_user.friends.map{|f| f.id} << current_user.id
+    @posts = Post.self_and_friends (ids)
     @newPost = Post.new
   end
 
