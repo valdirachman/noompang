@@ -6,5 +6,6 @@ class Post < ActiveRecord::Base
   validates :date, presence: true
   validates :time, presence: true
   default_scope -> { order(created_at: :desc) } # newest posts first
-  scope :following, ->(following) { where user_id: following }
+  scope :friends, -> (friends) { where user_id: friends }
+  scope :user, -> (user) { where user_id: user }
 end

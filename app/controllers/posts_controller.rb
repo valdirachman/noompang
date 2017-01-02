@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    byebug
     @post.user_id = current_user.id # assign the post to the user who created it
     respond_to do |f|
       if (@post.save)

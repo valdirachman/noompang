@@ -3,8 +3,8 @@ class PagesController < ApplicationController
   end
 
   def home
-    #@posts = Post.following (current_user.following)
-    @posts = Post.all
+    @posts = Post.friends (current_user.friends)
+    #@posts = Post.all
     @newPost = Post.new
   end
 
@@ -22,5 +22,9 @@ class PagesController < ApplicationController
 
   def explore
     @posts = Post.all
+  end
+  
+  def friend_request
+    @requests = current_user.pending_invited_by
   end
 end
