@@ -15,7 +15,8 @@ class PagesController < ApplicationController
     else
       redirect_to root_path, :notice=> "User not found!"
     end
-    
+
+    @profile = current_user.profile
     @posts = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id)
     @newPost = Post.new
   end
@@ -23,7 +24,7 @@ class PagesController < ApplicationController
   def explore
     @posts = Post.all
   end
-  
+
   def friend_request
     @requests = current_user.pending_invited_by
   end

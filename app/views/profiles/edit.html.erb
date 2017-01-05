@@ -1,0 +1,23 @@
+<% provide(:title, "Edit Profile") %>
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@profile) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+
+      <%= f.label :occupation %>
+      <%= f.text_field :occupation, class: 'form-control' %>
+
+      <%= f.label :occupation_place %>
+      <%= f.text_field :occupation_place, class: 'form-control' %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
