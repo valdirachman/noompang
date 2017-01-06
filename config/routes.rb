@@ -9,10 +9,14 @@ Rails.application.routes.draw do
   end
 
   resources :profiles
-  
+
   resources :relationships
 
-  resources :posts
+  resources :posts do
+    member do
+      post :repost
+    end
+  end
 
   resources :conversations do
     resources :messages

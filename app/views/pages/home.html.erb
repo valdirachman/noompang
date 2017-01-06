@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-3">
-    
+
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
@@ -25,7 +25,7 @@
   </div>
   <div class="col-xs-6">
     <%= render '/components/post_form' %><br><br>
-    
+
     <% for @p in @posts %>
       <div class="panel panel-default post-panel">
         <div class="panel-body row">
@@ -33,16 +33,22 @@
             <img src="/avatar.jpg" height="40px" width="40px">
           </div>
           <div class="col-sm-11">
-            <p class="post-title"><span class="post-owner"><%= User.find(@p.user_id).username %></span><span class="post-creation"> - <%= @p.created_at.to_formatted_s(:short) %></span></p>
+            <p class="post-title"><span class="post-owner"><%= @p.user.username %></span><span class="post-creation"> - <%= @p.created_at.to_formatted_s(:short) %></span></p>
+            <% if @p.original != nil %>
+              <p class="post-title">Original Ride by: <span class="post-owner"> <%= @p.original.user.username %></span></p>
+            <% end %>
             <p class="post-content">From:  <%= @p.from %></p>
             <p class="post-content">To:  <%= @p.destination %></p>
             <p class="post-content">Date:  <%= @p.date %></p>
             <p class="post-content">Time:  <%= "#{@p.time.hour}:#{@p.time.min}"  %></p>
+            <% if @p.user != current_user && @p.original == nil && !@p.reposts.find_by_user_id(current_user.id) %>
+              <%= link_to 'repost', repost_post_path(@p), method: :post %>
+            <% end %>
           </div>
         </div>
       </div>
     <% end %>
-    
+
   </div>
   <div class="col-xs-3">
     <div class="panel panel-default">
