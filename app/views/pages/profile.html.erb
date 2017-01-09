@@ -25,22 +25,7 @@
       <%= render '/components/post_form' %><br><br>
     <% end %>
     <% if (current_user.friend_with? User.find_by_username(params[:id])) || (current_user.id == User.find_by_username(params[:id]).id) %>
-      <% for @p in @posts %>
-        <div class="panel panel-default post-panel">
-          <div class="panel-body row">
-            <div class="col-sm-1">
-              <img src="/avatar.jpg" height="40px" width="40px">
-            </div>
-            <div class="col-sm-11">
-              <p class="post-title"><span class="post-owner"><%= User.find(@p.user_id).username %></span><span class="post-creation"> - <%= @p.created_at.to_formatted_s(:short) %></span></p>
-              <p class="post-content">From:  <%= @p.from %></p>
-              <p class="post-content">To:  <%= @p.destination %></p>
-              <p class="post-content">Date:  <%= @p.date %></p>
-              <p class="post-content">Time:  <%= "#{@p.time.hour}:#{@p.time.min}"  %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render '/components/rides', posts: @posts  %>
     <% else %>
       <p>You have to be friend with <%= @username %> to see the rides!</p>
     <% end %>
