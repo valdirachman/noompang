@@ -10,12 +10,12 @@
   <div class="col-xs-3">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="col-sm-11">
+        <div class="col-xs-12">
           <p class="post-title"><span class="post-owner"><%= current_user.username %></span></p>
-          <p class="post-title"><%= @profile.name %></p>
-          <p class="post-content"><%= @profile.description %></p>
-          <p class="post-content"><%= @profile.occupation %></p>
-          <p class="post-content"><%= @profile.occupation_place %></p>
+          <p class="post-title"><span class="post-owner">Name: </span><br><%= @profile.name %></p>
+          <p class="post-content"><span class="post-owner">Occupation: </span><br><%= @profile.occupation %></p>
+          <p class="post-content"><span class="post-owner">From: </span><br><%= @profile.occupation_place %></p>
+          <p class="post-content"><span class="post-owner">About Me: </span><br><%= @profile.description %></p>
         </div>
       </div>
     </div>
