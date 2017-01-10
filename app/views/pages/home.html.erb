@@ -1,38 +1,13 @@
 <div class="row">
-  <div class="col-xs-3">
-
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-sm-2"><img src="/avatar.jpg" height="40px" width="40px" class="rounded-img"></div>
-          <div class="col-sm-10"><h4><%= current_user.username %></h4></div>
-          <div class="col-sm-12" style="margin-top: 10px;">
-            <div class="col-sm-6" style="font-size: 80%; opacity: 0.7;">RIDES<br>
-              <h6><%= current_user.posts.count %></h6>
-            </div>
-            <div class="col-sm-6" style="font-size: 80%; opacity: 0.7;">FRIENDS<br>
-              <h6><%= current_user.friends.count %></h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row">
-          <p class="post-title"><span class="post-owner">Name: </span><br><%= @profile.name %></p>
-          <p class="post-content"><span class="post-owner">Occupation: </span><br><%= @profile.occupation %></p>
-          <p class="post-content"><span class="post-owner">From: </span><br><%= @profile.occupation_place %></p>
-          <p class="post-content"><span class="post-owner">About Me: </span><br><%= @profile.description %></p>
-        </div>
-      </div>
-    </div>
+  <div class="col-sm-3 col-xs-12">
+    <%= render '/components/user_panel' %>
+    <%= render '/components/profile_panel' %>
   </div>
-  <div class="col-xs-6">
+  <div class="col-sm-6 col-xs-12">
     <%= render '/components/post_form' %><br><br>
     <%= render '/components/rides', posts: @posts  %>
   </div>
-  <div class="col-xs-3">
+  <div class="col-sm-3 col-xs-12">
     <div class="panel panel-default">
       <div class="panel-body">
         <p class="post-owner">About</p>

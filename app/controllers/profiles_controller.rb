@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
     if @profile.update_attributes(profile_params)
-      redirect_to user_profile_path(current_user.username)
+      redirect_to home_path
     else
       render 'edit'
     end
