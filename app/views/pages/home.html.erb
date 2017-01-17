@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-sm-3 col-xs-12">
     <%= render '/components/user_panel', user: current_user %>
-    <%= render '/components/profile_panel', profile: @profile %>
+    <%= render '/components/profile_panel', profile: @profile, user: current_user %>
   </div>
   <div class="col-sm-6 col-xs-12">
     <%= render '/components/post_form' %><br><br>
-    <%= render '/components/rides', posts: @posts  %>
+    <%= render '/components/rides', posts: @posts %>
   </div>
   <div class="col-sm-3 col-xs-12">
     <div class="panel panel-default">
