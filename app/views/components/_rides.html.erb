@@ -22,9 +22,8 @@
         <% if post.original != nil %>
           <p class="post-title">Reposted by: <span class="post-owner"><%= link_to post.user.username, user_profile_path(post.user.username) %></span></p>
         <% end %>
-        <p class="post-content"></p>
         <% if post.user != current_user && post.original == nil && !post.reposts.find_by_user_id(current_user.id) %>
-          <%= link_to 'repost', repost_post_path(post), method: :post %>
+          <p class="post-title"><%= link_to 'Repost', repost_post_path(post), method: :post %></p>
         <% end %>
       </div>
     </div>
