@@ -7,22 +7,33 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+
+  resources :profiles
+
   resources :relationships
-  
-  resources :posts
-  
+
+  resources :posts do
+    member do
+      post :repost
+    end
+  end
+
+  resources :conversations do
+    resources :messages
+  end
+
   root 'pages#index'
 
-  get '/home' => 'pages#home'
+  get '/home' => 'pages#home', as: 'home'
 
-  get '/user/:id' => 'pages#profile'
+  get '/user/:id' => 'pages#profile', as: 'user_profile'
 
   get '/explore' => 'pages#explore'
-  
+
   get '/friend_request' => 'pages#friend_request'
-  
+
   get '/add/:id', to: 'friends#add', as: 'add_friend'
-  
+
   get '/accept/:id', to: 'friends#accept', as: 'accept_friend'
 
   # The priority is based upon order of creation: first created -> highest priority.
