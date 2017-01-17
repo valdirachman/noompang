@@ -1,13 +1,15 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
-      <% if !@profile.is_nil? && !@profile.is_empty? %>
-        <p class="post-title"><span class="post-owner">Name: </span><br><%= @profile.name %></p>
-        <p class="post-content"><span class="post-owner">Occupation: </span><br><%= @profile.occupation %></p>
-        <p class="post-content"><span class="post-owner">From: </span><br><%= @profile.occupation_place %></p>
-        <p class="post-content"><span class="post-owner">About Me: </span><br><%= @profile.description %></p>
+      <% if !profile.is_nil? && !profile.is_empty? %>
+        <p class="post-title"><span class="post-owner">Name: </span><br><%= profile.name %></p>
+        <p class="post-content"><span class="post-owner">Occupation: </span><br><%= profile.occupation %></p>
+        <p class="post-content"><span class="post-owner">From: </span><br><%= profile.occupation_place %></p>
+        <p class="post-content"><span class="post-owner">About Me: </span><br><%= profile.description %></p>
+      <% elsif @user.id == current_user.id %>
+        <p class="post-content"><%= link_to 'Update your profile', edit_profile_path(profile) %></p>
       <% else %>
-        <p class="post-content"><%= link_to 'Update your profile', edit_profile_path(current_user.profile) %></p>
+        <p class="post-content"><%= @user.username %> has no profile yet!</p>
       <% end %>
     </div>
   </div>

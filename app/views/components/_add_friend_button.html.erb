@@ -2,8 +2,8 @@
   <% if !current_user.friend_with? user and !current_user.invited? user %>
     <%= link_to "Add Friend", add_friend_path(user.id) %>
   <% elsif current_user.friend_with? user %>
-    <span>Friend<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+    <span>Friend <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
   <% elsif current_user.invited? user %>
-    <span>Pending</span>
+    <span>Pending Friend Request</span>
   <% end %>
 <% end %>

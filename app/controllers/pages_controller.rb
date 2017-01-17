@@ -11,14 +11,15 @@ class PagesController < ApplicationController
 
   def profile
     #grab the username from the URL as :id
-    if (User.find_by_username(params[:id]))
+    @user = User.find_by_username(params[:id])
+    if (@user)
       @username = params[:id]
     else
       redirect_to root_path, :notice=> "User not found!"
     end
 
-    @profile = current_user.profile
-    @posts = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id)
+    @profile = @user.profile
+    @posts = Post.all.where("user_id = ?", @user.id)
     @newPost = Post.new
   end
 
