@@ -17,11 +17,24 @@
 body {
   background-color: rgba(212, 216, 212, 0.25);
   padding-top: 70px;
+  font-family: Calibri;
 }
 .navbar {
   background-color: #1E2D4E;
   color: white;
   border-bottom-width: 0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #778899;
+}
+
+#search-form {
+  color: black;
 }
 
 .post-panel {
@@ -38,7 +51,7 @@ body {
 }
 
 .post-links {
-  
+
 }
 
 .post-owner {

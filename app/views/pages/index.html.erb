@@ -4,7 +4,7 @@
       background: linear-gradient( /* darkened background */
         rgba(0,0,0, 0.2),
         rgba(0,0,0, 0.2)
-        ), url("/bg1.jpg") no-repeat center center fixed
+        ), url("/bg_noompang.jpg") no-repeat center center fixed
       ; /* only display once, center horizontal and vertical, dont let scroll change position */
       -webkit-background-size: cover;
       -moz-background-size: cover;
@@ -27,46 +27,45 @@
     .footer-links {
       text-align: center;
       color: white;
-      margin-top: 20%;
+      margin-top: 10%;
       font-size: 75%;
     }
     .log-in {
       float: right;
       width: 300px;
-      height: 150px;
+      height: 230px;
+      padding: 20px;
       margin-top: 7.5%;
     }
     .sign-up {
       float: right;
       width: 300px;
-      height: 250px;
+      height: 270px;
+      padding: 20px;
     }
   </style>
-  
+
   <div class="container-index row">
     <div class="col-md-6 col-xs-12">
-      <h1>Welcome to Noompang</h1> 
+      <h1>Welcome to<img src="/logo_noompang.png" style="width:150px;"></h1>
       <p class="text">
-        Noompang with your buddies. Ride fun, cheaper.
+        Berbagi kendaraan biar makin gampang!
       </p>
     </div>
+
     <div class="col-md-6 col-xs-12">
       <div class="log-in panel">
         <%= render '/devise/sessions/new'%>
       </div>
       <div class="sign-up panel">
         <%= render '/devise/registrations/new'%>
-      </div> 
+      </div>
     </div>
-    
+
     <div class="col-xs-12">
-      <p class="footer-links">About   Help   Blog   Status   Jobs   Terms   Privacy   Cookies   Ads   @ 2016 Noompang</p>  
+      <p class="footer-links"><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> 2017 Noompang</p>
     </div>
-    
   </div>
-  
 <% else %>
-
   <script>document.location = "/home"</script>
-
 <% end %>

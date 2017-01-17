@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
     if @profile.update_attributes(profile_params)
-      redirect_to(:action => "show", :profile => @profile)
+      redirect_to home_path
     else
       render 'edit'
     end

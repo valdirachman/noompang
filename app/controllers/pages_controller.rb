@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     ids = current_user.friends.map{|f| f.id} << current_user.id
     @posts = Post.self_and_friends (ids)
     @newPost = Post.new
+    @profile = current_user.profile
   end
 
   def profile

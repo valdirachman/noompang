@@ -24,9 +24,9 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  get '/home' => 'pages#home'
+  get '/home' => 'pages#home', as: 'home'
 
-  get '/user/:id' => 'pages#profile'
+  get '/user/:id' => 'pages#profile', as: 'user_profile'
 
   get '/explore' => 'pages#explore'
 
