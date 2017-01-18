@@ -9,9 +9,12 @@
         <div class="field form-group">
           <%= f.text_field :destination, placeholder:"To", class: "form-control" %>
         </div>
+        <div class="field form-group">
+          <%= f.text_field :note, placeholder:"Notes", class: "form-control" %>
+        </div>
       </div>
       <div class="col-xs-6">
-        <%= f.label :date_and_Time %>
+        <%= f.label :date_and_time %>
         <div class="field form-group">
           <%= f.date_select :date %>
         </div>

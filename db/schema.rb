@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106033546) do
+ActiveRecord::Schema.define(version: 20170118171434) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "friendable_id", limit: 4
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170106033546) do
     t.time     "time"
     t.integer  "repost_id",   limit: 4
     t.integer  "original_id", limit: 4
+    t.string   "note",        limit: 255
   end
 
   add_index "posts", ["original_id"], name: "index_posts_on_original_id", using: :btree
@@ -132,8 +133,12 @@ ActiveRecord::Schema.define(version: 20170106033546) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "username",               limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
