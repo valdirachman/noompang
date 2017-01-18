@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:destroy]
 
   def new
     @post = Post.new
@@ -9,10 +10,17 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id # assign the post to the user who created it
     respond_to do |f|
       if (@post.save)
-        f.html { redirect_to "", notice: "Post created!" }
+        f.html { redirect_to home_path, notice: "Post created!" }
       else
-        f.html { redirect_to "", notice: "Error: Post Not Saved."}
+        f.html { redirect_to home_path, notice: "Error: Post Not Saved."}
       end
+    end
+  end
+
+  def destroy
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to home_path, notice: 'Post was successfully deleted.' }
     end
   end
 
@@ -23,7 +31,11 @@ class PostsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_post
+      @post = Post.find(params[:id])
+    end
   def post_params
-    params.require(:post).permit(:user_id, :from, :destination, :date, :time)
+    params.require(:post).permit(:user_id, :from, :destination, :note, :date, :time)
   end
 end
