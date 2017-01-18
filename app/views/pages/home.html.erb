@@ -4,8 +4,14 @@
     <%= render '/components/profile_panel', profile: @profile, user: current_user %>
   </div>
   <div class="col-sm-6 col-xs-12">
-    <%= render '/components/post_form' %><br><br>
-    <%= render '/components/rides', posts: @posts %>
+    <%= render '/components/post_form' %>
+    <br>
+    <div class="my-posts">
+      <%= render '/components/rides', posts: @posts %>
+    </div>
+    <div class="infinite-scrolling">
+      <%= will_paginate @posts %>
+    </div>
   </div>
   <div class="col-sm-3 col-xs-12">
     <div class="panel panel-default">

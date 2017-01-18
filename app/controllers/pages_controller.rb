@@ -4,9 +4,14 @@ class PagesController < ApplicationController
 
   def home
     ids = current_user.friends.map{|f| f.id} << current_user.id
-    @posts = Post.self_and_friends (ids)
+    posts = Post.self_and_friends (ids)
+    @posts = posts.paginate(page: params[:page], per_page: 10)
     @newPost = Post.new
     @profile = current_user.profile
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def profile
@@ -14,13 +19,17 @@ class PagesController < ApplicationController
     @user = User.find_by_username(params[:id])
     if (@user)
       @username = params[:id]
+      @profile = @user.profile
+      posts = Post.all.where("user_id = ?", @user.id)
+      @posts = posts.paginate(page: params[:page], per_page: 10)
+      @newPost = Post.new
+      respond_to do |format|
+        format.html
+        format.js
+      end
     else
       redirect_to root_path, :notice=> "User not found!"
     end
-
-    @profile = @user.profile
-    @posts = Post.all.where("user_id = ?", @user.id)
-    @newPost = Post.new
   end
 
   def explore

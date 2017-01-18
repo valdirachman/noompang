@@ -13,10 +13,16 @@
   </div>
   <div class="col-sm-6">
     <% if current_user.id == User.find_by_username(params[:id]).id %>
-      <%= render '/components/post_form' %><br><br>
+      <%= render '/components/post_form' %>
     <% end %>
+    <br>
     <% if (current_user.friend_with? User.find_by_username(params[:id])) || (current_user.id == User.find_by_username(params[:id]).id) %>
-      <%= render '/components/rides', posts: @posts  %>
+      <div class="my-posts">
+        <%= render '/components/rides', posts: @posts %>
+      </div>
+      <div class="infinite-scrolling">
+        <%= will_paginate @posts %>
+      </div>
     <% else %>
       <div class="panel panel-default">
         <div class="panel-body">
