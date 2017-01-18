@@ -26,7 +26,7 @@
         </li>
         <li><a href="/home">Home</a></li>
         <li>
-          <a href="/friend_request">Requests</a>
+          <a href="/friend_request">Requests <% if current_user.pending_invited_by.count > 0 %>(<%= current_user.pending_invited_by.count %>)<% end %></a>
         </li>
         <li>
           <%= link_to 'Messages', conversations_path %>
