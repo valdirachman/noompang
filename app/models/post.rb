@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
   validates :destination, presence: true, length: { maximum: 50 } # assuming place consists of maximum 50 chars
   validates :date, presence: true
   validates :time, presence: true
+  validates :note, length: { maximum: 100 } # assuming note consists of maximum 100 chars
   default_scope -> { order(created_at: :desc) } # newest posts first
 
   scope :friends, -> (friends) { where user_id: friends }
