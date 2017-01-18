@@ -10,9 +10,9 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id # assign the post to the user who created it
     respond_to do |f|
       if (@post.save)
-        f.html { redirect_to home_path, notice: "Post created!" }
+        f.html { redirect_to home_path, notice: "Ride created!" }
       else
-        f.html { redirect_to home_path, notice: "Error: Post Not Saved."}
+        f.html { redirect_to home_path, notice: "Error: Ride Not Saved."}
       end
     end
   end
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to home_path, notice: 'Post was successfully deleted.' }
+      format.html { redirect_to home_path, notice: 'Ride was successfully deleted.' }
     end
   end
 

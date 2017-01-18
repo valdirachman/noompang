@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
     elsif self.reposts.find_by_user_id(reposter)
       "You have reposted this ride"
     else
-      reposter.posts.build(from: self.from, destination: self.destination, date: self.date, time: self.time, original_id: self.id)
+      reposter.posts.build(from: self.from, destination: self.destination, date: self.date, note: self.note, time: self.time, original_id: self.id)
       reposter.save
       "Ride reposted"
     end
