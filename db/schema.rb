@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120003520) do
+ActiveRecord::Schema.define(version: 20170126173557) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "friendable_id", limit: 4
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170120003520) do
     t.string   "note",        limit: 255
   end
 
+  add_index "posts", ["date"], name: "index_posts_on_date", using: :btree
   add_index "posts", ["original_id"], name: "index_posts_on_original_id", using: :btree
   add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
