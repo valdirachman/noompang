@@ -15,6 +15,9 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
+
+  config.action_mailer.asset_host = "http://103.200.7.84"
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

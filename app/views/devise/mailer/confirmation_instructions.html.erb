@@ -1,5 +1,12 @@
-<p>Welcome <%= @email %>!</p>
+<%= image_tag("noompang-cover.jpg") %>
+<p>Hai, <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Welcome to noompang!</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>Noompang is a ride sharing platform! we connect you to people all around you so you can 
+go anywhere cheaper, safer, and also fun!</p>
+ 
+<p>Please continue the registration by clicking the button below so you can start your journey!</p>
+
+<p><%= link_to 'Activate my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<%= image_tag("noompang-founders.jpg") %>
