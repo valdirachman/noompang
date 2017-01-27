@@ -1,35 +1,52 @@
 <% for post in posts %>
   <div class="panel panel-default post-panel">
     <div class="panel-body row">
+      <% if post.original != nil %>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+          <span class="post-content"><span class="post-reposter"><span class="glyphicon glyphicon-retweet"></span> reposted by <%= post.user.username %></span></span>
+        </div>
+        <br>
+      <% end %>
       <div class="col-sm-1">
-        <img src="/avatar.jpg" height="40px" width="40px">
+        <img src="/avatar.jpg" class="avatar" height="40px" width="40px">
       </div>
       <div class="col-sm-11">
+        
         <% if post.original != nil %>
-          <p class="post-title"><span class="post-owner"><%= link_to post.original.user.username, user_profile_path(post.original.user.username) %></span><span class="post-creation"> - <%= time_ago_in_words(post.created_at) %></span></p>
+          <span class="post-title"><span class="post-owner"><%= link_to post.original.user.username, user_profile_path(post.original.user.username) %></span><span class="post-creation"> - <%= time_ago_in_words(post.created_at) %></span></span>
         <% else %>
-          <p class="post-title"><span class="post-owner"><%= link_to post.user.username, user_profile_path(post.user.username) %></span><span class="post-creation"> - <%= time_ago_in_words(post.created_at) %></span></p>
+          <span class="post-title"><span class="post-owner"><%= link_to post.user.username, user_profile_path(post.user.username) %></span><span class="post-creation"> - <%= time_ago_in_words(post.created_at) %></span></span>
         <% end %>
-        <p class="post-content"><span class="post-owner"><%= post.from %> <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> <%= post.destination %></span></p>
-        <p class="post-content"><span class="post-owner">
+        <br>
+        <span class="post-content"><span class="post-date-time">
           <% if post.date === Date.today %>
             <%= post.date.strftime("Today, %-d %b") %>
           <% else %>
             <%= post.date.strftime("%A, %-d %b") %>
           <% end %>
           - <%= post.time.strftime("%H:%M")  %>
-        </span></p>
-        <% if post.note %>
-          <p class="post-content"><%= post.note %></p>
-        <% end %>
-        <% if post.original != nil %>
-          <p class="post-title">Reposted by: <span class="post-owner"><%= link_to post.user.username, user_profile_path(post.user.username) %></span></p>
+        </span></span>
+        <br>
+        <span class="post-content"><span class="post-destination"><%= post.from %> <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> <%= post.destination %></span></span>
+        <br>
+        <% if post.note && post.note != "" %>
+          <span class="post-content"><%= post.note %></span>
+          <br>
         <% end %>
         <% if post.user != current_user && post.original == nil && !post.reposts.find_by_user_id(current_user.id) %>
-          <p class="post-title"><%= link_to 'Repost', repost_post_path(post), method: :post %></p>
+          <span class="post-title pull-right">
+            <%= link_to repost_post_path(post), method: :post do %>
+              <span class="glyphicon glyphicon-retweet"></span>
+            <% end %>
+          </span>
         <% end %>
         <% if post.user == current_user %>
-          <p class="post-title"><%= link_to 'Delete', post, method: :delete %></p>
+          <span class="post-title pull-right">
+            <%= link_to post, method: :delete do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </span>
         <% end %>
       </div>
     </div>
