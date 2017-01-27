@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
   validates :time, presence: true
   validates :note, length: { maximum: 100 } # assuming note consists of maximum 100 chars
   default_scope -> { order(date: :asc, time: :asc) } # yang waktunya paling awal
+  scope :today, lambda { where("date >= ?", Time.zone.today) }
   scope :friends, -> (friends) { where user_id: friends }
   scope :self_and_friends, -> (ids) { where user_id: ids }
 

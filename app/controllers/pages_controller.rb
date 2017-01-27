@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   def home
     ids = current_user.friends.map{|f| f.id} << current_user.id
     posts = Post.self_and_friends (ids)
+    posts = posts.today
     @posts = posts.paginate(page: params[:page], per_page: 10)
     @newPost = Post.new
     @profile = current_user.profile
