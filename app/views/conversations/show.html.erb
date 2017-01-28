@@ -1,22 +1,26 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-default">
       <div class="panel-body">
         <h1><%= @conversation.subject %></h1>
+        <hr>
 
         <% @conversation.receipts_for(current_user).each do |receipt| %>
           <div>
-            <p><span class="post-owner"><%= receipt.message.sender.username %></span></p>
-            <p><%= receipt.message.body %></p>
+            <% if receipt.message.sender == current_user %>
+                <p><span class="post-owner">You:</span> <%= receipt.message.body %></p>
+            <% else %>
+                <p><span class="post-owner"><%= receipt.message.sender.username %>:</span> <%= receipt.message.body %></p>
+            <% end %>
           </div>
         <% end %>
 
         <%= form_tag conversation_messages_path(@conversation), method: :post do %>
           <div class="field form-group">
-            <%= text_area_tag :body %>
+            <%= text_area_tag :body, nil, placeholder: "Message", class: "form-control" %>
           </div>
           <div class="actions">
-            <%= submit_tag "Send", class: "btn btn-primary" %>
+            <%= submit_tag "Send", class: "btn btn-primary pull-right" %>
           </div>
         <% end %>
       </div>
