@@ -24,6 +24,9 @@ body {
   background-color: #1E2D4E;
   color: white;
   border-bottom-width: 0px;
+  -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.36);
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.36);
 }
 
 .navbar-default .navbar-nav > li > a {

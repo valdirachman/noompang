@@ -1,23 +1,25 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h1>Search Result</h1>
-    <br>
-    <br>
-    <% if !@users.empty? %>
-      <% for @u in @users %>
-        <div class="panel panel-default post-panel">
-          <div class="panel-body row">
-            <div class="col-sm-1">
-              <%= image_tag @u.profile.avatar.url(:thumb), class: "avatar img-rounded" %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1>Search Result</h1>
+        <% if !@users.empty? %>
+          <% for @u in @users %>
+            <hr>
+            <div class="row">
+              <div class="col-sm-1">
+                <%= image_tag @u.profile.avatar.url(:thumb), class: "avatar img-rounded" %>
+              </div>
+              <div class="col-sm-11">
+                <span class="post-title"><a href="/user/<%= @u.username %>"><%= @u.username %></a></span>
+                <span class="pull-right"><%= render '/components/add_friend_button', :user => @u %></span>
+              </div>
             </div>
-            <div class="col-sm-11">
-              <p class="post-title"><a href="/user/<%= @u.username %>"><%= @u.username %></a></span><span><%= render '/components/add_friend_button', :user => @u %></span></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <p>User not found</p>
-    <% end %>
+          <% end %>
+        <% else %>
+          <p>User not found</p>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

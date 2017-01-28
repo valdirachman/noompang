@@ -1,24 +1,25 @@
 <div class="row">
-  <h1>Friend Requests</h1>
-  <br>
-  <br>
-</div>
-  
-<div class="row">
-  <% if !@requests.empty? %>
-    <% for @r in @requests %>
-      <div class="panel panel-default post-panel">
-        <div class="panel-body row">
-          <div class="col-sm-1">
-            <img src="/avatar.jpg" height="40px" width="40px">
-          </div>
-          <div class="col-sm-11">
-            <p class="post-title"><span class="post-owner"><%= @r.username %></span><span><%= link_to "Accept", accept_friend_path(@r.id) %></span></p>
-          </div>
-        </div>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1>Friend Requests</h1>
+        <% if !@requests.empty? %>
+          <% for @r in @requests %>
+            <hr>
+            <div class="row">
+              <div class="col-sm-1">
+                <%= image_tag @r.profile.avatar.url(:thumb), class: "avatar img-rounded" %>
+              </div>
+              <div class="col-sm-11">
+                <p class="post-title"><span class="post-owner"><%= @r.username %></span><span><%= link_to "Accept", accept_friend_path(@r.id) %></span></p>
+              </div>
+            <div class="row">
+          <% end %>
+        <% else %>
+          <hr>
+          <p>There's no friend request yet!</p>
+        <% end %>
       </div>
-    <% end %>
-  <% else %>
-    <p>There's no friend request yet!</p>
-  <% end %>
+    </div>
+  </div>
 </div>
