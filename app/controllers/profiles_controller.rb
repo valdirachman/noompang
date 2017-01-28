@@ -13,12 +13,16 @@ class ProfilesController < ApplicationController
     if @profile.update_attributes(profile_params)
       redirect_to home_path
     else
-      render 'edit'
+      if @profile.errors.any?
+        flash[:notice] = @profile.errors.full_messages.first
+      end
+      redirect_to edit_profile_path(@profile)
+      #render 'edit'
     end
   end
 
   private
   def profile_params
-    params.require(:profile).permit(:name, :description, :occupation, :occupation_place)
+    params.require(:profile).permit(:name, :description, :occupation, :occupation_place, :avatar)
   end
 end
