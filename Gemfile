@@ -33,6 +33,8 @@ gem 'amistad'
 gem 'will_paginate', '~> 3.0.5'
 # Figaro for securely configure Rails app
 gem 'figaro'
+# Paperclip for attachment support
+gem 'paperclip', '~> 5.0.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

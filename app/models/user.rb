@@ -1,12 +1,16 @@
 class User < ActiveRecord::Base
+  # Initiating empty profile
   after_create :create_profile
 
+  # Friend model for Relationship
   include Amistad::FriendModel
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # For messaging functionality between users
   acts_as_messageable
 
   has_many :posts, dependent: :destroy # remove a user's post if user is deleted

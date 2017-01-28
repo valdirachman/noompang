@@ -1,9 +1,14 @@
 <% provide(:title, "Edit Profile") %>
-<h1>Update your profile</h1>
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@profile) do |f| %>
+    <h1>Update your profile</h1>
+    <%= form_for @profile, html: { multipart: true } do |f| %>
+      <div class="field form-group">
+        <%= f.label :profile_picture %><br>
+        <%= image_tag @profile.avatar.url(:medium) %>
+        <%= f.file_field :avatar %>
+      </div>
+
       <div class="field form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control' %>
@@ -24,7 +29,7 @@
         <%= f.text_field :description, class: 'form-control' %>
       </div>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-primary pull-right" %>
     <% end %>
   </div>
 </div>
