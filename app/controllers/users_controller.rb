@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   def index
     if params[:search]
-      @users = User.search(params[:search]).order("created_at DESC")
+      if params[:search] == ""
+        redirect_to root_path
+      else
+        @users = User.search(params[:search]).order("created_at DESC").limit(10)
+      end
     else
-      @users = User.all.order('created_at DESC')
+      redirect_to root_path
     end
   end
 end

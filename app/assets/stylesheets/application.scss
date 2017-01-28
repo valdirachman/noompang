@@ -11,13 +11,14 @@
  * file per style scope.
  *
  */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
   background-color: rgba(212, 216, 212, 0.25);
   padding-top: 70px;
-  font-family: Calibri;
+  font-family: 'Roboto', sans-serif;
 }
 .navbar {
   background-color: #1E2D4E;
@@ -43,11 +44,11 @@ body {
 
 .post-title {
   text-align: left;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 .post-content {
   text-align: left;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 
 .post-links {
@@ -62,12 +63,12 @@ body {
 .post-date-time {
   color: #1E2D4E;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 23px;
 }
 
 .post-destination {
   color: #808080;
-  font-size: 16px
+  font-size: 14px
 }
 
 .post-reposter {
@@ -80,5 +81,15 @@ body {
 }
 
 .avatar {
-  margin-top: 9px;
+  width: 40px;
+  height: 40px;
+}
+
+.avatar-post {
+  margin-top: 5px;
+}
+
+.socmed {
+  width: 20px;
+  height: 20px;
 }
