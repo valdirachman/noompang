@@ -9,7 +9,11 @@
         <br>
       <% end %>
       <div class="col-sm-1">
-        <%= image_tag @profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
+        <% if post.original != nil %>
+          <%= image_tag post.original.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
+        <% else %>
+          <%= image_tag post.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
+        <% end %>
       </div>
       <div class="col-sm-11">
 
