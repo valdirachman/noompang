@@ -14,9 +14,10 @@
     </div>
   </div>
   <div class="col-sm-3 col-xs-12">
+    <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
     <div class="panel panel-default">
       <div class="panel-body">
-        <p class="post-owner">About</p>
+        <p class="post-destination">About</p>
         <p>Noompang.com merupakan wadah untuk para pengemudi dan penumpang untuk berbagi kendaraan.</p><p>Noompang akan membantu Anda dalam mencari teman agar perjalanan Anda lebih efektif, hemat biaya, dan menyenangkan</p>
         <p>Find us on:</p>
         <%= link_to(image_tag('FB-f-Logo__blue_29.png', class: "socmed"), 'https://facebook.com/noompangcom') %>

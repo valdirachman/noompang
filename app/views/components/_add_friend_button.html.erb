@@ -4,6 +4,6 @@
   <% elsif current_user.friend_with? user %>
     <span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Friends</span>
   <% elsif current_user.invited? user %>
-    <span>Pending Friend Request</span>
+    <span>Pending</span>
   <% end %>
 <% end %>
