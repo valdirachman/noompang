@@ -9,12 +9,20 @@ class PagesController < ApplicationController
     @posts = posts.paginate(page: params[:page], per_page: 10)
     @newPost = Post.new
     @profile = current_user.profile
-    @friends = current_user.friends
-    byebug
-    if (@friends)
+
+    friends = current_user.friends
+    @recommended_friends = []
+    if (not friends.empty?)
       reference_friend = friends.find(friends.pluck(:id).shuffle.first)
-      friends_of_reference_friend = reference_friend.friends
-      @recommended_friends = friends_of_reference_friend.where(id: friends_of_reference_friend.pluck(:id).sample(5)) - [current_user]
+      friends_of_reference_friend = reference_friend.friends.find_not_friends(current_user)
+      @recommended_friends = User.where(id: friends_of_reference_friend.map(&:id).sample(4)) - [current_user]
+      if @recommended_friends.empty?
+        new_friends = User.find_not_friends(current_user)
+        @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
+      end
+    else
+      new_friends = User.find_not_friends(current_user)
+      @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
     end
 
     respond_to do |format|
@@ -33,8 +41,17 @@ class PagesController < ApplicationController
       posts = @user.posts.today
       @posts = posts.paginate(page: params[:page], per_page: 10)
       @newPost = Post.new
+
       friends = @user.friends
-      @recommended_friends = friends.where(id: friends.pluck(:id).sample(5)) - [current_user]
+      @recommended_friends = []
+      if (not friends.empty?)
+        new_friends = friends.find_not_friends(current_user)
+        @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
+      else
+        new_friends = User.find_not_friends(current_user)
+        @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
+      end
+
       respond_to do |format|
         format.html
         format.js

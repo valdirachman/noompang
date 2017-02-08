@@ -11,9 +11,10 @@
                 <%= image_tag @r.profile.avatar.url(:thumb), class: "avatar img-rounded" %>
               </div>
               <div class="col-sm-11">
-                <p class="post-title"><span class="post-owner"><%= @r.username %></span><span><%= link_to "Accept", accept_friend_path(@r.id) %></span></p>
+                <span class="post-title"><a href="/user/<%= @r.username %>"><%= @r.username %></a></span>
+                <span class="pull-right"><%= link_to "Accept", accept_friend_path(@r.id) %></span>
               </div>
-            <div class="row">
+            </div>
           <% end %>
         <% else %>
           <hr>

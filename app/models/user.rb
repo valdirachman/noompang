@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
+  scope :not_friends, -> (current_user) { where user_id: friends }
+
   # helper methods
 
   # for creating empty profile
@@ -32,6 +34,11 @@ class User < ActiveRecord::Base
   # for sending message
   def mailboxer_email(object)
     nil
+  end
+
+  # for finding potential recommended_friends
+  def self.find_not_friends(user)
+    self.all.select { |r| (not user.invited? r) && (not r.friend_with? user) }
   end
 
   # follow another user
