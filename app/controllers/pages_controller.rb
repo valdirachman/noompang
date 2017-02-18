@@ -57,7 +57,9 @@ class PagesController < ApplicationController
         format.js
       end
     else
-      redirect_to root_path, :notice=> "User not found!"
+      respond_to do |f|
+        f.html { redirect_to home_path, notice: "User not found!" }
+      end
     end
   end
 

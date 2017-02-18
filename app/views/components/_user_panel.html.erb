@@ -7,9 +7,11 @@
         <div class="col-sm-6" style="font-size: 80%; opacity: 0.7;">RIDES<br>
           <h6><%= user.posts.count %></h6>
         </div>
-        <div class="col-sm-6" style="font-size: 80%; opacity: 0.7;">FRIENDS<br>
-          <h6><%= user.friends.count %></h6>
-        </div>
+        <%= link_to see_friends_path(@profile.user.username) do %>
+          <div class="col-sm-6" style="font-size: 80%; opacity: 0.7;">FRIENDS<br>
+            <h6><%= user.friends.count %></h6>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
