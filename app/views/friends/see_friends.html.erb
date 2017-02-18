@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1>Friends of <%= @user.username %></h1>
+        <% if !@friends.empty? %>
+          <% for @u in @friends %>
+            <hr>
+            <div class="row">
+              <div class="col-sm-1">
+                <%= image_tag @u.profile.avatar.url(:thumb), class: "avatar img-rounded" %>
+              </div>
+              <div class="col-sm-11">
+                <span class="post-title"><a href="/user/<%= @u.username %>"><%= @u.username %></a></span>
+                <span class="pull-right"><%= render '/components/add_friend_button', :user => @u %></span>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p>There is no friend yet!</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
