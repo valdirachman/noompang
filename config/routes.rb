@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   get '/accept/:id', to: 'friends#accept', as: 'accept_friend'
 
+  get '/friends/:id', to: 'friends#see_friends', as: 'see_friends'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
