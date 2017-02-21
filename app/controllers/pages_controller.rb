@@ -70,4 +70,20 @@ class PagesController < ApplicationController
   def friend_request
     @requests = current_user.pending_invited_by
   end
+
+  def about_us
+
+  end
+
+  def how_it_works
+
+  end
+
+  def fact
+
+  end
+
+  def stories
+
+  end
 end
