@@ -4,19 +4,19 @@ Rails.application.configure do
   # Devise mailer
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: '103.200.7.84' }
+  config.action_mailer.default_url_options = { host: 'noompang.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name:      ENV['GMAIL_USERNAME'],
     password:       ENV['GMAIL_PASSWORD'],
-    domain:         '103.200.7.84',
+    domain:         'gmail.com',
     address:       'smtp.gmail.com',
     port:          '587',
     authentication: :plain,
     enable_starttls_auto: true
   }
 
-  config.action_mailer.asset_host = "http://103.200.7.84"
+  config.action_mailer.asset_host = "http://noompang.com"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
