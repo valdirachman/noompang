@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  root 'pages#index'
+  root 'pages#about_us'
 
   get '/home' => 'pages#home', as: 'home'
 

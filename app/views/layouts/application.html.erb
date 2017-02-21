@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Noompang</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= favicon_link_tag 'noompang-favicon-60.png' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= render 'layouts/nav' %>
-<div class="container">
-  <% flash.each do |key, value| %>
-    <div class="alert alert-info alert-<%= key %>"><%= value %></div>
+  <head>
+    <title>Noompang</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= favicon_link_tag 'noompang-favicon-60.png' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <% if user_signed_in? %>
+    <body class="home">
+      <%= render 'layouts/nav' %>
+      <div class="container">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-info alert-<%= key %>"><%= value %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </body>
+  <% else %>
+    <% if controller.action_name == 'about_us' %>
+      <body>
+        <%= yield %>
+      </body>
+    <% else %>
+      <body class="home">
+        <%= render 'layouts/nav' %>
+        <div class="container">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-info alert-<%= key %>"><%= value %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </body>
+    <% end %>
   <% end %>
-  <%= yield %>
-</div>
-<%= render 'layouts/footer' %>
-</body>
+  <%= render 'layouts/footer' %>
 </html>

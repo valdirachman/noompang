@@ -11,15 +11,19 @@
  * file per style scope.
  *
  */
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
   background-color: rgba(212, 216, 212, 0.25);
-  padding-top: 70px;
   font-family: 'Roboto', sans-serif;
 }
+
+.home {
+  padding-top: 70px;
+}
+
 .navbar {
   background-color: #1E2D4E;
   color: white;
@@ -92,7 +96,502 @@ body {
   margin-top: 5px;
 }
 
-.socmed {
-  width: 20px;
+.socmed-link {
   height: 20px;
+}
+
+// Valdi index css code
+.log-in {
+  float: right;
+  width: 300px;
+  height: 230px;
+  padding: 20px;
+  margin-top: 0%;
+}
+.sign-up {
+  float: right;
+  width: 300px;
+  height: 270px;
+  padding: 20px;
+}
+
+// Mirsa's landing page CSS code
+.body-landing {
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.img-landing {
+  max-width: 100%;
+  max-height: 100%;
+}
+.signinbutton {
+  float: right;
+}
+.headerbg {
+  height: 700px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(../images/aboutusimg.jpg);
+  background-repeat: no-repeat;
+  background-color: #1e2c4f;
+  background-position: center;
+}
+
+.headerbghow {
+  height: 500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 150px;
+  background: url(../images/aboutusimg2.jpg);
+  background-repeat: no-repeat;
+  background-color: #1e2c4f;
+  background-position: center;
+}
+
+.nav-landing{
+  height: 100px;
+  width: 100%;
+  margin-left: 0;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.logo-container {
+  float:left;
+}
+.nav-links {
+  padding-top: 25px;
+  margin-left: 30px;
+  margin-bottom: 0;
+}
+.nav-links li{
+  float: left;
+  font-size: 14px;
+  font-family: 'roboto' ,sans-serif;
+  margin-left: 40px;
+  display: inline;
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.nav-links a{
+  color: #4c6ca0;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+}
+
+.nav-sign {
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 0px;
+}
+.nav-sign li {
+  display: inline;
+  list-style: none;
+  margin-left: 20px;
+}
+
+.nav-sign a{
+  color: #4c6ca0;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+}
+
+ol, ul {
+  padding: 0;
+}
+
+.logoleft {
+  padding-right: 5%;
+  padding-top: -10px;
+
+}
+
+.ridesharetext {
+  font-family: 'roboto', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-size: 50px;
+  color: #abbfdf;
+  padding-top: 100px;
+}
+.signuptxt {
+  padding-top: 40px;
+}
+.signuptxt p{
+  font-family: 'roboto', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-size: 50px;
+  color: #abbfdf;
+}
+
+.ridesharetext p {
+font-size: 40px;
+}
+
+
+.ridesharenetwork {
+  margin-top: 75px;
+}
+
+.pannel {
+  margin: 100px 20px 0 20px;
+  height: 250px;
+  border-radius: 15px;
+  border-color: black;
+  border: 10px;
+  background-color:#f6f6f6;
+  box-shadow: 0 2px 6px rgba(0,0,0,.35);
+}
+.noompangnetwork {
+  font-family: 'roboto', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-size: 30px;
+  color: #abbfdf;
+}
+
+@media screen and (max-width:1000px) and (min-width:300px){
+  .ridesharenetwork {
+    margin-top: 5px;
+  }
+}
+
+.connectrow {
+  padding: 20px 0 20px 0;
+  background-color: white;
+}
+.weconnect{
+  background: url(../images/bgabout.png);
+    max-height: 700px;
+}
+
+.timeline {
+
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 600px){
+  .timeline {
+    padding-top: 10px;
+   }
+}
+
+@media screen and (max-width: 600px) and (min-width: 200px){
+  .maxh .timeline {
+    padding-top: 10px;
+    max-height: 300px;
+   }
+}
+.connect {
+  //position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+@media screen and (min-width: 1000px){
+  .connect {
+    padding-top: 30%;
+   }
+}
+
+@media screen and (max-width: 600px) and (min-width: 200px){
+  .connect {
+    padding-top: 10px;
+   }
+}
+.connect p {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+}
+
+.ttgnmpg {
+  padding-top: 10px;
+  padding: 70px 0 70px 0;
+  background-color: #f2faff;
+
+}
+.abtnmpg h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  color: #1e2c4f;
+  font-weight: 300;
+}
+.nmpgis {
+  padding: 20px 20px 10px 20px;
+}
+.nmpgis p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: #1e2c4f;
+  font-weight: 300;
+  line-height: 200%;
+}
+
+
+.photopar {
+  height: 300px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(../images/hitchhike.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.txtpar {
+  height: 140px;
+  padding: 100px 0 0 0;
+
+}
+
+.txtpar p {
+font-family: 'roboto',sans-serif;
+font-size: 15px;
+color: white;
+font-weight: 500;
+letter-spacing: 2px;
+}
+
+.txtpar2 p {
+  font-family: 'roboto',sans-serif;
+  font-size: 20px;
+  color: white;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.goal h1{
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #1e2c4f;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.ourgoal h2{
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  color: #1e2c4f;
+  font-weight: 100;
+  letter-spacing: 2px;
+  line-height: 150%;
+}
+
+.socmed {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.socmed p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: 300;
+  color: #666666;
+  letter-spacing: 1px;
+}
+
+.cont-social {
+  height: 120px;
+  padding: 20px 0 20px 0;;
+}
+
+
+
+.getstartedbg {
+  height: 500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(../images/bgcircb.jpg);
+  background-repeat: no-repeat;
+  background-color: #1e2c4f;
+  background-position: center;
+}
+
+.getstarted h1 {
+  margin-top: 0;
+  padding-top: 110px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 60px;
+  font-weight: 300;
+  color: white;
+}
+
+.getstarted p {
+font-family: 'Roboto', sans-serif;
+font-size: 30px;
+color: #abbfdf;
+font-weight: 300;
+}
+
+.footernmpg {
+  height: 50px;
+  width: 100%;
+  background-color: #1e2c4f;
+}
+
+.footermsg{
+  margin-top: 15px;
+  text-align: center;
+  color:#abbfdf;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/*step in how it works*/
+
+.customer-steps {
+  margin-top: 170px;
+}
+.steptitle {
+  margin: 20px;
+}
+.steptitle h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  color: #1e2c4f;
+  font-weight: 100;
+  letter-spacing: 2px;
+  line-height: 100%;
+}
+.steptitle h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  color: #1e2c4f;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 100%;
+}
+
+.cont-layout {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: center;
+}
+
+/* stories */
+.storiesbg {
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(../images/storiesbg.jpg);
+  background-repeat: no-repeat;
+  background-color: #1e2c4f;
+  background-position: center;
+}
+
+.txt-content h1{
+  font-family: 'roboto', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-size: 50px;
+  color: #abbfdf;
+  padding-top: 30px;
+}
+
+.txt-content p{
+  font-family: 'roboto', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-size: 30px;
+  color: #abbfdf;
+}
+.footer-stor {
+  margin-top: 100px;
+  width: 100%;
+}
+/* FAQ */
+
+.cont-faq h1 {
+  font-family: 'roboto', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-size: 50px;
+  color: #1e2c4f;
+  padding-top: 30px;
+}
+
+.headerbgfaq {
+  height: 700px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(../images/aboutusimg3.jpg);
+  background-repeat: no-repeat;
+  background-color: #1e2c4f;
+  background-position: center;
+}
+
+.quest {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #1e2c4f;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-align: left;
+}
+.ans {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #1e2c4f;
+  font-weight: 300;
+  text-align: left;
+}
+
+.faq-space {
+  padding: 20px 20px 20px 20px;
+}
+
+.caption h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #1e2c4f;
+  font-weight: 500;
+  text-align: left;
+}
+.caption p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #1e2c4f;
+  font-weight: 300;
+  text-align: left
+}
+
+.cont-stor {
+  margin-top: 60px;
+}
+
+.box-stor {
+  padding: 0 20px 0 10px;
+}
+
+.thumbnail {
+    box-shadow: 8px 8px 4px rgba(0,0,0,.35);
+}
+.getstartedbgstor {
+  padding-top: 100px;
+  height: 500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn-sign {
+  padding:70px 20px 20px 20px;
 }
