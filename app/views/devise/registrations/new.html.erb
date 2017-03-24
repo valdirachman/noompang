@@ -1,34 +1,63 @@
-<h2>Sign up</h2>
+<div class="bg-devise">
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+        <img style="text-align:center; margin:50px 30% 0 30%;"src="/logo_white.png">
+    <div class="panel panel-default" style="margin-top:20px; border-radius: 10px;">
+      <div class="panel-body">
+        <div  class="row" style="margin-bottom:25px;">
+        <div class="col-xs-10 col-xs-offset-1">
+        <div class="line-bottom" style="padding: 5px 0 10px;">
+          <h3 style="font-weight:300; text-align:center; color:#4c6eab">Sign up new account</h3>
+        </div>
+      </div>
+      <div class="col-xs-1">
+      </div>
+    </div>
+
+<div class="form-margin">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
+  <div class="input-group input-group-lg" style="margin-bottom: 23px;">
+    <span class="input-group-addon sign-at-logo" id="sizing-addon2" style="background-color:white"></span>
+    <%= f.text_field :username, autofocus: true , class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Username", style: "font-size: 15px;"%>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email%>
+  <div class="input-group input-group-lg" style="margin-bottom: 23px;">
+    <span class="input-group-addon sign-email-logo" id="sizing-addon2" style="background-color:white"></span>
+    <%= f.email_field :email, class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Email address", style: "font-size: 15px;"%>
   </div>
 
-  <div class="field">
+  <div class="input-group input-group-lg" style="margin-bottom: 17px;">
+    <span class="input-group-addon sign-password-logo" id="sizing-addon2" style="background-color:white"></span>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Password", style: "font-size: 15px;"%>
+  </div>
+
+  <!--<div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
+  </div> -->
+
+  <div class="input-group input-group-lg" style="margin-bottom: 17px;">
+    <span class="input-group-addon sign-password-logo" id="sizing-addon2" style="background-color:white"></span>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Password confirmation", style: "font-size: 15px;"%>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div>
+    <%= f.submit "Sign Up", class: "btn-form" %>
   </div>
 <% end %>
 
+</div>
+</div>
+<div class="panel-footer" style="border-radius: 0 0 10px 10px;">
 <%= render "devise/shared/links" %>
+</div>
+
+</div>
+  <%= render '/components/directory' %>
+</div>
+</div>

@@ -17,7 +17,7 @@
         <li>
           <%= form_tag(users_path, :method => "get", id: "search-form", class: "navbar-form", role: "search") do %>
             <div class="form-group">
-              <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control src-frm" %>
             </div>
             <%= button_tag(type: "submit", class: "btn") do %>
                 <i class="glyphicon glyphicon-search"></i>

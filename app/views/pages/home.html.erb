@@ -1,7 +1,11 @@
 <div class="row">
   <div class="col-sm-3 col-xs-12">
-    <%= render '/components/user_panel', user: current_user %>
-    <%= render '/components/profile_panel', profile: @profile, user: current_user %>
+    <div class="panel panel-default panel-body">
+      <div class="line-bottom profile-font">
+      <%= render '/components/user_panel', user: current_user %>
+    </div>
+      <%= render '/components/profile_panel', profile: @profile, user: current_user %>
+    </div>
   </div>
   <div class="col-sm-6 col-xs-12">
     <%= render '/components/post_form' %>
@@ -15,14 +19,13 @@
   </div>
   <div class="col-sm-3 col-xs-12">
     <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <p class="post-destination">About</p>
-        <p>Noompang.com merupakan wadah untuk para pengemudi dan penumpang untuk berbagi kendaraan.</p><p>Noompang akan membantu Anda dalam mencari teman agar perjalanan Anda lebih efektif, hemat biaya, dan menyenangkan</p>
-        <p>Find us on:</p>
+      <div class="panel-transparent panel-body">
+        <p class="post-destination" style="color:#1e2f4d;">About</p>
+        <p style="font-weight:300; font-size:12px; color:#586a89">Noompang.com merupakan wadah untuk para pengemudi dan penumpang untuk berbagi kendaraan.</p>
+        <p style="font-weight:300; font-size:12px; color:#586a89">Noompang akan membantu Anda dalam mencari teman agar perjalanan Anda lebih efektif, hemat biaya, dan menyenangkan</p>
+        <p class="post-destination" style="color:#1e2f4d;">Find us on:</p>
         <%= link_to(image_tag('FB-f-Logo__blue_29.png', class: "socmed-link"), 'https://facebook.com/noompangcom') %>
         <%= link_to(image_tag('LINE_Icon.png', class: "socmed-link"), 'https://line.me/R/ti/p/@qer6098s') %>
-      </div>
     </div>
   </div>
 </div>

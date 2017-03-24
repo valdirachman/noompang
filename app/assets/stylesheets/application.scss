@@ -16,8 +16,18 @@
 @import "bootstrap";
 
 body {
-  background-color: rgba(212, 216, 212, 0.25);
+  background-color: #e9ebee;
   font-family: 'Roboto', sans-serif;
+}
+
+.bg-devise {
+  background: url(../bgsign.jpg);
+  font-family: 'Roboto', sans-serif;
+  background-repeat: no-repeat;
+  background-color: #1e2c4f;
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .home {
@@ -28,9 +38,6 @@ body {
   background-color: #1E2D4E;
   color: white;
   border-bottom-width: 0px;
-  -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.36);
-  -moz-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.36);
-  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.36);
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -46,7 +53,7 @@ body {
 }
 
 .post-panel {
-  margin-top: -21px;
+  margin-top: -17px;
 }
 
 .post-title {
@@ -58,8 +65,8 @@ body {
   margin-left: 10px;
 }
 
-.post-links {
-
+.panel {
+  border-radius: 0;
 }
 
 .post-owner {
@@ -72,6 +79,13 @@ body {
   font-weight: bold;
   font-size: 23px;
 }
+.userpanel-avatar {
+  margin: 10px 0 3px 0;
+}
+
+.userpanel-username{
+  margin-top: 3px;
+}
 
 .post-destination {
   color: #808080;
@@ -83,6 +97,9 @@ body {
   font-size: 12px;
 }
 
+.line-bottom {
+  border-bottom: 0.5px solid #c9c9c9;
+}
 .post-creation {
   opacity: 65%;
 }
@@ -92,12 +109,77 @@ body {
   height: 40px;
 }
 
+.avatar-profile {
+  width: 70px;
+  height: 70px;
+}
+
 .avatar-post {
   margin-top: 5px;
 }
 
+.avatar-find {
+  width: 60px;
+  height: 60px;
+}
+
 .socmed-link {
   height: 20px;
+}
+//field css for sign in, sign up, etc
+
+.sign-user-logo {
+  background: url(/images/signin_icon.png) no-repeat scroll 10px 15px;
+}
+
+.sign-password-logo {
+  background: url(/images/lock_icon.png) no-repeat scroll 10px 15px;
+}
+
+.sign-at-logo {
+  background: url(/images/at_icon.png) no-repeat scroll 10px 15px;
+}
+
+.sign-email-logo {
+  background: url(/images/email_icon.png) no-repeat scroll 10px 15px;
+}
+
+.plc-clr::-webkit-input-placeholder {
+  color: #e3e3e3;
+}
+
+.form-margin{
+  padding: 0 20px 0 20px;
+}
+
+.btn-form{
+    background-color: #304262;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn-form:hover{
+    background-color: #202c42;
+}
+
+//post rides
+.ride-hover:hover {
+     box-shadow: 1px 1px 1px 1px #b0b0b0;
+    -webkit-transition:  box-shadow .2s ease-in;
+}
+
+//css navbar
+.src-frm {
+  border-radius: 0;
+  width: 200px;
 }
 
 // Valdi index css code
@@ -114,7 +196,10 @@ body {
   height: 270px;
   padding: 20px;
 }
-
+//application
+.profile-hvr::hover{
+  background-color: grey;
+}
 // Mirsa's landing page CSS code
 .body-landing {
   text-align: center;
@@ -269,11 +354,10 @@ font-size: 40px;
 }
 .weconnect{
   background: url(../images/bgabout.png);
-    max-height: 700px;
+  max-height: 700px;
 }
 
 .timeline {
-
   background-repeat: no-repeat;
 }
 @media screen and (min-width: 600px){
@@ -292,7 +376,6 @@ font-size: 40px;
   //position: absolute;
   margin-top: auto;
   margin-bottom: auto;
-  overflow: hidden;
   text-align: center;
 }
 
@@ -448,8 +531,38 @@ font-weight: 300;
   font-weight: 400;
 }
 
-/*step in how it works*/
+/* user panel
 
+.panel-image img.panel-image-preview{
+  width: 100%;
+  border-radius: 4px 4px 0px 0px;
+}
+.panel-image ~ .panel-image img.panel-image-preview {
+  border-radius: 0px;
+}
+
+.panel-image ~ .panel-body, .panel-image.hide-panel-body ~ .panel-body {
+  overflow: hidden;
+}
+
+.panel-image ~ .panel-footer a {
+  background-color: white;
+  padding: 0px 10px;
+  font-size: 1.3cm;
+  color: rgb(100, 100, 100);
+}
+
+.panel-imageshide-panel-body ~ .panel-body {
+  height: 0px;
+  padding: 0px;
+}
+
+*/
+
+/*step in how it works*/
+.bg-panel {
+  background-color: blue;
+}
 .customer-steps {
   margin-top: 170px;
 }
