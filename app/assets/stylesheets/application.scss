@@ -181,6 +181,72 @@ body {
   border-radius: 0;
   width: 200px;
 }
+.container-1{
+  width: 400px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+.container-1 input#search::-webkit-input-placeholder {
+   color: #c9c9c9;
+}
+
+.container-1 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #c9c9c9;
+}
+
+.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #c9c9c9;
+}
+
+.container-1 input#search:-ms-input-placeholder {
+   color: #c9c9c9;
+}
+.container-1 .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  z-index: 1;
+  color: #4f5b66;
+  background: url(/images/search_icon.png) no-repeat scroll;
+}
+
+.container-1 input#search{
+  width: 400px;
+  height: 35px;
+  background: #e9ebee;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  vertical-align: middle;
+  margin-top: -8px;
+  color: black;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 4px;
+
+  -webkit-transition: background .30s ease;
+-moz-transition: background .30s ease;
+-ms-transition: background .30s ease;
+-o-transition: background .30s ease;
+transition: background .30s ease;
+}
+.container-1 input#search::-webkit-input-placeholder {
+  font-weight: 400;
+  color: #32425f;
+}
+.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+    outline:none;
+    background: #ffffff;
+  }
+
+.badge {
+  background-color: #eb5143;
+  margin-top: -8px;
+  margin-left: -4px;
+}
 
 // Valdi index css code
 .log-in {

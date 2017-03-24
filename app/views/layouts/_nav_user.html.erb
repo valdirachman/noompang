@@ -15,15 +15,22 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= form_tag(users_path, :method => "get", id: "search-form", class: "navbar-form", role: "search") do %>
+          <%= form_tag(users_path, :method => "get", id: "search-form", class: "container-1", role: "search") do %>
             <div class="form-group">
-                <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control src-frm" %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
             </div>
-            <%= button_tag(type: "submit", class: "btn") do %>
-                <i class="glyphicon glyphicon-search"></i>
-            <% end %>
+            <!--<%= button_tag(type: "submit") do %>
+            <% end %> -->
           <% end %>
         </li>
+
+      <!--  <div class="box">
+              <div class="container-1">
+                  <span class="icon"><i class="fa fa-search"></i></span>
+                  <input type="search" id="search" placeholder="Search..." />
+              </div>
+            </div> -->
+
         <li>
           <%= link_to home_path do %>
             <span class="glyphicon glyphicon-home"></span>
@@ -31,7 +38,7 @@
         </li>
         <li>
           <%= link_to friend_request_path do %>
-            <span><span class="glyphicon glyphicon-bell"></span> <% if current_user.pending_invited_by.count > 0 %>(<%= current_user.pending_invited_by.count %>)<% end %></span>
+            <span><span class="glyphicon glyphicon-bell"></span><span class="badge"> <% if current_user.pending_invited_by.count > 0 %><%= current_user.pending_invited_by.count %></span><% end %></span>
           <% end %>
         </li>
         <li>
