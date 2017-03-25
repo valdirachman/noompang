@@ -38,7 +38,7 @@
         </li>
         <li>
           <%= link_to friend_request_path do %>
-            <span><span class="glyphicon glyphicon-bell"></span><span class="badge"> <% if current_user.pending_invited_by.count > 0 %><%= current_user.pending_invited_by.count %></span><% end %></span>
+            <span><span class="glyphicon glyphicon-bell"></span> <% if current_user.pending_invited_by.count > 0 %><span class="badge"><%= current_user.pending_invited_by.count %></span><% end %></span>
           <% end %>
         </li>
         <li>
