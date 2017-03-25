@@ -1,18 +1,21 @@
 <%= form_for(:user, :url => session_path(:user)) do |f| %>
-  <div class="field form-group">
-    <%= f.email_field :email, placeholder: "Email", autofocus: true, class: "form-control" %>
+
+  <div class="input-group input-group-lg" style="margin-bottom: 23px;">
+    <span class="input-group-addon sign-user-logo" id="sizing-addon2" style="background-color:white"></span>
+    <%= f.email_field :email, autofocus: true , class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Email address", style: "font-size: 15px;"%>
   </div>
 
-  <div class="field form-group">
-    <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %>
+  <div class="input-group input-group-lg" style="margin-bottom: 17px;">
+    <span class="input-group-addon sign-password-logo" id="sizing-addon2" style="background-color:white"></span>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Password", style: "font-size: 15px;"%>
   </div>
 
-  <div class="field form-group">
+  <div class="field" style="margin-bottom: 10px;" >
     <%= f.check_box :remember_me %>
     <%= f.label :remember_me %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Login", class: "btn btn-primary pull-right" %>
+  <div>
+    <%= f.submit "Log In", class: "btn-form" %>
   </div>
 <% end %>

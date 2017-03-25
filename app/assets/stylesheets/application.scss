@@ -172,7 +172,7 @@ body {
 
 //post rides
 .ride-hover:hover {
-     box-shadow: 1px 0px 1px 1px #b0b0b0;
+     box-shadow: 1px 2px 1px 1px #b0b0b0;
     -webkit-transition:  box-shadow .2s ease-in;
 }
 
@@ -251,16 +251,13 @@ transition: background .30s ease;
 // Valdi index css code
 .log-in {
   float: right;
-  width: 300px;
-  height: 230px;
   padding: 20px;
   margin-top: 0%;
 }
 .sign-up {
   float: right;
-  width: 300px;
-  height: 270px;
   padding: 20px;
+  margin-top: 0%;
 }
 //application
 .profile-hvr::hover{
@@ -325,7 +322,7 @@ transition: background .30s ease;
   margin-left: 40px;
   display: inline;
   list-style: none;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .nav-links a{
@@ -367,9 +364,8 @@ ol, ul {
   font-family: 'roboto', sans-serif;
   letter-spacing: 1px;
   font-weight: 300;
-  font-size: 50px;
+  margin-bottom: 30px;
   color: #abbfdf;
-  padding-top: 100px;
 }
 .signuptxt {
   padding-top: 40px;
@@ -383,7 +379,8 @@ ol, ul {
 }
 
 .ridesharetext p {
-font-size: 40px;
+font-size: 20px;
+text-align: center;
 }
 
 
@@ -447,7 +444,7 @@ font-size: 40px;
 
 @media screen and (min-width: 1000px){
   .connect {
-    padding-top: 30%;
+    padding-top: 20%;
    }
 }
 
@@ -459,12 +456,13 @@ font-size: 40px;
 .connect p {
   color: white;
   font-family: 'Roboto', sans-serif;
-  font-size: 40px;
+  font-size: 25px;
+  font-weight: 300;
 }
 
 .ttgnmpg {
   padding-top: 10px;
-  padding: 70px 0 70px 0;
+  padding: 30px 0 30px 0;
   background-color: #f2faff;
 
 }
@@ -479,7 +477,7 @@ font-size: 40px;
 }
 .nmpgis p {
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   color: #1e2c4f;
   font-weight: 300;
   line-height: 200%;
@@ -520,15 +518,15 @@ letter-spacing: 2px;
 
 .goal h1{
   font-family: 'Roboto', sans-serif;
-  font-size: 15px;
+  font-size: 12px;
   color: #1e2c4f;
   font-weight: 500;
   letter-spacing: 2px;
 }
 
-.ourgoal h2{
+.ourgoal h3{
   font-family: 'Roboto', sans-serif;
-  font-size: 50px;
+  font-size: 30px;
   color: #1e2c4f;
   font-weight: 100;
   letter-spacing: 2px;
@@ -536,13 +534,13 @@ letter-spacing: 2px;
 }
 
 .socmed {
-  padding-top: 50px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 .socmed p {
   font-family: 'Roboto', sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 300;
   color: #666666;
   letter-spacing: 1px;

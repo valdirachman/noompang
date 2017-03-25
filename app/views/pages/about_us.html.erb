@@ -18,27 +18,44 @@
             <li> <a href="#"> LOGIN </a> </li>
             <li> <a href="#"> SIGN UP </a> </li>
           </ul>
-
       </div>
       <% flash.each do |key, value| %>
         <div class="alert alert-info alert-<%= key %>"><%= value %></div>
       <% end %>
-      <div class="col-md-8 col-xs-12">
+      <div class=" row col-xs-12">
         <div class="ridesharetext">
-          <p> Berbagi kendaraan biar makin gampang! </p>
+          <p style="font-size:30px;"> Berbagi kendaraan biar makin gampang! </p>
         </div>
       </div>
 
-      <div class="col-md-4 col-xs-12">
-        <div class="log-in panel">
-          <%= render '/devise/sessions/new'%>
-        </div>
-        <div class="sign-up panel">
-          <%= render '/devise/registrations/new'%>
+
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12" style="margin-bottom:30px;">
+            <div class="panel panel-body" style="border-radius:10px;">
+        <div class="my-content">
+          <div class="tab">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#sign-up-tab" data-toggle="tab"> Sign Up </a></li>
+              <li><a href="#sign-in-tab" data-toggle="tab"> Sign In </a></li>
+
+            </ul>
+
+              <div class="tab-content">
+
+              <div class="tab-pane active fade in sign-up panel" id="sign-up-tab" style="margin-bottom: 0px;
+    padding-bottom: 0px;">
+                <%= render '/devise/registrations/new'%>
+              </div>
+
+              <div class="tab-pane fade log-in panel" style="margin-bottom: 0px;
+    padding-bottom: 0px;" id="sign-in-tab">
+                <%= render '/devise/sessions/new'%>
+              </div>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
 
-    </div>
   </div>
 
   <div class="row connectrow">
@@ -82,7 +99,7 @@
         <h1> WHAT'S OUR GOAL? </h1>
       </div>
       <div class="ourgoal">
-        <h2> Creating community in mutualism atmosphere. </h2>
+        <h3> Creating community in mutualism atmosphere. </h3>
       </div>
       <div class="nmpgis">
         <p>People. Community. Energy.</p>
@@ -130,8 +147,8 @@
     </div>
   </div>
 
-  <div class="row footernmpg body-landing">
-    <div class="container footermsg">
+  <div class="footernmpg body-landing">
+    <div class="footermsg">
       <p>© 2017 Noompang.</p>
     </div>
   </div>

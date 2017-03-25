@@ -1,24 +1,27 @@
 <%= form_for(:user, url: registration_path(:user)) do |f| %>
-  <div class="field form-group">
-    <%= f.text_field :username,  placeholder: "Username", class: "form-control" %>
-  </div>
 
-  <div class="field form-group">
-    <%= f.email_field :email, placeholder: "Email", class: "form-control" %>
-  </div>
 
-  <div class="field form-group">
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %>
-  </div>
+<div class="input-group input-group-lg" style="margin-bottom: 23px;">
+  <span class="input-group-addon sign-at-logo" id="sizing-addon2" style="background-color:white"></span>
+  <%= f.text_field :username , class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Username", style: "font-size: 15px;"%>
+</div>
 
-  <div class="field form-group">
-    <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "off", class: "form-control" %>
-  </div>
+<div class="input-group input-group-lg" style="margin-bottom: 23px;">
+  <span class="input-group-addon sign-email-logo" id="sizing-addon2" style="background-color:white"></span>
+  <%= f.email_field :email, class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Email address", style: "font-size: 15px;"%>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-warning pull-right" %>
+<div class="input-group input-group-lg" style="margin-bottom: 17px;">
+  <span class="input-group-addon sign-password-logo" id="sizing-addon2" style="background-color:white"></span>
+  <%= f.password_field :password, autocomplete: "off", class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Password", style: "font-size: 15px;"%>
+</div>
+
+<div class="input-group input-group-lg" style="margin-bottom: 17px;">
+  <span class="input-group-addon sign-password-logo" id="sizing-addon2" style="background-color:white"></span>
+  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Password confirmation", style: "font-size: 15px;"%>
+</div>
+
+  <div>
+    <%= f.submit "Sign Up", class: "btn-form" %>
   </div>
 <% end %>﻿
