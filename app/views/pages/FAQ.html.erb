@@ -1,0 +1,132 @@
+<% if !user_signed_in? %>
+<div style="text-align: center;">
+<div class="headerbgfaq">
+  <div class="container">
+      <div class="nav nav-landing">
+          <div class="logo-container">
+          <a href="about-us.html">
+            <img class="logoleft" alt="noompang" src="images/noompanglogo50px.png">
+          </a>
+        </div>
+
+          <ul class="nav-links">
+            <li> <a href="about-us.html"> ABOUT US </a> </li>
+            <li> <a href="how-it-works.html"> HOW IT WORKS </a> </li>
+            <li> <a href="stories.html"> STORIES </a> </li>
+            <li> <a href="faq.html"> FAQ </a> </li>
+          </ul>
+          <ul class="nav-sign">
+            <li> <a href="users/sign_in"> LOGIN </a> </li>
+            <li> <a href="users/sign_up"> SIGN UP </a> </li>
+          </ul>
+      </div>
+
+      <div class="ridesharetext">
+        <p> Jejaring sosial untuk berbagi kendaraan! </p>
+      </div>
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+        <div class="panel panel-body pannel" style="background-color:##f6f6f6; border-radius:10px; text-align:left;">
+        <div class="my-content">
+          <div class="tab">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#sign-up-tab" data-toggle="tab"> Sign Up </a></li>
+              <li><a href="#sign-in-tab" data-toggle="tab"> Sign In </a></li>
+
+            </ul>
+
+              <div class="tab-content">
+
+              <div class="tab-pane active fade in sign-up panel" id="sign-up-tab" style="margin-bottom: 0px;
+    padding-bottom: 0px;">
+                <%= render '/devise/registrations/new'%>
+              </div>
+
+              <div class="tab-pane fade log-in panel " style="margin-bottom: 0px;
+    padding-bottom: 0px;" id="sign-in-tab">
+                <%= render '/devise/sessions/new'%>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+</div>
+
+<div class="row">
+<div class="container cont-faq">
+  <h3> Frequently asked questions </h3>
+  <div class="container faq-space">
+    <div class="col-lg-2 col-sm-2 col-md-2">
+    </div>
+    <div class="col-lg-10 col-sm-10 col-md-10">
+      <p class="quest"> BAGAIMANA CARA MENGGUNAKAN NOOMPANG? </p>
+      <p class="ans"> Cara menggunakan noompang sangat mudah. Kamu dapat lihat langkah-langkah menggunakan noompang <a href="how-it-works.html">disini</a> </p>
+    </div>
+  </div>
+  <div class="container faq-space">
+    <div class="col-lg-2 col-sm-2 col-md-2">
+    </div>
+    <div class="col-lg-10 col-sm-10 col-md-10">
+      <p class="quest"> BERAPA BIAYA YANG DIKELUARKAN JIKA MENGGUNAKAN NOOMPANG? </p>
+      <p class="ans"> Biaya yang kamu keluarkan tergantung dari kesepakatan kalian antara penoompang dan pemberi toompangan. Karena kami jejaring sosial, Noompang tidak akan mengenakan kamu biaya apapun. </p>
+    </div>
+  </div>
+  <div class="container faq-space">
+    <div class="col-lg-2 col-sm-2 col-md-2">
+    </div>
+    <div class="col-lg-10 col-sm-10 col-md-10">
+      <p class="quest"> APAKAH NOOMPANG PUNYA MOBILE APPS? </p>
+      <p class="ans"> Saat ini tim kami sedang bekerja keras dalam mengembangkan aplikasi noompang di berbagai platform. Saat ini kamu bisa menggunakan platfrom web kami dengan <a href="users/sign_in">login</a> atau <a href="users/sign_up">sign up</a> </p>
+    </div>
+  </div>
+  <div class="container faq-space">
+    <div class="col-lg-2 col-sm-2 col-md-2">
+    </div>
+    <div class="col-lg-10 col-sm-10 col-md-10">
+      <p class="quest"> APAKAH NOOMPANG AMAN? </p>
+      <p class="ans"> Jelas aman! Noompang merupakan jejaring sosial berbagi kendaraan antara kamu dan teman-teman kamu </p>
+    </div>
+  </div>
+  <div class="container faq-space">
+    <div class="col-lg-2 col-sm-2 col-md-2">
+    </div>
+    <div class="col-lg-10 col-sm-10 col-md-10">
+      <p class="quest"> APAKAH SAYA BISA NOOMPANG DENGAN ORANG YANG TIDAK DIKENAL? </p>
+      <p class="ans"> Tidak bisa, di Noompang kamu hanya bisa melihat jadwal perjalanan teman-teman kamu saja. Semakin banyak teman, semakin banyak pilihan perjalanan yang bisa kamu toompangi. </p>
+    </div>
+  </div>
+  <div class="container faq-space">
+    <div class="col-lg-2 col-sm-2 col-md-2">
+    </div>
+    <div class="col-lg-10 col-sm-10 col-md-10">
+      <p class="quest"> BAGAIMANA KALAU SAYA TIDAK PUNYA KENDARAAN? </p>
+      <p class="ans"> Noompang merupakan transaksi dua arah, kamu bisa berperan sebagai pemberi toompangan atau menjadi penoompang.  </p>
+    </div>
+  </div>
+</div>
+</div>
+
+<section class="footer-sect">
+
+<div class="getstartedbg">
+<div class="getstarted">
+  <h1> Start your journey now. </h1>
+  <p> Make your deal, make your way. Free signup. </p>
+</div>
+<div class="btn-sign">
+  <a href="users/sign_up" class="btn btn-primary" role="button">SIGN UP</a>
+</div>
+</div>
+
+<div class="row footernmpg">
+<div class="container footermsg">
+  <p>© 2017 Noompang.</p>
+</div>
+</div>
+</div>
+</section>
+<% else %>
+  <script>document.location = "/home"</script>
+<% end %>

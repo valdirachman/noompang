@@ -22,6 +22,22 @@
       <body>
         <%= yield %>
       </body>
+      <% elsif controller.action_name == 'how-it-works' %>
+      <body>
+        <%= yield %>
+      </body>
+      <% elsif controller.action_name == 'about-us' %>
+      <body>
+        <%= yield %>
+      </body>
+      <% elsif controller.action_name == 'stories' %>
+      <body>
+        <%= yield %>
+      </body>
+      <% elsif controller.action_name == 'FAQ' %>
+      <body>
+        <%= yield %>
+      </body>
     <% else %>
       <body class="bg-devise">
         <%= render 'layouts/nav' %>
