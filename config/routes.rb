@@ -22,9 +22,19 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  root 'pages#about_us'
+  root 'pages#index'
 
   get '/home' => 'pages#home', as: 'home'
+
+  get 'users/sign_in' => 'users/sign_in'
+
+  get 'how-it-works' => 'pages#how-it-works'
+
+  get 'stories' => 'pages#stories'
+
+  get 'FAQ' => 'pages#FAQ'
+
+  get 'about-us' => 'pages#about-us'
 
   get '/user/:id' => 'pages#profile', as: 'user_profile'
 

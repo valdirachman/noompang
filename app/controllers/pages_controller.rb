@@ -79,7 +79,7 @@ class PagesController < ApplicationController
 
   end
 
-  def fact
+  def FAQ
 
   end
 
