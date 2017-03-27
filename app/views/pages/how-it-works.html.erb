@@ -1,0 +1,133 @@
+<% if !user_signed_in? %>
+<div style="text-align: center;">
+  <div class="row">
+    <div class="headerbghow">
+      <div class="container">
+          <div class="nav nav-landing">
+              <div class="logo-container">
+              <a href="about-us.html">
+                <img class="logoleft" alt="noompang" src="images/noompanglogo50px.png">
+              </a>
+            </div>
+
+              <ul class="nav-links">
+                <li> <a href="about-us.html"> ABOUT US </a> </li>
+                <li> <a href="how-it-works.html"> HOW IT WORKS </a> </li>
+                <li> <a href="stories.html"> STORIES </a> </li>
+                <li> <a href="FAQ.html"> FAQ </a> </li>
+              </ul>
+
+            <ul class="nav-sign">
+              <li> <a href="users/sign_in"> LOGIN </a> </li>
+              <li> <a href="users/sign_up"> SIGN UP </a> </li>
+            </ul>
+          </div>
+
+          <div class="signuptxt">
+            <p> Sign Up Now! </p>
+          </div>
+          <div class="noompangnetwork">
+            <p> Join the biggest ride sharing network. </p>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+            <div class="panel panel-body pannel" style="background-color:##f6f6f6; border-radius:10px; text-align:left;">
+            <div class="my-content">
+              <div class="tab">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#sign-up-tab" data-toggle="tab"> Sign Up </a></li>
+                  <li><a href="#sign-in-tab" data-toggle="tab"> Sign In </a></li>
+
+                </ul>
+
+                  <div class="tab-content">
+
+                  <div class="tab-pane active fade in sign-up panel" id="sign-up-tab" style="margin-bottom: 0px;
+        padding-bottom: 0px;">
+                    <%= render '/devise/registrations/new'%>
+                  </div>
+
+                  <div class="tab-pane fade log-in panel " style="margin-bottom: 0px;
+        padding-bottom: 0px;" id="sign-in-tab">
+                    <%= render '/devise/sessions/new'%>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+  </div>
+</div>
+
+
+<section class="customer-steps">
+  <div class="container">
+    <div class="steptitle">
+      <h1> Start your journey</h1>
+      <h2> with just a few steps. </h2>
+    </div>
+  </div>
+</section>
+
+<section class="content-how">
+<div class="row">
+  <div class="container inside">
+    <div class="container faq-space">
+      <div class="col-lg-2 col-sm-2 col-md-2">
+      </div>
+      <div class="col-lg-10 col-sm-10 col-md-10">
+        <p class="quest"> 1. LOG IN/SIGN UP </p>
+        <p class="ans"> Noompang merupakan jejaring sosial untuk berbagi kendaraan. Untuk mendapatkan keuntungan menggunakan noompang, kamu harus <a href="#">login</a> atau <a href="#">sign up</a> terlebih dahulu.  </p>
+      </div>
+    </div>
+    <div class="container faq-space">
+      <div class="col-lg-2 col-sm-2 col-md-2">
+      </div>
+      <div class="col-lg-10 col-sm-10 col-md-10">
+        <p class="quest"> 2. FIND YOUR FRIENDS </p>
+        <p class="ans"> Ajak teman-teman sekelilingmu! semakin banyak teman, semakin banyak pilihan perjalanan. </p>
+      </div>
+    </div>
+    <div class="container faq-space">
+      <div class="col-lg-2 col-sm-2 col-md-2">
+      </div>
+      <div class="col-lg-10 col-sm-10 col-md-10">
+        <p class="quest"> 3. FIND YOUR RIDE WITHIN YOUR FRIENDS </p>
+        <p class="ans"> Cari teman kamu yang waktu dan perjalanannya sama di timeline noompang. </p>
+      </div>
+    </div>
+    <div class="container faq-space">
+      <div class="col-lg-2 col-sm-2 col-md-2">
+      </div>
+      <div class="col-lg-10 col-sm-10 col-md-10">
+        <p class="quest"> 4. MAKE YOUR DEAL, MAKE YOUR WAY! </p>
+        <p class="ans"> Setelah mendapatkan teman yang sejalan, kamu dapat hubungi teman kamu langsung! atau melalui fitur message kami. </p>
+      </div>
+  </div>
+</div>
+</section>
+
+<section class="footer-sect">
+
+<div class="getstartedbg">
+  <div class="getstarted">
+    <h1> Start your journey now. </h1>
+    <p> Make your deal, make your way. Free signup. </p>
+  </div>
+  <div class="btn-sign">
+    <a href="users/sign_up" class="btn btn-primary" role="button">SIGN UP</a>
+  </div>
+</div>
+
+<div class="footernmpg body-landing">
+  <div class="footermsg">
+    <p>© 2017 Noompang.</p>
+  </div>
+</div>
+
+</section>
+</div>
+<% else %>
+  <script>document.location = "/home"</script>
+<% end %>

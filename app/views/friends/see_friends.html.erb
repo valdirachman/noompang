@@ -1,23 +1,32 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h1>Friends of <%= @user.username %></h1>
+        <h4 style="text-align:center; font-weight: 400;">Friends of <%= @user.username %> </h4>
         <% if !@friends.empty? %>
           <% for @u in @friends %>
             <hr>
             <div class="row">
-              <div class="col-sm-1">
-                <%= image_tag @u.profile.avatar.url(:thumb), class: "avatar img-rounded" %>
+              <div class="col-sm-12">
+                <div class="col-sm-3 col-xs-3 col-md-3 col-xl-3 float-right" style="text-align:center;">
+                <%= image_tag @u.profile.avatar.url(:thumb), class: "avatar-find img-rounded" %>
               </div>
-              <div class="col-sm-11">
-                <span class="post-title"><a href="/user/<%= @u.username %>"><%= @u.username %></a></span>
-                <span class="pull-right"><%= render '/components/add_friend_button', :user => @u %></span>
+              <div class="col-sm-6 col-xs-6 col-md-6 col-xl-6">
+                <div class="row">
+                <p style="font-size:120%"><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
+                </div>
+                <div class="row">
+                <p style="font-size: 100%; font-weight: 300;"><%= @u.friends.count %> friends </p>
+                </div>
               </div>
+              <div style="padding-top:15px;" class="col-sm-3 col-xs-3 col-md-3 col-xl-3"
+              <span class="pull-right"><%= render '/components/add_friend_button', :user => @u %></span>
+            </div>
+          </div>
             </div>
           <% end %>
         <% else %>
-          <p>There is no friend yet!</p>
+          <p>User not found</p>
         <% end %>
       </div>
     </div>
