@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do
       post :repost
     end
+    resources :comments
   end
 
   resources :conversations do

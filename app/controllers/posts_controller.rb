@@ -8,9 +8,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id # assign the post to the user who created it
+
     respond_to do |f|
       if (@post.save)
         f.html { redirect_to home_path, notice: "Ride created!" }
+        PostMailer.post_created(current_user,@post.user).deliver
       else
         f.html { redirect_to home_path, notice: "Error: Ride Not Saved."}
       end
@@ -22,6 +24,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to home_path, notice: 'Ride was successfully deleted.' }
     end
+  end
+
+  def show
+    @comments = Comment.where(post_id: @post).order("created_at DESC")
   end
 
   def repost

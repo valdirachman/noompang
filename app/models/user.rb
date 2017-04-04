@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
 
   # helper methods
 
+  #for comments
+  has_many :comments
+
   # for creating empty profile
   def create_profile
     self.profile = Profile.create

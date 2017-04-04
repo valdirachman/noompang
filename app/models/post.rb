@@ -16,6 +16,9 @@ class Post < ActiveRecord::Base
   scope :friends, -> (friends) { where user_id: friends }
   scope :self_and_friends, -> (ids) { where user_id: ids }
 
+  #for comments
+  has_many :comments
+  
   def repost_by(reposter)
     if self.user == reposter
       "You can not repost your own ride"
