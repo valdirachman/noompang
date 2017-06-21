@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @user.username %></h1>
+    <p>
+      Your friend just posted a new ride:
+    </p>
+    <% if @post.original != nil %>
+      <p class="post-title"><span class="post-owner"><%= @post.original.user.username %></span><span class="post-creation"> - <%= time_ago_in_words(@post.created_at) %></span></p>
+    <% else %>
+      <p class="post-title"><span class="post-owner"><%= @post.user.username %></span><span class="post-creation"> - <%= time_ago_in_words(@post.created_at) %></span></p>
+    <% end %>
+
+    <p class="post-content"><span class="post-date-time">
+      <% if @post.date === Date.today %>
+        <%= @post.date.strftime("Today, %-d %b") %>
+      <% else %>
+        <%= @post.date.strftime("%A, %-d %b") %>
+      <% end %>
+      - <%= @post.time.strftime("%H:%M")  %>
+    </span></p>
+    <p class="post-content"><span class="post-destination"><%= @post.from %> <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> <%= @post.destination %></span></p>
+    <% if @post.note && @post.note != "" %>
+      <span class="post-content"><%= @post.note %></span>
+    <% end %>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
