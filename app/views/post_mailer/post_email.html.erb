@@ -9,9 +9,9 @@
       Your friend just posted a new ride:
     </p>
     <% if @post.original != nil %>
-      <p class="post-title"><span class="post-owner"><%= @post.original.user.username %></span><span class="post-creation"> - <%= time_ago_in_words(@post.created_at) %></span></p>
+      <p class="post-title"><span class="post-owner"><%= @post.original.user.username %></span></p>
     <% else %>
-      <p class="post-title"><span class="post-owner"><%= @post.user.username %></span><span class="post-creation"> - <%= time_ago_in_words(@post.created_at) %></span></p>
+      <p class="post-title"><span class="post-owner"><%= @post.user.username %></span></p>
     <% end %>
 
     <p class="post-content"><span class="post-date-time">
