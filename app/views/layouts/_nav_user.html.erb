@@ -2,11 +2,11 @@
   <div class="container-fluid container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" id="navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar white-bar"></span>
+        <span class="icon-bar white-bar"></span>
+        <span class="icon-bar white-bar"></span>
       </button>
       <a href="/home"><img class="navbar-brand" src="/logo_noompang.png" style="padding-bottom: 8px;padding-top: 8px;"></a>
     </div>
@@ -14,11 +14,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= form_tag(users_path, :method => "get", id: "search-form", class: "container-1", role: "search") do %>
-            <div class="form-group">
-                <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
-            </div>
+
+        <li  style="padding-left:0px; padding-right: 10px;">
+
+          <%= form_tag(users_path, :method => "get", id: "search-form", role: "search", class: "form-search ngen-search-form") do %>
+          <span id="search-trigger" class="form-search-submit glyphicon glyphicon-search" aria-hidden="true"></span>
+
+          <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-search-input", id: "search-input", dir: "ltr", style: "border-radius:3px;" %>
+
             <!--<%= button_tag(type: "submit") do %>
             <% end %> -->
           <% end %>
@@ -31,23 +34,30 @@
               </div>
             </div> -->
 
-        <li>
+        <li style="padding-left:10px ; padding-right: 10px">
           <%= link_to home_path do %>
-            <span class="glyphicon glyphicon-home"></span>
+            <span data-toggle="tooltip" data-placement="bottom" title="Home" class="glyphicon glyphicon-home"></span>
           <% end %>
         </li>
-        <li>
+        <li style="padding-left:10px ; padding-right: 10px">
           <%= link_to friend_request_path do %>
-            <span><span class="glyphicon glyphicon-bell"></span><% if current_user.pending_invited_by.count > 0 %><span class="badge"> <%= current_user.pending_invited_by.count %></span><% end %></span>
+            <span><span class="glyphicon glyphicon-bell" data-toggle="tooltip" data-placement="bottom" title="Notification"></span><% if current_user.pending_invited_by.count > 0 %><span class="badge"> <%= current_user.pending_invited_by.count %></span><% end %></span>
           <% end %>
         </li>
-        <li>
+        <li style="padding-left:10px ; padding-right: 10px">
           <%= link_to conversations_path do %>
-            <span class="glyphicon glyphicon-envelope"></span>
+            <span data-toggle="tooltip" data-placement="bottom" title="Messages" class="glyphicon glyphicon-envelope"></span>
           <% end %>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
+          <a href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 8px 10px 6px 20px;">
+            <% if @current_user != @user %>
+          <%= image_tag @current_user.profile.avatar.url(:thumb), class: "avatar-nav img-rounded" %>
+            <% elsif @current_user == @user %>
+          <%= image_tag @current_user.profile.avatar.url(:thumb), class: "avatar-nav img-rounded" %>
+          <% else %>
+          <% end %>
+            <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/user/<%= current_user.username %>">Profile</a></li>
             <li role="separator" class="divider"></li>

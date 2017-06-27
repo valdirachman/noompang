@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    @profile = current_user.profile
+
     if params[:search]
       if params[:search] == ""
         redirect_to root_path

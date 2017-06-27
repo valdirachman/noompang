@@ -1,8 +1,18 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+  <div class="col-sm-3" id="left-panels">
+    <div class="panel panel-default panel-body">
+      <div class="line-bottom profile-font">
+      <%= render '/components/user_panel', user: current_user %>
+      </div>
+    </div>
+      <div class="panel panel-default panel-body">
+        <%= render '/components/profile_panel', profile: @profile, user: current_user %>
+    </div>
+  </div>
+  <div class="col-sm-6 ">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h4 style="text-align:center; font-weight: 400;">Friend Requests</h4>
+        <h4 style="text-align:center; font-weight: 400;">Notifications</h4>
         <% if !@requests.empty? %>
           <% for @r in @requests %>
             <hr>
@@ -11,7 +21,7 @@
                 <div class="col-sm-3 col-xs-3 col-md-3 col-xl-3 float-right" style="text-align:center;">
                 <%= image_tag @r.profile.avatar.url(:thumb), class: "avatar-find img-rounded" %>
               </div>
-              <div class="col-sm-6 col-xs-6 col-md-6 col-xl-6">
+              <div class="col-sm-6">
                 <div class="row">
                 <p style="font-size:120%"><a href="/user/<%= @r.username %>"><%= @r.username %></a></p>
                 </div>
@@ -32,5 +42,9 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="col-sm-3">
+    <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
+    <%= render '/components/about_panel' %>
   </div>
 </div>

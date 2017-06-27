@@ -6,14 +6,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= favicon_link_tag 'noompang-favicon-60.png' %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <% if user_signed_in? %>
     <body class="home">
       <%= render 'layouts/nav' %>
       <div class="container">
-        <% flash.each do |key, value| %>
-          <div class="alert alert-info alert-<%= key %>"><%= value %></div>
-        <% end %>
         <%= yield %>
       </div>
     </body>
@@ -38,15 +36,16 @@
       <body>
         <%= yield %>
       </body>
+      <% elsif controller.action_name == 'explore' %>
+      <body>
+        <%= yield %>
+      </body>
     <% else %>
       <body class="bg-devise">
+        <div class="container" id="container-devise">
         <%= render 'layouts/nav' %>
-        <div class="container">
-          <% flash.each do |key, value| %>
-            <div class="alert alert-info alert-<%= key %>"><%= value %></div>
-          <% end %>
           <%= yield %>
-        </div>
+        </div>s
       </body>
     <% end %>
   <% end %>

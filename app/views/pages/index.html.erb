@@ -1,157 +1,108 @@
   <% if !user_signed_in? %>
-    <div class="headerbg">
-      <div class="container">
-        <div class="nav nav-landing">
-            <div class="logo-container">
-            <a href="about-us.html">
-              <img class="img-landing" class="logoleft" alt="noompang" src="images/noompanglogo50px.png">
-            </a>
+  <!-- CSS $ javascript edited in this components-->
+  <!--  1. navbar-index
+        2. sign-in-form
+        3. sign-up-form
+      -->
+    <body class="bg-home">
+      <div class="navbar navbar-index navbar-default navbar-index-default navbar-index navbar-fixed-top">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-index-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+              <div style="margin-top:5px;">
+            <a href=""><img class="logo-small" src="images/logos/noompanglogo50px.png"></img></a>
+          </div>
           </div>
 
-            <ul class="nav-links">
-              <li> <a href="about-us"> ABOUT US </a> </li>
-              <li> <a href="how-it-works"> HOW IT WORKS </a> </li>
-              <li> <a href="stories"> STORIES </a> </li>
-              <li> <a href="FAQ"> FAQ </a> </li>
+          <!-- Collect the nav links, forms, and other content for toggling-->
+          <div class="collapse navbar-collapse navbar-index-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-index-nav navbar-right" style="color: blue">
+              <li><a href="explore">Explore</a></li>
+              <li><a href="#">About</a></li>
             </ul>
-            <ul class="nav-sign">
-              <li> <a href="users/sign_in"> LOGIN </a> </li>
-              <li> <a href="users/sign_up"> SIGN UP </a> </li>
-            </ul>
-        </div>
-        <% flash.each do |key, value| %>
-          <div class="alert alert-info alert-<%= key %>"><%= value %></div>
-        <% end %>
-        <div class=" row col-xs-12">
-          <div class="ridesharetext">
-            <p style="font-size:30px;"> Berbagi kendaraan biar makin gampang! </p>
-          </div>
-        </div>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </div>
 
-
-        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12" style="margin-bottom:30px;">
-              <div class="panel panel-body" style="border-radius:10px;">
-          <div class="my-content">
-            <div class="tab">
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#sign-up-tab" data-toggle="tab"> Sign Up </a></li>
-                <li><a href="#sign-in-tab" data-toggle="tab"> Sign In </a></li>
-
-              </ul>
-
-                <div class="tab-content">
-
-                <div class="tab-pane active fade in sign-up panel" id="sign-up-tab" style="margin-bottom: 0px;
-      padding-bottom: 0px;">
-                  <%= render '/devise/registrations/new'%>
+        <div class="container">
+          <div class="header" id="form-section" style="display:none;">
+            <% flash.each do |key, value| %>
+              <div style="border-radius:0;"class="alert alert-info alert-<%= key %>"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= value %></div>
+            <% end %>
+              <div class="row">
+                <div class="content-title">
+                  <h2> Creating community in mutualism atmosphere. </h2>
                 </div>
-
-                <div class="tab-pane fade log-in panel" style="margin-bottom: 0px;
-      padding-bottom: 0px;" id="sign-in-tab">
-                  <%= render '/devise/sessions/new'%>
+                <div class="content-text">
+                  <p>Berbagi kendaraan biar makin gampang!</p>
                 </div>
               </div>
-              </div>
-            </div>
           </div>
         </div>
 
-    </div>
 
-    <div class="row connectrow">
-      <div class="container">
-        <div class="ridesharenetwork col-lg-6 col-md-6">
-          <img class="img-landing" src="images/ridesharenetwork.png">
-      </div>
-        <div class="col-lg-6 col-md-6">
-          <img class="img-landing" src="images/shareweb.png">
-        </div>
-      </div>
-    </div>
+              <!-- divide 2, pics and form outside container-->
+              <!-- new row for phone pic and form-->
+              <!-- section form -->
+              <section class="form-section">
+                <div class="col-lg-5 col-lg-push-7" id="user-form">
+                  <h1 style=""> Join the network now</h1>
+                  <h3 style="margin-top:-5px;"> Create new account. </h3>
+                    <div class="sign-up-form" id="sign-up-form" style="text-align:left">
+                      <%= render '/devise/registrations/new_index'%>
+                      <h4> Already have an account? <a id="switch-signup"> Click here</a></h4>
+                    </div>
 
-    <div class="row weconnect">
-      <div class="container">
-        <div class="row">
-          <div class="timeline col-lg-6 col-md-6 col-xs-12">
-            <img class="img-landing" class="maxh" src="images/timeline.png">
-          </div>
-          <div class="connect col-lg-6 col-md-6 col-xs-12">
-            <p> Connect with your friends. <p>
-          </div>
-        </div>
-      </div>
-    </div>
+                    <div class="sign-in-form" id="sign-in-form" style=" text-align:left; display:none">
+                      <%= render '/devise/sessions/new_index'%>
+                      <h4> Don't have an account? <a id="switch-signin">Join here </a></h4>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-lg-pull-5" >
+                  <img class="homephone" src="images/homephone.png"/>
+                </div>
+              </section>
 
-    <div class="photopar body-landing">
-      <div class="txtpar">
-          <p> RIDE WITH NOOMPANG </p>
-      </div>
-      <div class="txtpar2">
-          <p> Thousands of people has join noompang.
-            Connect with us and we will connect you with your friends.</p>
-      </div>
-    </div>
+              <!-- section fotter -->
+              <section class="footer-section">
+                <div class="container">
+                  <div class="row info-footer">
+                    <!-- links -->
+                    <div class="col-sm-9">
+                      <ul style="padding:0;">
+                        <li><a href="#"> About </a></li>
+                        <li><a href="#"> Blog </a></li>
+                        <li><a href="#"> How it Works </a></li>
+                        <li><a href="#"> FAQ </a></li>
+                        <li><a href="#"> Help </a></li>
+                        <li><a href="#"> Legal </a></li>
+                      </ul>
+                    </div>
+                    <!-- social media -->
+                    <div class="col-sm-3 media-social">
+                      <p class="margin-bottom"> Connect with Noompang </p>
+                      <ul>
+                      <li> <img style="max-height:35px;"src="images/explore/facebook.png"/> </li>
+                      <li> <img style="max-height:35px;"src="images/explore/twitter.png"/> </li>
+                      <li> <img style="max-height:35px;"src="images/explore/instagram.png"/> </li>
+                      <%= link_to 'https://line.me/R/ti/p/@qer6098s' do %>
+                      <li> <img style="max-height:35px;"src="images/explore/line.png"/> </li>
+                        <% end %>
+                    </div>
+                  </div>
+                  <div class="row copyright">
+                    <p style="padding-left:0"> © Copyright 2017, Noompang, Inc. All rights reserved. </p>
+                    </div>
+              </section>
 
 
-    <div class="row ttgnmpg body-landing">
-      <div class="container ">
-        <div class="goal">
-          <h1> WHAT'S OUR GOAL? </h1>
-        </div>
-        <div class="ourgoal">
-          <h3> Creating community in mutualism atmosphere. </h3>
-        </div>
-        <div class="nmpgis">
-          <p>People. Community. Energy.</p>
-          <p>Noompang is a future community for people to take action in sustainable development. This platform aims to encourage people to ride together and take all the benefits of sharing. Not only connecting people, Noompang also connecting distance between two cities with less energy needed. We are here to take the action, are you?</p>
-        </div>
-        <div class="socmed">
-          <p> Connect to our social media. </p>
-        </div>
-      <div class="container">
-        <div class="col-lg-2 col-md-2 col-sm-2">
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 cont-social">
-          <%= link_to 'https://twitter.com/noompangcom' do %>
-            <img class="img-landing" src="images/twitterc.jpg" onmouseover="this.src='images/twitterd.png'" onmouseout="this.src='images/twitterc.jpg'"/>
-          <% end %>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 cont-social">
-          <%= link_to 'https://facebook.com/noompangcom' do %>
-            <img class="img-landing" src="images/facebookc.jpg" onmouseover="this.src='images/facebookd.png'" onmouseout="this.src='images/facebookc.jpg'"/>
-          <% end %>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6  cont-social">
-          <%= link_to 'https://www.instagram.com/noompangcom/' do %>
-            <img class="img-landing" src="images/instagramc.jpg" onmouseover="this.src='images/instagramd.png'" onmouseout="this.src='images/instagramc.jpg'"/>
-          <% end %>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6  cont-social">
-          <%= link_to 'https://line.me/R/ti/p/@qer6098s' do %>
-            <img class="img-landing" src="images/linec.jpg" onmouseover="this.src='images/lined.png'" onmouseout="this.src='images/linec.jpg'"/>
-          <% end %>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 ">
-      </div>
-      </div>
-    </div>
-    </div>
-
-    <div class="getstartedbg body-landing">
-      <div class="getstarted">
-        <h1> Start your journey now. </h1>
-        <p> Make your deal, make your way. Free signup. </p>
-      </div>
-      <div class="btn-sign">
-        <a href="users/sign_up" class="btn btn-primary" role="button">SIGN UP</a>
-      </div>
-    </div>
-
-    <div class="footernmpg body-landing">
-      <div class="footermsg">
-        <p>© 2017 Noompang.</p>
-      </div>
-    </div>
+    </body>
 
   <% else %>
     <script>document.location = "/home"</script>

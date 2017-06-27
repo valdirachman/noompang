@@ -34,11 +34,11 @@ Rails.application.routes.draw do
 
   get 'FAQ' => 'pages#FAQ'
 
+  get 'explore' => 'pages#explore'
+
   get 'about-us' => 'pages#about-us'
 
   get '/user/:id' => 'pages#profile', as: 'user_profile'
-
-  get '/explore' => 'pages#explore'
 
   get '/friend_request' => 'pages#friend_request'
 

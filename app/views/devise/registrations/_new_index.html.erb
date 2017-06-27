@@ -1,0 +1,30 @@
+<%= form_for(:user, url: registration_path(:user)) do |f| %>
+<!-- CSS $ javascript edited in this components-->
+<!--  1. input-group .form-control:last-child
+      2. form-control-index
+      3. btn-primary-index
+    -->
+<h4> Username </h4>
+<div class="input-group input-group-md">
+  <%= f.text_field :username , class: "form-control form-control-index", aria_describedby: "sizing-addon2", placeholder: "Username", style: "font-size: 15px; width:250px; border-radius:5px"%>
+</div>
+
+<h4> Email </h4>
+<div class="input-group input-group-md">
+  <%= f.email_field :email, class: "form-control form-control-index", aria_describedby: "sizing-addon2", placeholder: "Email address", style: "font-size: 15px; width:250px; border-radius:5px"%>
+</div>
+
+<h4> Password </h4>
+<div class="input-group input-group-md">
+  <%= f.password_field :password, autocomplete: "off", class: "form-control form-control-index", aria_describedby: "sizing-addon2", placeholder: "Password", style: "font-size: 15px; width:250px; border-radius:5px"%>
+</div>
+
+<h4> Retype Password </h4>
+<div class="input-group input-group-md">
+  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control form-control-index", aria_describedby: "sizing-addon2", placeholder: "Password confirmation", style: "font-size: 15px; width:250px; border-radius:5px"%>
+</div>
+
+  <div>
+    <%= f.submit "Create New Account", class: "btn-primary btn-primary-index" %>
+  </div>
+<% end %>﻿

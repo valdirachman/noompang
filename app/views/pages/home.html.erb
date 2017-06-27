@@ -1,14 +1,16 @@
 <div class="row">
-  <div class="col-sm-3 col-xs-12">
+  <div class="col-sm-3 col-xs-12" id="left-panels">
     <div class="panel panel-default panel-body">
       <div class="line-bottom profile-font">
       <%= render '/components/user_panel', user: current_user %>
+      </div>
     </div>
-      <%= render '/components/profile_panel', profile: @profile, user: current_user %>
+      <div class="panel panel-default panel-body">
+        <%= render '/components/profile_panel', profile: @profile, user: current_user %>
     </div>
   </div>
 
-  <div class="col-sm-6 col-xs-12">
+  <div class="col-sm-6 col-xs-12 timeline-column">
     <%= render '/components/post_form' %>
     <br>
     <div class="my-posts">
@@ -19,16 +21,11 @@
     </div>
   </div>
   <div class="col-sm-3 col-xs-12">
+    <% flash.each do |key, value| %>
+      <div style="border-radius:0;"class="alert alert-success alert-<%= key %> alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= value %></div>
+    <% end %>
     <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
-      <div class="panel-transparent panel-body">
-        <p class="post-destination" style="color:#1e2f4d;">About</p>
-        <p style="font-weight:300; font-size:12px; color:#586a89">Noompang.com merupakan wadah untuk para pengemudi dan penumpang untuk berbagi kendaraan.</p>
-        <p style="font-weight:300; font-size:12px; color:#586a89">Noompang akan membantu Anda dalam mencari teman agar perjalanan Anda lebih efektif, hemat biaya, dan menyenangkan</p>
-        <p class="post-destination" style="color:#1e2f4d;">Find us on:</p>
-        <%= link_to(image_tag('FB-f-Logo__blue_29.png', class: "socmed-link"), 'https://facebook.com/noompangcom') %>
-        <%= link_to(image_tag('LINE_Icon.png', class: "socmed-link"), 'https://line.me/R/ti/p/@qer6098s') %>
-        <%= link_to(image_tag('instagram_icon.png', class: "socmed-link"), 'https://www.instagram.com/noompangcom/') %>
-        <%= link_to(image_tag('twitter_icon.png', class: "socmed-link"), 'https://twitter.com/noompangcom') %>
-    </div>
+    <%= render '/components/about_panel' %>
   </div>
 </div>
