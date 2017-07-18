@@ -87,6 +87,19 @@ h1{
   }
 }
 
+@media (max-width: 326px) {
+  #userbutton > li {
+    margin: 15px 0 10px 20px;
+    display: inline-block;
+  }
+}
+@media (max-width: 420px) {
+  #userbutton > li {
+    margin: 15px 0 10px 40px;
+    display: inline-block;
+  }
+}
+
 //field css for sign in, sign up, etc
 
 .sign-user-logo {
@@ -427,12 +440,14 @@ h1{
 }
 .logo-small {
   max-height: 45px;
+  margin-top: 0;
 }
 @media (max-width: 767px) {
   .logo-small {
     padding-top: 5px;
     padding-left: 20px;
     max-height: 40px;
+    margin-top: 3px;
   }
 }
 
@@ -779,6 +794,17 @@ h1{
 
 #signinnav {
   padding: 10px 35px 10px 35px;
+}
+
+@media (max-width: 768px) {
+  #signinnav {
+    padding-right: 41px;
+    padding-left: 43px;
+  }
+}
+
+#aboutnav> li {
+  display: inline-block;
 }
 
 #signupnav {
