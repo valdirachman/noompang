@@ -2,11 +2,11 @@
   <div class="panel-body">
     <div class="row ">
       <% if !profile.is_nil? && !profile.is_empty? %>
-      <p style="font-weight:500"> About </p>
+      <h4> About </h4>
 
-        <p class="p-content" style="margin-top:10px"> My name is <a><%= profile.name %></a></p>
-        <p class="p-content" style="margin-top:10px"> Work in <a><%= profile.occupation %></a></p>
-        <p class="p-content" style="margin-top:10px"> From<a> <%= profile.occupation_place %></a></p>
+        <p style="margin-top:10px"> My name is <a><%= profile.name %></a></p>
+        <p style="margin-top:10px"> Work in <a><%= profile.occupation %></a></p>
+        <p style="margin-top:10px"> From<a> <%= profile.occupation_place %></a></p>
 
       <% elsif user.id == current_user.id %>
         <p class="post-content"><%= link_to 'Update your profile', edit_profile_path(profile) %></p>

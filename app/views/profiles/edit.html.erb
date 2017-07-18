@@ -13,7 +13,7 @@
 
       <%= form_for @profile, html: { multipart: true } do |f| %>
       <div class="field form-group">
-        <p><%= f.label :profile_picture %></p><br>
+        <%= f.label :profile_picture %><br>
         <div style="text-align:center">
         <%= image_tag @profile.avatar.url(:medium), style: "max-height: 120px; border-radius:50%;" %>
       </div>

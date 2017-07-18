@@ -18,7 +18,7 @@
         <li  style="padding-left:0px; padding-right: 10px;">
 
           <%= form_tag(users_path, :method => "get", id: "search-form", role: "search", class: "form-search ngen-search-form") do %>
-          <span id="search-trigger" class="form-search-submit glyphicon glyphicon-search" aria-hidden="true"></span>
+          <span id="search-trigger" class="form-search-submit glyphicon glyphicon-search" aria-hidden="true" style="width: 35px; padding-right: 25px;"></span>
 
           <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-search-input", id: "search-input", dir: "ltr", style: "border-radius:3px;" %>
 

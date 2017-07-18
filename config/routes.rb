@@ -28,15 +28,19 @@ Rails.application.routes.draw do
 
   get 'users/sign_in' => 'users/sign_in'
 
-  get 'how-it-works' => 'pages#how-it-works'
+  get 'about/about_us' => 'about#about_us'
+
+  get 'about/faq' => 'about#faq'
+
+  get 'about/safety' => 'about#safety'
+
+  get 'about/team' => 'about#team'
+
+  get 'about/how_it_works' => 'about#how_it_works'
 
   get 'stories' => 'pages#stories'
 
-  get 'FAQ' => 'pages#FAQ'
-
   get 'explore' => 'pages#explore'
-
-  get 'about-us' => 'pages#about-us'
 
   get '/user/:id' => 'pages#profile', as: 'user_profile'
 

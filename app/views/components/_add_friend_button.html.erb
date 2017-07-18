@@ -1,11 +1,12 @@
-<% if current_user.id != user.id %>
-  <% if !current_user.friend_with? user and !current_user.invited? user and !user.invited? current_user %>
-    <%= link_to "Add Friend", add_friend_path(user.id), class: "btn btn-success btn-xs" %>
-  <% elsif current_user.friend_with? user %>
-    <span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Friends</span>
-  <% elsif current_user.invited? user %>
-    <span>Pending</span>
-  <% elsif %>
-    <%= link_to "Accept", accept_friend_path(user.id), class: "btn btn-primary btn-xs", style: "padding-left:16px; padding-right:15px;"%>
-  <% end %>
-<% end %>
+
+      <% if current_user.id != user.id %>
+        <% if !current_user.friend_with? user and !current_user.invited? user and !user.invited? current_user %>
+          <%= link_to "Add Friend", add_friend_path(user.id), class: "btn btn-success btn-xs" %>
+        <% elsif current_user.friend_with? user %>
+          <span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Friends</span>
+        <% elsif current_user.invited? user %>
+          <span>Pending</span>
+        <% elsif %>
+          <%= link_to "Accept", accept_friend_path(user.id), class: "btn btn-primary btn-xs", style: "padding-left:16px; padding-right:15px;"%>
+        <% end %>
+      <% end %>

@@ -21,9 +21,6 @@
   </div>
 
   <div class="col-sm-6 timeline-column">
-    <% if current_user.id == User.find_by_username(params[:id]).id %>
-      <%= render '/components/post_form' %>
-    <% end %>
     <br>
     <% if (current_user.friend_with? User.find_by_username(params[:id])) || (current_user.id == User.find_by_username(params[:id]).id) %>
       <div class="my-posts">

@@ -11,7 +11,6 @@
  * file per style scope.
  *
  */
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600');
 @import url('https://fonts.googleapis.com/css?family=Cabin:100,300,400,500');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
 @import "bootstrap-sprockets";
@@ -19,7 +18,7 @@
 
 body {
   background-color: #e9ebee;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'open sans', sans-serif;
   overflow-x: hidden;
 
 }
@@ -30,9 +29,9 @@ ul {
 }
 
 p {
-  font-family: 'cabin', sans-serif;
+  font-family: 'open sans', sans-serif;
   margin: 0;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 h1,h2,h3,h4 {
@@ -44,16 +43,10 @@ h1{
   font-size: 40px;
 }
 
-.p-content {
-  font-family: 'open sans', sans-serif;
-  font-weight: 300;
-  line-height: 22px;
-  font-size: 14px;
-}
 
 .bg-devise {
   background: url(../bgsign.png);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'open sans', sans-serif;
   background-repeat: no-repeat;
   background-color: #1e2f4d;
   background-position: center;
@@ -86,19 +79,6 @@ h1{
 }
 #search-form {
   color: black;
-}
-
-.post-panel {
-  margin-top: -17px;
-}
-
-.post-title {
-  text-align: left;
-  margin-left: 10px;
-}
-.post-content {
-  text-align: left;
-  margin-left: 10px;
 }
 
 @media (min-width: 576px) {
@@ -178,7 +158,7 @@ h1{
   height: 30px;
   border: 0px;
   outline: 0px;
-  font-size: 14px;
+  font-size: 12px;
   padding: 0px 0px 0px 10px;
   color: #19478a;
   transition: all 0.5s;
@@ -269,12 +249,50 @@ h1{
     padding-right: 0;
   }
 }
-
+//about-panel
+.about-panel {
+  line-height: 22px;
+}
 //components-rides
 .post-creation {
   float: right !important;
   font-size: 12px;
   color: #636c72 !important;
+}
+
+.post-date {
+  font-size: 22px;
+  font-weight: 600;
+  padding-left: 10px;
+  line-height: 22px;
+}
+
+.post-panel {
+  margin-top: -17px;
+}
+
+.post-title {
+  text-align: left;
+  margin-left: 10px;
+  line-height: 30px;
+}
+.post-icon {
+  text-align: left;
+  margin-left: 10px;
+}
+.post-content {
+  text-align: left;
+  margin: 5px 0 5px 10px;
+  font-weight: 400;
+  line-height: 22px;
+  color: grey;
+}
+
+.post-repost {
+  text-align: left;
+  margin-left: 10px;
+  font-weight: 400;
+  color: grey;
 }
 
 
@@ -408,6 +426,9 @@ h1{
     background-color: #e9ebee;
   }
 }
+.logo-small {
+  max-height: 45px;
+}
 @media (max-width: 767px) {
   .logo-small {
     padding-top: 5px;
@@ -450,7 +471,6 @@ h1{
   font-weight: 400;
   font-size: 30px;
   padding: 0 0 0 0;
-  letter-spacing: 0.5px;
   margin: 0 20px 0 20px;
   text-align: left;
 }
@@ -462,6 +482,7 @@ h1{
     font-weight: 100;
     font-size: 15px;
     padding: 0 0 0px 0;
+    letter-spacing: 1px;
     margin: 0 20px 0 20px;
     text-align: center;
   }
@@ -472,7 +493,7 @@ h1{
 .form-section{
   margin-top: 10px;
   margin-bottom: 20px;
-  height: 570px;
+  height: 600px;
 }
 
 @media (max-width: 500px) {
@@ -518,6 +539,8 @@ h1{
 .form-control-index{
   background-color: #d4d9e1;
   font-weight: normal;
+  font-family: 'open sans', sans-serif;
+  font-size: 12px;
 }
 
 .btn-primary-index{
@@ -549,6 +572,9 @@ h1{
     margin-left:20%;
     margin-right:20%;
   }
+}
+
+@media (min-width: 400px){
   .sign-in-form{
     margin-top: 30px;
     margin-left:20%;
@@ -556,18 +582,6 @@ h1{
   }
 }
 
-@media (min-width: 400px){
-  .sign-up-form{
-    margin-top: 30px;
-    margin-left:20%;
-    margin-right:20%;
-  }
-  .sign-in-form{
-    margin-top: 30px;
-    margin-left:20%;
-    margin-right:20%;
-  }
-}
 @media (min-width: 1000px){
   .sign-up-form{
     margin-top: 30px;
@@ -582,24 +596,33 @@ h1{
 }
 /* css for phone image */
 .homephone{
-  max-height: 450px;
-  padding: 50px 0 0 0px;
+  margin: 0;
   text-align: center;
-  padding-left: 130px;
+  max-height: 200px;
+  padding: 0px 0 0 0px;
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .homephone{
     text-align: center;
-    max-height: 200px;
-    padding: 0 0 0 0;
+    max-height: 350px;
+    padding: 50px 0 0 100px;
+  }
+}
+@media (min-width: 1050px) {
+  .homephone{
+    max-height: 450px;
+    padding: 50px 0 0 0px;
+    text-align: center;
+    padding-left: 130px;
   }
 }
 
+
 /*footer css */
 .footer-section{
-  font-family: 'cabin', sans-serif;
-  font-weight:300;
-  font-size: 18px;
+  font-family: 'open sans', sans-serif;
+  font-weight:400;
+  font-size: 16px;
   color: #346094;
   text-align: left;
   background-color: white;
@@ -612,11 +635,7 @@ h1{
   }
 }
 
-.footer-section .copyright {
 
-  font-size: 14px;
-
-}
 .col-sm-9{
   padding: 0;
 }
@@ -655,6 +674,10 @@ h1{
   }
 }
 
+.info-footer .media-social p{
+  font-size: 16px;
+}
+
 @media (max-width: 768px) {
   .info-footer li{
     display: inline-block;
@@ -668,8 +691,16 @@ h1{
 
   margin: 5px 0 0 0;
   padding: 25px 0 0 0;
-  font-weight: 500;
+  font-weight: 400;
   color: #b5bac1;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .copyright{
+    font-size: 12px;
+  }
 }
 
 
@@ -797,16 +828,17 @@ h1{
 }
 @media (max-width: 768px) {
   .timeline-content{
-    padding: 20px 30px 20px 30px;
+    padding: 20px 30px 40px 30px;
     text-align: center;
+
   }
 }
 
 @media (max-width: 768px) {
-  .timeline-content h1{
-    font-size: 30px;
+  .timeline-content h2{
     text-align: center;
     font-weight: 600;
+    font-size: 20px;
   }
 }
 
@@ -815,6 +847,8 @@ h1{
   font-size: 20px;
   font-weight: 500;
   padding: 0;
+  letter-spacing: -0.5px;
+  line-height: 32px;
 }
 
 @media (max-width: 768px) {
@@ -830,6 +864,11 @@ h1{
   box-shadow: 0px 0px 0px rgba(14,20,33,0);
   padding: 15px 60px 15px 60px;
   margin: 40px 0 10px 0;
+  line-height: normal;
+}
+.timeline-content button > p{
+  font-size: 16px;
+  line-height: normal;
 }
 
 /*BENEFIT SECTION */
@@ -837,7 +876,7 @@ h1{
   background-color: #233851;
   color: white;
   text-align: center;
-  padding: 50px 0 120px 0;
+  padding: 0px 60px 60px 60px;
 }
 
 @media (max-width: 768px) {
@@ -847,6 +886,7 @@ h1{
 }
 .benefit-section p{
   font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
 
 @media (max-width: 768px) {
@@ -865,14 +905,14 @@ h1{
   }
 }
 
-.benefit-title h1{
+.benefit-title h2{
   padding: 0 0 30px 0;
-  border-bottom: 2px solid white;
+  border-bottom: 1px solid white;
   font-weight: 500;
 }
 
 @media (max-width: 768px) {
-  .benefit-title h1{
+  .benefit-title h2{
     font-size: 20px;
     padding: 0 0 15px 0;
     border-bottom: 1px solid white;
@@ -902,7 +942,7 @@ h1{
 }
 
 .benefit-content {
-  min-height: 410px;
+  min-height: 320px;
   padding: 20px 10px 20px 10px;
   background-color: #284c70;
   box-shadow: -1px 3px 6px rgba(14,20,33,.7);
@@ -923,10 +963,12 @@ h1{
 
 .benefit-content h3{
   padding: 5px 30px 5px 30px;
+  font-size: 18px;
 }
 
 .benefit-content p{
   padding: 5px 30px 5px 30px;
+  font-size: 14px;
 }
 
 @media (max-width:768px){
@@ -952,7 +994,7 @@ h1{
   }
 }
 .benefit-content img {
-  max-height: 160px;
+  max-height: 80px;
 }
 
 .benefit-section button  {
@@ -964,14 +1006,14 @@ h1{
 @media (max-width:768px){
   .benefit-section button  {
     box-shadow: 0px 0px 0px rgba(14,20,33,0);
-    padding: 5px 10px 5px 10px;
+    padding: 15px 60px 15px 60px;
     margin: 40px 0 10px 0;
   }
 }
 
 .benefit-section button  > p {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 /*HOW IT WORKS SECTION */
@@ -985,19 +1027,20 @@ h1{
 }
 /* Title */
 .how-title{
-  margin-top: 60px;
+  margin-top: 10px;
   margin-bottom:20px;
 }
-.how-title h1 {
+.how-title h2 {
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.how-title p {
-  font-size: 30px;
+.how-title h3 {
   text-align: center;
   margin-top: 20px;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .how-1{
@@ -1013,12 +1056,36 @@ h1{
   }
 }
 
+
 .how-3{
   padding: 0px 0 10px 30px;
 }
 .panel {
   border-radius: 5px;
 }
+
+@media (max-width: 768px) {
+  .how-title h2 {
+    font-size: 20px
+  }
+}
+
+@media (max-width: 768px) {
+  .how-1 h3{
+    font-size: 20px;
+  }
+  .how-2 h3{
+    font-size: 20px;
+  }
+  .how-3 h3{
+    font-size: 20px
+  }
+  .how-4 h3{
+    font-size: 20px
+  }
+
+}
+
 
 @media (max-width: 768px) {
   .how-1{
@@ -1046,9 +1113,7 @@ h1{
 .how-2 li  {
   display: inline-block;
 }
-.how-2 h3  {
-  text-align: center;
-}
+
 .explore-friends{
 padding: 0 50px 0 300px;
 }
@@ -1160,6 +1225,13 @@ padding: 0 50px 0 300px;
 #year{
   padding-right: 0;
 }
+
+@media (max-width:768px) {
+  .how-3 .how-content h3 {
+    text-align: center;
+  }
+}
+
 /*comment*/
 
 .input-group .form-control-comment {
@@ -1222,6 +1294,8 @@ padding: 0 50px 0 300px;
   font-size: 20px;
   font-weight: 500;
   padding: 0;
+  letter-spacing: -0.5px;
+  line-height: 32px;
 }
 
 @media (max-width: 768px) {
@@ -1230,6 +1304,7 @@ padding: 0 50px 0 300px;
     font-size: 16px;
     text-align: center;
     font-weight: 500;
+    line-height: normal;
   }
 }
 
@@ -1247,7 +1322,7 @@ padding: 0 50px 0 300px;
 }
 @media (max-width: 768px) {
   .how-content{
-    padding: 20px 0 20px 0;
+    padding: 20px 10px 20px 10px;
     text-align: center;
   }
 }
@@ -1274,7 +1349,99 @@ padding: 0 50px 0 300px;
   max-height: 40px;
 }
 
+.recommended {
+  font-weight: 300;
+}
+
 .avatar-nav {
   max-height: 35px;
   border-radius: 50%;
+}
+
+//==== About Us Page ===//
+.navbar-about-collapse {
+  display: none;
+}
+.about-section {
+  background-color: white;
+  margin-top: 65px;
+}
+@media (max-width:768px){
+  .about-section {
+    background-color: white;
+    margin-top: 20px;
+  }
+}
+.about-img {
+  height: 200px;
+  background-repeat: no-repeat;
+}
+
+#about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (min-width:768px){
+  .about-img {
+    height: 200px;
+  }
+}
+
+@media (min-width:992px){
+  .about-img {
+    height: 300px;
+  }
+}
+
+@media (min-width:1200px){
+  .about-img {
+    height: 400px;
+  }
+}
+
+@media (max-width:768px){
+  .container-about-us {
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+  }
+}
+
+.sidebar {
+  position: absolute;
+  background-color: white;
+  padding-top: 60px;
+}
+.sidebar li {
+  padding-top: 10px;
+}
+.sidebar li > a {
+  padding-left: 30px;
+  font-weight: bold;
+}
+@media (max-width:768px){
+  .sidebar {
+    display: none;
+  }
+}
+
+
+.about-content {
+  padding: 0 35px 0 35px;
+  line-height: 24px;
+}
+
+.fd img {
+  max-height: 90px;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  margin: 15px 10px 20px 15px
+}
+
+@media (min-width:768px){
+  .fd img {
+    max-height: 120px;
+    margin: 30px 20px 20px 20px
+  }
 }
