@@ -327,9 +327,8 @@ h1{
 
 
 .navbar-index-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 20px;
+  padding: 0 0 0 0;
+  line-height: 15px;
 }
 
 .navbar-index-nav > li {
@@ -339,7 +338,7 @@ h1{
   color: #346094;
   letter-spacing: 2px;
   padding: 5px 0 0   0;
-  margin-left: 40px;
+  margin-left: 10px;
 }
 @media (max-width: 767px) {
   .navbar-index {
@@ -732,12 +731,12 @@ h1{
 
 /* content inside header img */
 .riders-content {
-  margin-top: 240px;
+  margin-top: 270px;
 }
 
 @media (max-width:768px) {
   .riders-content {
-    margin-top: 110px;
+    margin-top: 180px;
   }
 }
 .riders-content li{
@@ -778,7 +777,13 @@ h1{
   }
 }
 
+#signinnav {
+  padding: 10px 35px 10px 35px;
+}
 
+#signupnav {
+  padding: 10px 35px 10px 35px;
+}
 /*TIMELINE SECTION */
 
 .application-section {

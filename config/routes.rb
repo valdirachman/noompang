@@ -36,11 +36,9 @@ Rails.application.routes.draw do
 
   get 'about/team' => 'about#team'
 
-  get 'about/how_it_works' => 'about#how_it_works'
+  get 'about/how_it_works' => 'about#how_it_works' , as: 'how_it_works'
 
   get 'stories' => 'pages#stories'
-
-  get 'explore' => 'pages#explore'
 
   get '/user/:id' => 'pages#profile', as: 'user_profile'
 

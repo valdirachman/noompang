@@ -51,12 +51,7 @@
         </li>
         <li class="dropdown">
           <a href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 8px 10px 6px 20px;">
-            <% if @current_user != @user %>
-          <%= image_tag @current_user.profile.avatar.url(:thumb), class: "avatar-nav img-rounded" %>
-            <% elsif @current_user == @user %>
-          <%= image_tag @current_user.profile.avatar.url(:thumb), class: "avatar-nav img-rounded" %>
-          <% else %>
-          <% end %>
+          <%= image_tag current_user.profile.avatar.url(:thumb), class: "avatar-nav img-rounded" %>
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/user/<%= current_user.username %>">Profile</a></li>
