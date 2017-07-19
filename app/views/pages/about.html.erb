@@ -1,0 +1,17 @@
+
+  <% if !user_signed_in? %>
+
+  <body class="">
+
+
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+  </body>
+
+  <% else %>
+    <script>document.location = "/home"</script>
+
+  <% end %>

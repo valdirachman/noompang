@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="profile-header">
-      <p><%= @username %>'s profile page </p>
+      <h3 style="text-align:center"><%= @username %>'s profile page </h3>
     </div>
   </div>
 </div>
@@ -14,14 +14,13 @@
       <div class="line-bottom profile-font">
       <%= render '/components/user_panel', user: @user %>
     </div>
+    </div>
+    <div class="panel panel-default panel-body">
       <%= render '/components/profile_panel', profile: @profile, user: @user %>
     </div>
   </div>
 
-  <div class="col-sm-6">
-    <% if current_user.id == User.find_by_username(params[:id]).id %>
-      <%= render '/components/post_form' %>
-    <% end %>
+  <div class="col-sm-6 timeline-column">
     <br>
     <% if (current_user.friend_with? User.find_by_username(params[:id])) || (current_user.id == User.find_by_username(params[:id]).id) %>
       <div class="my-posts">

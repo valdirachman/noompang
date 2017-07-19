@@ -1,15 +1,19 @@
 
   <div class="panel-body">
     <div class="row">
-      <div class="col-sm-12 userpanel-avatar " style="text-align: center; "><%= image_tag @profile.avatar.url(:thumb), class: "avatar-profile img-rounded" %></div>
-      <div class="col-sm-12 userpanel-username" style="text-align: center;"><p style="font-size: 150%; font-weight: 500;"><%= user.username %></p></div>
+      <div class="col-sm-12 userpanel-avatar " style="text-align: center; "><%= image_tag @profile.avatar.url(:medium), class: "avatar-profile img-rounded" %></div>
+      <div class="col-sm-12 userpanel-username" style="text-align: center;"><h4><%= user.username %></h4></div>
+
+      <p class="p-content" style="padding:10px 0 20px 0; text-align:center;"><%= @profile.description %></p>
 
       <div class="col-sm-12">
-        <div class="col-sm-xs-6 col-xs-6" style="font-size: 80%; opacity: 0.7; text-align: center;">RIDES<br>
+
+        <div class="col-sm-xs-6 col-xs-6" style="opacity: 0.7; text-align: center;"><p class="p-content">Rides</p>
           <h6 style="font-size: 150%; font-weight: 300; text-align: center"><%= user.posts.count %></h6>
         </div>
+
         <%= link_to see_friends_path(@profile.user.username) do %>
-          <div class="col-sm-6 col-xs-6" style="font-size: 80%; opacity: 0.7; text-align: center;">FRIENDS<br>
+          <div class="col-sm-6 col-xs-6" style="font-size: 100%; opacity: 0.7; text-align: center;"><p class="p-content">Friends</p>
             <h6 style="font-size: 150%; font-weight: 300; text-align: center"><%= user.friends.count %></h6>
           </div>
         <% end %>

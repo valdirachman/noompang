@@ -1,157 +1,456 @@
   <% if !user_signed_in? %>
-    <div class="headerbg">
-      <div class="container">
-        <div class="nav nav-landing">
-            <div class="logo-container">
-            <a href="about-us.html">
-              <img class="img-landing" class="logoleft" alt="noompang" src="images/noompanglogo50px.png">
-            </a>
+  <!-- CSS $ javascript edited in this components-->
+  <!--  1. navbar-index
+        2. sign-in-form
+        3. sign-up-form
+      -->
+    <body class="bg-home">
+      <div class="navbar navbar-index navbar-default navbar-index-default navbar-index navbar-fixed-top">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-index-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href=""><img class="logo-small" src="images/logos/noompanglogo50px.png"></img></a>
           </div>
 
-            <ul class="nav-links">
-              <li> <a href="about-us"> ABOUT US </a> </li>
-              <li> <a href="how-it-works"> HOW IT WORKS </a> </li>
-              <li> <a href="stories"> STORIES </a> </li>
-              <li> <a href="FAQ"> FAQ </a> </li>
+          <!-- Collect the nav links, forms, and other content for toggling-->
+          <div class="collapse navbar-collapse navbar-index-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-index-nav navbar-right" style="color: blue; margin-top:-4px;" id="userbutton">
+              <li><a><button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#signInModal" id="signinnav" ><p style="font-size:16px; font-weight:500; font-family: 'cabin'"> Log in </p></button></a></li>
+              <li><a><button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#signUpModal" id="signupnav"><p style="font-size:16px; font-weight:500; font-family: 'cabin'"> Sign Up </p></button></a></li>
             </ul>
-            <ul class="nav-sign">
-              <li> <a href="users/sign_in"> LOGIN </a> </li>
-              <li> <a href="users/sign_up"> SIGN UP </a> </li>
-            </ul>
-        </div>
-        <% flash.each do |key, value| %>
-          <div class="alert alert-info alert-<%= key %>"><%= value %></div>
-        <% end %>
-        <div class=" row col-xs-12">
-          <div class="ridesharetext">
-            <p style="font-size:30px;"> Berbagi kendaraan biar makin gampang! </p>
-          </div>
-        </div>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </div>
 
-
-        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12" style="margin-bottom:30px;">
-              <div class="panel panel-body" style="border-radius:10px;">
-          <div class="my-content">
-            <div class="tab">
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#sign-up-tab" data-toggle="tab"> Sign Up </a></li>
-                <li><a href="#sign-in-tab" data-toggle="tab"> Sign In </a></li>
-
-              </ul>
-
-                <div class="tab-content">
-
-                <div class="tab-pane active fade in sign-up panel" id="sign-up-tab" style="margin-bottom: 0px;
-      padding-bottom: 0px;">
-                  <%= render '/devise/registrations/new'%>
+        <div class="container">
+          <div class="header" id="form-section" style="display:none;">
+            <% flash.each do |key, value| %>
+              <div style="border-radius:0;"class="alert alert-info alert-<%= key %>"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= value %></div>
+            <% end %>
+              <div class="row">
+                <div class="content-title">
+                  <h2> Creating community in mutualism atmosphere. </h2>
                 </div>
-
-                <div class="tab-pane fade log-in panel" style="margin-bottom: 0px;
-      padding-bottom: 0px;" id="sign-in-tab">
-                  <%= render '/devise/sessions/new'%>
+                <div class="content-text">
+                  <p>Berbagi kendaraan biar makin gampang!</p>
                 </div>
               </div>
+          </div>
+        </div>
+
+
+              <!-- divide 2, pics and form outside container-->
+              <!-- new row for phone pic and form-->
+              <!-- section form -->
+              <section class="form-section">
+                <div class="col-sm-5 col-sm-push-7" id="user-form">
+
+                  <div class="sign-up-form">
+                    <div  id="sign-up-form" style="text-align:left">
+                      <h1 style=""> Join the network now</h1>
+                      <h3 style="margin-top:5px;"> Create new account. </h3><br>
+                      <%= render '/devise/registrations/new_index'%>
+                      <h4> Already have an account? <a id="switch-signup"> Click here</a></h4>
+                    </div>
+
+                    <div id="sign-in-form" style=" text-align:left; display:none">
+                      <h1 style=""> Invite your friends</h1>
+                      <h3 style="margin-top:5px;"> More friends, more rides! </h3><br>
+                      <%= render '/devise/sessions/new_index'%>
+                      <h4> Don't have an account? <a id="switch-signin">Join here </a></h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-7 col-sm-pull-5" >
+                  <img class="homephone" src="images/homephone.png"/>
+                </div>
+              </section>
+
+
+              <section class="headerbg">
+                <div class="container">
+                  <div class="riders-content">
+                    <h1> Bergabung dalam Jejaring Sosial Kendaraan di Indonesia </h1>
+                    <h3> Terkoneksi dengan Jadwal Perjalanan Teman-Temanmu</h3>
+                    <ul>
+
+                      <!-- Modal Sign In-->
+                      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="signInModal">
+                        <div class="modal-dialog modal-sm" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="gridSystemModalLabel">Sign In</h4>
+                            </div>
+                            <div class="modal-body">
+                              <%= render '/devise/sessions/new'%>
+                            </div>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
+
+
+
+                      <!-- Modal Sign Up-->
+                      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="signUpModal">
+                        <div class="modal-dialog modal-sm" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="gridSystemModalLabel">Sign Up</h4>
+                            </div>
+                            <div class="modal-body">
+                              <%= render '/devise/registrations/new'%>
+                            </div>
+
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
+
+                    </ul>
+                  </div>
+                </div><!-- header content -->
+              </section><!-- Background header image -->
+
+              <section class="row application-section">
+                <div class="col-lg-6 col-lg-push-6 timeline-content">
+                  <h2> Cari Teman Seperjalanan</h2>
+                    <p> Tulis perjalananmu agar kamu tidak bosan sendirian di jalan. Kamu juga bisa mengatur
+                    pengeluaran perjalananmu bersama temanmu agar lebih efisien! </p>
+                    <button type="button" class="btn btn-lg btn-success" id="scroll-to-how"><p> How It Works </p></button>
+                </div>
+                <div class="col-lg-6 col-lg-pull-6" class="timelineimg">
+                  <img src="images/explore/timeline.png" id="timelineimg"/>
+                </div>
+              </section>
+
+              <section class="benefit-section ">
+                  <div class="benefit-title">
+                    <div class="container">
+                      <h2> Keuntungan Pakai Noompang</h2>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="benefit-inside">
+                  <div class="col-sm-4 benefit-box">
+                    <div class="benefit-content">
+                      <img src="images/explore/wallet.png">
+                      <h3> Efisien </h3>
+                      <p> Berbagi tarif bersama penoompang lainnya dalam perjalanan kamu. Tarif tersebut dapat berupa bensin, tol, dan lainnya. Semua tergantung perjanjian kamu dan penoompang lainnya. </p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 benefit-box">
+                    <div class="benefit-content">
+                      <img src="images/explore/phone.png">
+                      <h3> Terhubung dengan Teman </h3>
+                      <p> Noompang akan memberikan notifikasi setiap temanmu melakukan perjalanan. Jadi kamu tidak mungkin ketinggalan informasi perjalanan terbaru teman kamu. </p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 benefit-box">
+                    <div class="benefit-content">
+                      <img src="images/explore/friends.png">
+                      <h3> Teman Baru </h3>
+                      <p> Dapatkan teman baru selama perjalanan. Semakin banyak teman kamu, maka akan semakin banyak juga pilihan perjalanan yang bisa kamu toompangi. </p>
+                    </div>
+                  </div>
+                </div>
+                  <button type="button" class="btn btn-lg btn-warning"><%= link_to "Selengkapnya", how_it_works_path , style: "color:white;"%></button>
+              </section>
+
+              <section class="section-how-it-works" id="how-it-works">
+                <div class="how-title container">
+                  <h2> How it Works </h2>
+                  <h3> Start Your Journey in just a Few Steps!  </h3>
+                </div> <!-- Title for How it works section -->
+
+                <div class="how-1 row">
+                  <div class="col-sm-6 how-content">
+                    <h3> Login atau Sign Up</h3>
+                      <p> Untuk menggunakan Noompang, kamu harus login terlebih dahulu. Jika belum punya akun, kamu harus melakukan registrasi dan verifikasi akun kamu. Dapat di <a href="" data-toggle="modal" data-target="#signInModal">klik disini </a></p>
+                    </div>
+                    <div class="col-sm-6"  class="center-img">
+                      <div style="text-align:center;"><img src="images/explore/how-to-1.png" id="how-to-1-img"></div>
+                    </div>
+                </div><!-- how no 1-->
+
+                <div class="how-2 row">
+                  <div class="col-sm-6 col-sm-push-6 how-content">
+                    <h3> Add Teman Kamu</h3>
+                      <p> Kamu dapat melihat perjalanan teman kamu jika kamu dan temanmu sudah berstatus sebagai teman di Noompang. Semakin banyak teman, semakin banyak juga pilihan perjalananmu!  </p>
+                  </div>
+
+                    <div class="col-sm-6 col-sm-pull-6">
+                        <div class="explore-friends">
+                          <p><i> Add your friends below! </i></p>
+                          <div class="panel panel-default">
+                            <div class="panel-body">
+                              <h3 style="padding-left:20px;"> Recommended Friends </h3>
+                              <div class="friends-box row" id="gevin">
+                                <div class="col-xs-6">
+                                  <p> Gevin </p>
+                                  <p style="font-size:12px; color: grey;"> Friends 324 </p>
+                                </div>
+                                <div class="col-xs-6 friend-btn" style="padding-top: 15px;">
+                                  <li><button class="btn btn-sm btn-success" id="addgevin" onclick="random();"> Add Friend</button></li>
+                                </div>
+                              </div>
+                              <div class="friends-box row" id="haffi">
+                                <div class="col-xs-6">
+                                  <p> Haffi </p>
+                                  <p style="font-size:12px; color: grey;"> Friends 289 </p>
+                                </div>
+                                <div class="col-xs-6 friend-btn" style="padding-top: 15px;">
+                                  <li><button class="btn btn-sm btn-success" id="addhaffi"> Add Friend</button></li>
+                                </div>
+                              </div>
+                              <div class="friends-box row" id="arvi">
+                                <div class="col-xs-6">
+                                  <p> Arvi </p>
+                                  <p style="font-size:12px; color: grey;"> Friends 452 </p>
+                                </div>
+                                <div class="col-xs-6 friend-btn" style="padding-top: 15px;">
+                                  <li><button class="btn btn-sm btn-success" id="addarvi"> Add Friend</button></li>
+                                </div>
+                              </div>
+                              <div class="friends-box row" id="ginad" style="display:none">
+                                <div class="col-xs-6">
+                                  <p> Ginad </p>
+                                  <p style="font-size:12px; color: grey;"> Friends 360 </p>
+                                </div>
+                                <div class="col-xs-6 friend-btn" style="padding-top: 15px;">
+                                  <li><button class="btn btn-sm btn-success" id="addginad"> Add Friend</button></li>
+                                </div>
+                              </div>
+                              <div class="all-clicked" style="display:none">
+                                <h3 style="
+                                text-align: center;
+                                color:grey;
+                                border-top:0.2px solid #dddddd;
+                                padding-top: 20px"> Semua temanmu sudah terkoneksi </h3>
+                              </div>
+                            </div>
+                          </div>
+                        </div> <!-- Form Content -->
+                    </div>
+                </div><!-- how no 2-->
+
+
+                <div class="how-3 row">
+                <div class="col-sm-6 how-content">
+                  <h3> Tulis Perjalananmu</h3>
+                    <p> Noompang merupakan platform dua arah. Kamu bisa toompangi orang atau noompang orang. </p>
+                  </div>
+                  <div class="col-sm-6">
+                      <p><i> Lets go create your first ride! </i></p>
+                    <div class="explore-form-post">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+
+                          <div class="col-sm-6 form-destination">
+                            <p> Destination </p>
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="From" aria-describedby="basic-addon1" id="from" name="from"/>
+                            </div>
+                            <div class="input-group">
+                            <input type="text" class="form-control" placeholder="To" aria-describedby="basic-addon1" id="to"/>
+                          </div>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Notes" aria-describedby="basic-addon1" id="note"/>
+                          </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="field form-group form-date">
+                              <p> Date and Time </p>
+                              <ul>
+                                <li>
+                                <select class="span2 col-md-2 form-control" id="year" name="startView">
+                                  <option value="2017">2017 </option>
+                                  <option value="2018">2018 </option>
+                                  <option value="2019">2019 </option>
+                                  <option value="2020">2020 </option>
+                                </select>
+                              </li>
+                              <li>
+                                <select class="span2 col-md-2 form-control" id="month" name="startView">
+                                  <option value="Jan">Jan </option>
+                                  <option value="Feb">Feb </option>
+                                  <option value="Mar">Mar </option>
+                                  <option value="Apr">Apr </option>
+                                  <option value="May">May </option>
+                                  <option value="Jun">Jun </option>
+                                  <option value="Jul">Jul </option>
+                                  <option value="Aug">Aug</option>
+                                  <option value="Sep">Sep </option>
+                                  <option value="Oct">Oct </option>
+                                  <option value="Nov">Nov </option>
+                                  <option value="Dec">Dec </option>
+                                </select>
+                              </li>
+                              <li>
+                                <select class="span2 col-md-2 form-control" id="day" name="startView">
+                                  <option value="0">00 </option>
+                                  <option value="1">01 </option><option value="2">02 </option><option value="3">03 </option><option value="4">04 </option>
+                                  <option value="5">05 </option><option value="6">06 </option><option value="7">07 </option><option value="8">08 </option>
+                                  <option value="9">09 </option><option value="10">10 </option><option value="11">11 </option><option value="12">12 </option>
+                                  <option value="13">13 </option><option value="14">14 </option><option value="15">15 </option><option value="16">16 </option>
+                                  <option value="17">17 </option><option value="18">18 </option><option value="19">19 </option><option value="20">20 </option>
+                                  <option value="21">21 </option><option value="22">22 </option><option value="23">23 </option><option value="24">24 </option>
+                                  <option value="25">25 </option><option value="26">26 </option><option value="27">27 </option><option value="28">28 </option>
+                                  <option value="29">29 </option><option value="30">30 </option><option value="31">31 </option>
+                                </select>
+                              </li>
+                            </ul>
+                            </div>
+                            <div class="field form-group form-date">
+                              <ul>
+                                <li>
+                                <select class="span2 col-md-2 form-control" id="hour" name="startView">
+                                  <option value="0">00 </option>
+                                  <option value="1">01 </option><option value="2">02 </option><option value="3">03 </option><option value="4">04 </option>
+                                  <option value="5">05 </option><option value="6">06 </option><option value="7">07 </option><option value="8">08 </option>
+                                  <option value="9">09 </option><option value="10">10 </option><option value="11">11 </option><option value="12">12 </option>
+                                  <option value="13">13 </option><option value="14">14 </option><option value="15">15 </option><option value="16">16 </option>
+                                  <option value="17">17 </option><option value="18">18 </option><option value="19">19 </option><option value="20">20 </option>
+                                  <option value="21">21 </option><option value="22">22 </option><option value="23">23 </option>
+                                </select>
+                              </li>
+                              <li>
+                                <select class="span2 col-md-2 form-control" id="minute" name="startView">
+                                  <option value="00">00 </option>
+                                  <option value="15">15 </option>
+                                  <option value="30">30 </option>
+                                  <option value="45">45 </option>
+                                </select>
+                              </li>
+                            </ul>
+                            </div>
+                            <div class="actions">
+                              <button type="button" class="btn btn-lg btn-primary" id="post"> <p style="padding:0;"> Create Ride </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- Form Content -->
+                  </div> <!-- Form Panel left -->
+              </div><!-- how number 3-->
+
+              <div class="how-3 row" id="post-ride" style="display:none">
+              <div class="col-sm-6 how-content" style="text-align:right">
+                <h3 > Selamat!</h3>
+                  <p> Kamu sudah post perjalanan pertamamu! Tunggu apalagi? yuk gabung klik <a href="#" data-toggle="modal" data-target="#signInModal">di sini </a></p>
+                </div>
+                <div class="col-sm-6">
+                  <div class="explore-form-post">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <p style="text-align:center; padding: 25px;"><img style="max-height: 80px;" align="middle" src="images/explore/default-user.png"/></p>
+                          </div>
+                          <div class="col-sm-9">
+                            <h5> <a href="#">Penoompang</a> - less than a minute ago</h5>
+                            <h4 style="font-weight:600; margin-top:0;"> Sunday, 9 July 2017 - 18.00 </h4>
+                            <p style="padding-left:0"><img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up"> <label class="post-from"></label> <img src="/images/arrow.png" style="max-height:6px;">
+                            <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off"> <label class="post-to"> </label> </p>
+                            <p style="padding-left:0" class="post-note"> Yuk yang mau ikut ada kursi kosong japri ya </p>
+                          <div style="float:right;">
+                            <a id="repost-post"><span data-toggle="tooltip" data-placement="top" title="Repost Ride" class="glyphicon glyphicon-retweet" style="margin:20px 100px 0 0;"></span></a>
+                            <a id="delete-post"><span data-toggle="tooltip" data-placement="top" title="Delete Ride" class="glyphicon glyphicon-trash" style="margin-right:30px;"></span></a>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+              </div><!-- how number 3 extra-->
 
-    </div>
+              <div class="how-3 row" id="repost-ride" style="display:none">
+              <div class="col-sm-6 how-content" style="text-align:right">
+                <h3 > Repost Perjalanan Temanmu</h3>
+                  <p> Di Noompang, kamu bisa repost perjalanan teman kamu! Sebarkan informasi perjalanan teman-temanmu agar semakin ramai dan efisien! </a></p>
+                </div>
+                <div class="col-sm-6">
+                  <div class="explore-form-post">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <p style="text-align:center; padding: 25px;"><img style="max-height: 80px;" align="middle" src="images/explore/default-user.png"/></p>
+                          </div>
+                          <div class="col-sm-9">
+                            <p style="color:grey"> <span class="glyphicon glyphicon-retweet" style="margin:5px 5px 0 0;"></span> reposted by Other Penoompang </p>
+                            <h5> <a href="#">Penoompang </a> - less than a minute ago</h5>
+                            <h4 style="font-weight:600; margin-top:0;"> Sunday, 9 July 2017 - 18.00 </h4>
+                            <p style="padding-left:0"><img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up"><label class="post-from"></label>   <img src="/images/arrow.png" style="max-height:6px;">
+                            <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off"> <label class="post-to"> </label> </p>
+                            <p style="padding-left:0" class="post-note"> Yuk yang mau ikut ada kursi kosong japri ya </p>
+                          <div style="float:right;">
+                            <a id="delete-post2"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="top" title="Delete Ride" style="margin-right:30px;" id="delete-post2"></span></a>
+                          </div>
+                          </div>
+                          <div>
 
-    <div class="row connectrow">
-      <div class="container">
-        <div class="ridesharenetwork col-lg-6 col-md-6">
-          <img class="img-landing" src="images/ridesharenetwork.png">
-      </div>
-        <div class="col-lg-6 col-md-6">
-          <img class="img-landing" src="images/shareweb.png">
-        </div>
-      </div>
-    </div>
+                          </div>
 
-    <div class="row weconnect">
-      <div class="container">
-        <div class="row">
-          <div class="timeline col-lg-6 col-md-6 col-xs-12">
-            <img class="img-landing" class="maxh" src="images/timeline.png">
-          </div>
-          <div class="connect col-lg-6 col-md-6 col-xs-12">
-            <p> Connect with your friends. <p>
-          </div>
-        </div>
-      </div>
-    </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-    <div class="photopar body-landing">
-      <div class="txtpar">
-          <p> RIDE WITH NOOMPANG </p>
-      </div>
-      <div class="txtpar2">
-          <p> Thousands of people has join noompang.
-            Connect with us and we will connect you with your friends.</p>
-      </div>
-    </div>
+              </div><!-- how number 3 REPOST-->
+
+                <div class="how-4 row">
+                  <div class="how-content">
+                  <h3>Hubungi Teman Seperjalananmu</h3>
+                  <p> Tahap terakhir adalah hubungi teman kamu yang perjalanannya sama. Kamu bisa jadi penoompang ataupun bisa toompangi teman kamu, semua tergantung kesepakatan kalian! Have a safe trip!</p>
+                </div>
+                <div>
+                  <div style="text-align:center;" ><img id="chatmsg" src="images/explore/chat.png"></div>
+                </div>
+              </div>
 
 
-    <div class="row ttgnmpg body-landing">
-      <div class="container ">
-        <div class="goal">
-          <h1> WHAT'S OUR GOAL? </h1>
-        </div>
-        <div class="ourgoal">
-          <h3> Creating community in mutualism atmosphere. </h3>
-        </div>
-        <div class="nmpgis">
-          <p>People. Community. Energy.</p>
-          <p>Noompang is a future community for people to take action in sustainable development. This platform aims to encourage people to ride together and take all the benefits of sharing. Not only connecting people, Noompang also connecting distance between two cities with less energy needed. We are here to take the action, are you?</p>
-        </div>
-        <div class="socmed">
-          <p> Connect to our social media. </p>
-        </div>
-      <div class="container">
-        <div class="col-lg-2 col-md-2 col-sm-2">
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 cont-social">
-          <%= link_to 'https://twitter.com/noompangcom' do %>
-            <img class="img-landing" src="images/twitterc.jpg" onmouseover="this.src='images/twitterd.png'" onmouseout="this.src='images/twitterc.jpg'"/>
-          <% end %>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 cont-social">
-          <%= link_to 'https://facebook.com/noompangcom' do %>
-            <img class="img-landing" src="images/facebookc.jpg" onmouseover="this.src='images/facebookd.png'" onmouseout="this.src='images/facebookc.jpg'"/>
-          <% end %>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6  cont-social">
-          <%= link_to 'https://www.instagram.com/noompangcom/' do %>
-            <img class="img-landing" src="images/instagramc.jpg" onmouseover="this.src='images/instagramd.png'" onmouseout="this.src='images/instagramc.jpg'"/>
-          <% end %>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6  cont-social">
-          <%= link_to 'https://line.me/R/ti/p/@qer6098s' do %>
-            <img class="img-landing" src="images/linec.jpg" onmouseover="this.src='images/lined.png'" onmouseout="this.src='images/linec.jpg'"/>
-          <% end %>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 ">
-      </div>
-      </div>
-    </div>
-    </div>
+              </section>
 
-    <div class="getstartedbg body-landing">
-      <div class="getstarted">
-        <h1> Start your journey now. </h1>
-        <p> Make your deal, make your way. Free signup. </p>
-      </div>
-      <div class="btn-sign">
-        <a href="users/sign_up" class="btn btn-primary" role="button">SIGN UP</a>
-      </div>
-    </div>
+              <section class="footer-section">
+                <div class="container">
+                  <div class="row info-footer">
+                    <!-- links -->
+                    <div class="col-sm-9">
+                      <ul style="padding:0;">
+                        <li><a href="/about/about_us"> About </a></li>
+                        <li><a href="/about/how_it_works"> How it Works </a></li>
+                        <li><a href="/about/team"> Team </a></li>
+                        <li><a href="/about/faq"> FAQ </a></li>
+                        <li><a href="/about/safety"> Safety </a></li>
+                      </ul>
+                    </div>
+                    <!-- social media -->
+                    <div class="col-sm-3 media-social">
+                      <p class="margin-bottom"> Connect with Noompang </p>
+                      <ul>
+                        <li> <a href="https://www.facebook.com/noompangcom"><img style="max-height:35px;"src="images/explore/facebook.png"/> </a></li>
+                        <li> <a href="https://twitter.com/noompangcom?lang=en"><img style="max-height:35px;"src="images/explore/twitter.png"/> </a></li>
+                        <li> <a href="https://www.instagram.com/noompangcom/?hl=en"><img style="max-height:35px;"src="images/explore/instagram.png"/></a> </li>
+                        <li> <a href="https://line.me/R/ti/p/@qer6098s"><img style="max-height:35px;"src="images/explore/line.png"/> </a></li>
+                    </div>
+                  </div>
+                  <div class="row copyright">
+                    <p style="padding-left:0"> © Copyright 2017, Noompang, Inc. All rights reserved. </p>
+                  </div>
+              </section>
 
-    <div class="footernmpg body-landing">
-      <div class="footermsg">
-        <p>© 2017 Noompang.</p>
-      </div>
-    </div>
+    </body>
 
   <% else %>
     <script>document.location = "/home"</script>
