@@ -21,7 +21,7 @@
           <p class="post-title"><span class="post-owner"><%= link_to post.user.username, user_profile_path(post.user.username) %></span><span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span></p>
         <% end %>
 
-        <p class="post-date"  style="font-size: 20px; font-weight: 600"><span class="post-date-time">
+        <p class="post-date"><span class="post-date-time">
           <% if post.date === Date.today %>
             <%= post.date.strftime("Today, %-d %b") %>
           <% else %>
