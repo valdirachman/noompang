@@ -11,7 +11,7 @@
   <% if user_signed_in? %>
     <body class="home">
       <%= render 'layouts/nav' %>
-      <div class="container">
+      <div class="container" id="mobile-container">
         <%= yield %>
       </div>
     </body>
