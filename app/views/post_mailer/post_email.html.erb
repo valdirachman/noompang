@@ -3,29 +3,144 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body>
-    <h1>Hello, <%= @user.username %></h1>
-    <p>
-      Your friend just posted a new ride:
-    </p>
-    <% if @post.original != nil %>
-      <p class="post-title"><span class="post-owner"><%= @post.original.user.username %></span></p>
-    <% else %>
-      <p class="post-title"><span class="post-owner"><%= @post.user.username %></span></p>
-    <% end %>
+  </style>
+  <body style="margin: 0; padding: 0;">
 
-    <p class="post-content"><span class="post-date-time">
-      <% if @post.date === Date.today %>
-        <%= @post.date.strftime("Today, %-d %b") %>
-      <% else %>
-        <%= @post.date.strftime("%A, %-d %b") %>
-      <% end %>
-      - <%= @post.time.strftime("%H:%M")  %>
-    </span></p>
-    <p class="post-content"><span class="post-destination"><%= @post.from %> <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> <%= @post.destination %></span></p>
-    <% if @post.note && @post.note != "" %>
-      <span class="post-content"><%= @post.note %></span>
-    <% end %>
-    <p>Thanks for joining and have a great day!</p>
+    <table cellpadding="0" cellspacing="0" width="100%" style="font-family:Helvetica, Arial">
+      <tr>
+       <td>
+         <table align="center" style="border: 1px solid grey" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+
+       <tr>
+        <td bgcolor="#1e2f4d" align="center" style="padding: 20px 0 0 0;">
+         <img style="text-align:center;" src="/logo_white.png">
+        </td>
+       </tr>
+       <tr>
+
+         <tr>
+          <td style="padding: 30px 30px 30px 30px;">
+            <table cellpadding="0" cellspacing="0" width="100%" >
+       <tr>
+        <td style="padding-top: 20px;">
+         <h3>Hello, <%= @user.username %></h3>
+        </td>
+       </tr>
+
+       <tr>
+         <td>
+           <table>
+             <tr>
+               <td>
+                 <table>
+                   <tr>
+                     <td>
+                 <% if @post.original != nil %>
+                   <%= image_tag @post.original.user.profile.avatar.url(:thumb) ,style: "border-radius: 50%; max-height:35px;" %>
+                 <% else %>
+                   <%= image_tag @post.user.profile.avatar.url(:thumb) ,style: "border-radius: 50%; max-height:35px"  %>
+                 <% end %>
+               </td>
+               <td width="400" style="padding: 3px 0px 0px 10px">
+                <% if @post.original != nil %>
+                  <b><%= @post.original.user.username %></b>
+                <% else %>
+                  <b><%= @post.user.username %></b>
+                <% end %>
+                just posted a new ride!
+              </td>
+                  </tr>
+                    </table>
+               </td>
+             </tr>
+
+             <tr>
+              <td style="padding-top: 10px;">
+                <h2 style="margin-bottom:0"><% if @post.date === Date.today %>
+                  <%= @post.date.strftime("Today, %-d %b") %>
+                <% else %>
+                  <%= @post.date.strftime("%A, %-d %b") %>
+                <% end %>
+                - <%= @post.time.strftime("%H:%M")  %></h2>
+              </td>
+             </tr>
+
+             <tr style="padding-top: 10px;">
+              <td style="padding-top: 10px;">
+                <img src="/images/from-circle.png" style="max-height:15px; margin: -3px 10px 0px 10px"><%= @post.from %>
+              </td>
+             </tr>
+
+             <tr>
+              <td style="padding-top: 10px;">
+                <img src="/images/to-circle.png" style="max-height:15px; margin: -3px 10px 0px 10px"><%= @post.destination %>
+              </td>
+             </tr>
+
+             <tr>
+              <td style="padding-top: 10px;">
+                Notes:<% if @post.note && @post.note != "" %>
+                  <%= @post.note %>
+                <% end %>
+              </td>
+             </tr>
+           </table>
+         </td>
+       </tr>
+
+       <tr>
+        <td style="padding-top: 10px; font-size: 14px;">
+          See<% if @post.original != nil %>
+              <b><%= @post.original.user.username %>'s</b>
+            <% else %>
+              <b><%= @post.user.username %>'s</b>
+            <% end %>other posts at <a href="/"> noompang.com </a>
+        </td>
+       </tr>
+
+
+     </table>
+     </td>
+   </tr>
+
+
+       <tr>
+        <td style="padding: 30px 30px 30px 30px; background-color:#e9ebee">
+          <table cellpadding="0" cellspacing="0" width="100%" >
+           <tr>
+            <td style="font-size:12px; color:#b5bac1;">
+             © Copyright 2017, Noompang, Inc. All rights reserved.
+            </td>
+            <td align="right">
+             <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+               <td>
+                <a href="https://www.facebook.com/noompangcom"><img style="max-height:35px;"src="/images/explore/facebook.png"/> </a>
+               </td>
+               <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
+               <td>
+                <a href="https://twitter.com/noompangcom?lang=en"><img style="max-height:35px;"src="/images/explore/twitter.png"/>
+                </a>
+               </td>
+               <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
+               <td>
+                <a href="https://www.instagram.com/noompangcom/?hl=en"><img style="max-height:35px;"src="/images/explore/instagram.png"/></a>
+               </td>
+               <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
+               <td>
+                <a href="https://line.me/R/ti/p/@qer6098s"><img style="max-height:35px;"src="/images/explore/line.png"/> </a>
+               </td>
+              </tr>
+             </table>
+            </td>
+           </tr>
+          </table>
+        </td>
+       </tr>
+
+         </table>
+       </td>
+      </tr>
+     </table>
   </body>
 </html>

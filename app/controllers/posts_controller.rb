@@ -13,7 +13,7 @@ class PostsController < ApplicationController
         f.html { redirect_to home_path, notice: "Ride created!" }
         friends = current_user.friends
         friends.each do |friend|
-          PostMailer.delay.post_email(friend, @post)
+        PostMailer.delay.post_email(friend, @post)
         end
       else
         f.html { redirect_to home_path, notice: "Error: Ride Not Saved."}

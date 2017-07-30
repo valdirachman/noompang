@@ -81,21 +81,34 @@ h1{
   color: black;
 }
 
+@media (max-width:4150px){
+  #mobile-container {
+    padding: 0 0 0 0;
+  }
+}
+
 @media (min-width: 576px) {
   .profile-header {
     padding: 20px 5px 20px 50;
   }
 }
 
-@media (max-width: 326px) {
+@media (max-width: 360px) {
   #userbutton > li {
     margin: 15px 0 10px 20px;
     display: inline-block;
   }
 }
-@media (max-width: 420px) {
+@media (min-width: 374px) {
   #userbutton > li {
     margin: 15px 0 10px 40px;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 767px) {
+  #userbutton > li {
+    margin: 0px 0 0px 20px;
     display: inline-block;
   }
 }
@@ -274,7 +287,14 @@ h1{
 }
 
 .post-date {
-  font-size: 22px;
+  font-size: 16px;
+  font-weight: 600;
+  padding-left: 10px;
+  line-height: 20px;
+}
+
+@media (min-width:768px){
+  font-size: 20px;
   font-weight: 600;
   padding-left: 10px;
   line-height: 22px;
@@ -282,6 +302,12 @@ h1{
 
 .post-panel {
   margin-top: -17px;
+}
+
+@media(max-width:415px){
+  #post-panel {
+    border-radius: 0;
+  }
 }
 
 .post-title {
