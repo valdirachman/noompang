@@ -10,6 +10,10 @@ set :repo_url, "git@github.com:valdirachman/noompang.git"
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deploy/noompang"
 
+# For delayed_job and capistrano
+set :delayed_job_server_role, :worker
+set :delayed_job_args, "-n 2"
+
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
