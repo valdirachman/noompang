@@ -13,7 +13,7 @@
 
        <tr>
         <td bgcolor="#1e2f4d" align="center" style="padding: 20px 0 0 0;">
-         <img style="text-align:center;" src="/logo_white.png">
+         <%= image_tag("logo_white.png") %>
         </td>
        </tr>
        <tr>
@@ -67,13 +67,13 @@
 
              <tr style="padding-top: 10px;">
               <td style="padding-top: 10px;">
-                <img src="/images/from-circle.png" style="max-height:15px; margin: -3px 10px 0px 10px"><%= @post.from %>
+                 <%= image_tag("from-circle.png", style:"max-height:15px; margin: -3px 10px 0px 10px") %><%= @post.from %>
               </td>
              </tr>
 
              <tr>
               <td style="padding-top: 10px;">
-                <img src="/images/to-circle.png" style="max-height:15px; margin: -3px 10px 0px 10px"><%= @post.destination %>
+                <%= image_tag("to-circle.png", style:"max-height:15px; margin: -3px 10px 0px 10px") %> <%= @post.destination %>
               </td>
              </tr>
 
@@ -115,20 +115,23 @@
              <table border="0" cellpadding="0" cellspacing="0">
               <tr>
                <td>
-                <a href="https://www.facebook.com/noompangcom"><img style="max-height:35px;"src="/images/explore/facebook.png"/> </a>
+                <a href="https://www.facebook.com/noompangcom">
+                  <%= image_tag("explore/facebook.png", style:"max-height:35px;") %>
+                  </a>
                </td>
                <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
                <td>
-                <a href="https://twitter.com/noompangcom?lang=en"><img style="max-height:35px;"src="/images/explore/twitter.png"/>
+                <a href="https://twitter.com/noompangcom?lang=en">
+                  <%= image_tag("explore/twitter.png", style:"max-height:35px;") %>
                 </a>
                </td>
                <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
                <td>
-                <a href="https://www.instagram.com/noompangcom/?hl=en"><img style="max-height:35px;"src="/images/explore/instagram.png"/></a>
+                <a href="https://www.instagram.com/noompangcom/?hl=en"><%= image_tag("explore/instagram.png", style:"max-height:35px;") %></a>
                </td>
                <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
                <td>
-                <a href="https://line.me/R/ti/p/@qer6098s"><img style="max-height:35px;"src="/images/explore/line.png"/> </a>
+                <a href="https://line.me/R/ti/p/@qer6098s"><%= image_tag("explore/line.png", style:"max-height:35px;") %> </a>
                </td>
               </tr>
              </table>
