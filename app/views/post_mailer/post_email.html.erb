@@ -68,12 +68,8 @@
              <tr style="padding-top: 10px;">
               <td style="padding-top: 10px;">
                  <%= image_tag("from-circle.png", style:"max-height:15px; margin: -3px 10px 0px 10px") %> <%= @post.from %>
-              </td>
-             </tr>
-
-             <tr>
-              <td style="padding-top: 10px;">
-                <%= image_tag("to-circle.png", style:"max-height:15px; margin: -3px 10px 0px 10px")%> <%= @post.destination %>
+                 <%= image_tag("arrow.png", style:"max-height:12px; margin: 0 10px 0 10px") %>
+                  <%= image_tag("to-circle.png", style:"max-height:15px; margin: -3px 10px 0px 0;") %> <%= @post.destination %>
               </td>
              </tr>
 
