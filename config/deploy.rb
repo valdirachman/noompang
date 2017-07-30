@@ -11,8 +11,16 @@ set :repo_url, "git@github.com:valdirachman/noompang.git"
 set :deploy_to, "/home/deploy/noompang"
 
 # For delayed_job and capistrano
+set :linked_dirs, %w{tmp/pids}
 set :delayed_job_server_role, :worker
 set :delayed_job_args, "-n 2"
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'delayed_job:restart'
+  end
+end
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
