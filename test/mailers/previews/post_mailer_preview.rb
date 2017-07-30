@@ -2,6 +2,6 @@
 class PostMailerPreview < ActionMailer::Preview
 
   def post_email
-    PostMailer.post_email(Post.first, User.first)
+    PostMailer.post_email(Post.first.user, Post.first)
   end
 end
