@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-
+  has_many :comments
   # For repost
   has_many :reposts, :foreign_key => "original_id", :class_name => "Post"
   belongs_to :original, :class_name => "Post"

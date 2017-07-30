@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @posts = posts.paginate(page: params[:page], per_page: 10)
     @newPost = Post.new
     @profile = current_user.profile
+    @newComment = Comment.new
 
     friends = current_user.friends
     @recommended_friends = []

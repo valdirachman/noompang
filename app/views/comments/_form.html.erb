@@ -1,0 +1,11 @@
+<%= form_for([post, post.comments.build]) do |f| %>
+
+  <div class="field form-group col-xs-9">
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+
+  <div class="actions col-xs-3">
+    <%= f.submit %>
+  </div>
+
+  <%end%>

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_one :profile
-
+  has_many :comments
   scope :not_friends, -> (current_user) { where user_id: friends }
 
   # helper methods

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :relationships
 
   resources :posts do
+    resources :comments
     member do
       post :repost
     end
