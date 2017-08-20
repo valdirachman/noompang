@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html { redirect_to home_path, notice: 'Ride was successfully deleted.' }
+      format.js
     end
   end
 
