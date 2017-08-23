@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617014322) do
+ActiveRecord::Schema.define(version: 20170822130919) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   limit: 4,     default: 0, null: false
@@ -29,6 +29,32 @@ ActiveRecord::Schema.define(version: 20170617014322) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "direct_bookings", force: :cascade do |t|
+    t.integer  "driver_post_id", limit: 4
+    t.integer  "user_id",        limit: 4
+    t.integer  "status",         limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "direct_bookings", ["driver_post_id"], name: "index_direct_bookings_on_driver_post_id", using: :btree
+  add_index "direct_bookings", ["user_id"], name: "index_direct_bookings_on_user_id", using: :btree
+
+  create_table "driver_posts", force: :cascade do |t|
+    t.string   "from",        limit: 255
+    t.string   "destination", limit: 255
+    t.date     "date"
+    t.time     "time"
+    t.string   "note",        limit: 255
+    t.integer  "price",       limit: 4
+    t.integer  "quantity",    limit: 4
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "driver_posts", ["user_id"], name: "index_driver_posts_on_user_id", using: :btree
+
   create_table "friendships", force: :cascade do |t|
     t.integer "friendable_id", limit: 4
     t.integer "friend_id",     limit: 4
@@ -37,6 +63,19 @@ ActiveRecord::Schema.define(version: 20170617014322) do
   end
 
   add_index "friendships", ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true, using: :btree
+
+  create_table "indirect_bookings", force: :cascade do |t|
+    t.integer  "driver_post_id", limit: 4
+    t.integer  "post_id",        limit: 4
+    t.integer  "user_id",        limit: 4
+    t.integer  "status",         limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "indirect_bookings", ["driver_post_id"], name: "index_indirect_bookings_on_driver_post_id", using: :btree
+  add_index "indirect_bookings", ["post_id"], name: "index_indirect_bookings_on_post_id", using: :btree
+  add_index "indirect_bookings", ["user_id"], name: "index_indirect_bookings_on_user_id", using: :btree
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id",   limit: 4
@@ -162,6 +201,12 @@ ActiveRecord::Schema.define(version: 20170617014322) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "direct_bookings", "driver_posts"
+  add_foreign_key "direct_bookings", "users"
+  add_foreign_key "driver_posts", "users"
+  add_foreign_key "indirect_bookings", "driver_posts"
+  add_foreign_key "indirect_bookings", "posts"
+  add_foreign_key "indirect_bookings", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"

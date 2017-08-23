@@ -1,0 +1,49 @@
+<%= form_for(@newPost) do |f| %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingOne">
+    <p class="panel-title" style="text-align:center; ">
+      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="font-size:14px; font-weight:500;">
+        Offer your car or request your ride. Click here!
+      </a>
+    </p>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body row">
+      <div class="col-sm-6">
+        <%= f.label :destination %>
+        <div class="field form-group">
+          <%= f.text_field :from, placeholder:"From", autofocus: true, class: "form-control" %>
+        </div>
+        <div class="field form-group">
+          <%= f.text_field :destination, placeholder:"To", class: "form-control" %>
+        </div>
+        <div class="field form-group">
+          <%= f.text_field :note, placeholder:"Notes", class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <%= f.label :date_and_time %>
+        <div class="field form-group">
+          <%= f.date_select :date %>
+        </div>
+        <div class="field form-group">
+          <%= f.time_select :time %>
+        </div>
+        <div class="field form-group">
+          <%= f.text_field :quantity, placeholder: "Quantity", class: "form-control" %>
+        </div>
+        <div class="field form-group">
+          <%= f.text_field :price, placeholder: "Price", class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Create Ride", class: "btn btn-primary", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% end %>

@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  has_many :indirect_bookings, dependent: :destroy
 
   # For repost
   has_many :reposts, :foreign_key => "original_id", :class_name => "Post"

@@ -13,6 +13,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <h4 style="text-align:center; font-weight: 400;">Notifications</h4>
+        <%= render '/components/join_requests_panel', join_requests: @join_requests %>
         <% if !@requests.empty? %>
           <% for @r in @requests %>
             <hr>

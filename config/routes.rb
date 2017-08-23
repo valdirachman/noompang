@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   get '/home' => 'pages#home', as: 'home'
 
+  get '/home/drivers' => 'pages#home_drivers', as: 'home_drivers'
+
   get 'users/sign_in' => 'users/sign_in'
 
   get 'about/about_us' => 'about#about_us'
@@ -49,6 +51,16 @@ Rails.application.routes.draw do
   get '/accept/:id', to: 'friends#accept', as: 'accept_friend'
 
   get '/friends/:id', to: 'friends#see_friends', as: 'see_friends'
+
+  resources :driver_posts, only: [:create, :destroy]
+
+  post 'direct_bookings', to: 'direct_bookings#create', as: 'direct_bookings'
+  get 'direct_bookings/:id/accept', to: 'direct_bookings#accept', as: 'accept_direct_booking'
+  get 'direct_bookings/:id/reject', to: 'direct_bookings#reject', as: 'reject_direct_booking'
+
+  post 'indirect_bookings', to: 'indirect_bookings#create', as: 'indirect_bookings'
+  get 'indirect_bookings/:id/accept', to: 'indirect_bookings#accept', as: 'accept_indirect_booking'
+  get 'indirect_bookings/:id/reject', to: 'indirect_bookings#reject', as: 'reject_indirect_booking'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
