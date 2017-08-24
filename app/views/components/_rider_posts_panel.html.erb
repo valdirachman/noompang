@@ -1,0 +1,18 @@
+<p>Requested Rides Today</p>
+<% for post in rider_posts %>
+  Ride: <br>
+  <%= post.from %>
+  <%= post.destination %>
+  <%= post.date %>
+  <%= post.time %>
+  <br>
+  Status:
+  <br>
+  <% if post.reserved? %>
+    <% if post.pending? %>
+      This ride has been temporarily reserved by <%= post.get_reserver %>
+    <% else %>
+      This ride has been successfuly reserved by <%= post.get_reserver %>
+    <% end %>
+  <% end %>
+<% end %>

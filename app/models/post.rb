@@ -37,6 +37,10 @@ class Post < ActiveRecord::Base
     self.indirect_bookings.reserved.first.status == 0
   end
 
+  def accepted?
+    self.indirect_bookings.reserved.first.status == 1
+  end
+
   def get_reserver
     self.indirect_bookings.reserved.first.driver_post.user.username
   end

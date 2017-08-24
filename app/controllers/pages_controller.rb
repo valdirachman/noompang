@@ -121,6 +121,12 @@ class PagesController < ApplicationController
 
   end
 
+  def active_rides
+    @rider_posts = Post.where(user_id: current_user.id).today
+    @driver_posts = DriverPost.where(user_id: current_user.id).today
+    @profile = current_user.profile
+  end
+
   def about_us
 
   end

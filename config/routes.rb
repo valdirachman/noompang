@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 
   get '/notification' => 'pages#notification'
 
+  get '/active_rides' => 'pages#active_rides'
+
   get '/add/:id', to: 'friends#add', as: 'add_friend'
 
   get '/accept/:id', to: 'friends#accept', as: 'accept_friend'

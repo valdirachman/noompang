@@ -1,0 +1,20 @@
+<p>Offered Rides Today</p>
+<% for post in driver_posts %>
+  Ride: <br>
+  <%= post.from %>
+  <%= post.destination %>
+  <%= post.date %>
+  <%= post.time %>
+  <br>
+  Requestor:
+  <br>
+  <% if post.reserved? %>
+    <div class="col-sm-6">
+      <p>Riders:</p>
+      <% for request in post.reserved_requests %>
+          <%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
+          <p style="font-weight:400; padding-left:10px;"><b><%= request.user.username %></b></p>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
