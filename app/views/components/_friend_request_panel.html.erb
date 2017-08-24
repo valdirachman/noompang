@@ -1,0 +1,32 @@
+<% if !@requests.empty? %>
+  <% for @r in @requests %>
+    <h3> Friend Request </h3>
+    <hr>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="col-sm-3 col-xs-3 col-md-3 col-xl-3 float-right" style="text-align:center;">
+        <%= image_tag @r.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "border-radius:50%;" %>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+        <p style="font-size:120%"><a href="/user/<%= @r.username %>"><%= @r.username %></a></p>
+        </div>
+        <div class="row">
+          <p style="font-size: 100%; font-weight: 300;"><%= @r.friends.count %> friends </p>
+          </div>
+        </div>
+      <div style="padding-top:15px;" class="col-sm-3 col-xs-3 col-md-3 col-xl-3">
+        <span class="pull-right"><%= link_to "Accept", accept_friend_path(@r.id), class: "btn btn-primary btn-xs" ,style: "padding-left: 15px; padding-right:15px;" %>
+        </span>
+      </div>
+    </div>
+    </div>
+
+  <% end %>
+<% else %>
+
+ <h4> Friend Request </h4>
+  <hr>
+  <p>There's no friend request yet!</p>
+
+<% end %>

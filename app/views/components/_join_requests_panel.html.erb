@@ -1,4 +1,8 @@
+<% if !join_requests.empty? %>
 <% for request in join_requests %>
+
+<h4> Ride Request </h4>
+
   Ride: <br>
   <%= request.driver_post.from %>
   <%= request.driver_post.destination %>
@@ -10,6 +14,12 @@
   <%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "border-radius:50%;" %>
   <%= request.user.username %>
   <br>
-  <%= button_to "Accept" , accept_direct_booking_path(request.id), method: :get %>
-  <%= button_to "Reject" , reject_direct_booking_path(request.id), method: :get %>
+  <%= button_to "Accept" , accept_direct_booking_path(request.id), method: :get, class: "btn btn-success btn-xs", style: "padding-left:16px; padding-right:15px;"%>
+  <%= button_to "Reject" , reject_direct_booking_path(request.id), method: :get, class: "btn btn-danger btn-xs", style: "padding-left:16px; padding-right:15px;"%>
+
+<% end %>
+<% else %>
+<h4> Ride Request </h4>
+
+<p> There's no ride requests </p>
 <% end %>

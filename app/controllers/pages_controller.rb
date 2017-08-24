@@ -99,7 +99,7 @@ class PagesController < ApplicationController
     @posts = Post.all
   end
 
-  def friend_request
+  def notification
     @requests = current_user.pending_invited_by
     @join_requests = DirectBooking.pending_of_user(current_user.id)
     @profile = current_user.profile

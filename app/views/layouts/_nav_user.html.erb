@@ -40,7 +40,7 @@
           <% end %>
         </li>
         <li style="padding-left:10px ; padding-right: 10px">
-          <%= link_to friend_request_path do %>
+          <%= link_to notification_path do %>
             <span><span class="glyphicon glyphicon-bell" data-toggle="tooltip" data-placement="bottom" title="Notification"></span><% if current_user.pending_invited_by.count > 0 %><span class="badge"> <%= current_user.pending_invited_by.count %></span><% end %></span>
           <% end %>
         </li>
