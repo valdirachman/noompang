@@ -38,6 +38,6 @@ class Post < ActiveRecord::Base
   end
 
   def get_reserver
-    self.indirect_bookings.reserved.first.user.username
+    self.indirect_bookings.reserved.first.driver_post.user.username
   end
 end

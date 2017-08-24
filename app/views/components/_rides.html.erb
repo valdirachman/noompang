@@ -48,34 +48,37 @@
             <% end %>
           </span>
         <% end %>
-        <% if post.user != current_user %>
-          <% if !post.reserved? %>
-              <%= form_for DriverPost.new, url: driver_posts_with_indirect_booking_path do |f| %>
-                <%= f.hidden_field :from, value: post.from %>
-                <%= f.hidden_field :destination, value: post.destination %>
-                <%= f.hidden_field :date, value: post.date %>
-                <%= f.hidden_field :time, value: post.time %>
-                <%= f.hidden_field :post_id, value: post.id %>
-                <%= f.hidden_field :user_id, value: post.user.id %>
-                <div class="field form-group">
-                  <%= f.text_field :price, placeholder:"Price", autofocus: true, class: "form-control" %>
-                </div>
-                <div class="field form-group">
-                  <%= f.text_field :quantity, placeholder:"Quantity", class: "form-control" %>
-                </div>
-                <div class="field form-group">
-                  <%= f.text_field :note, placeholder:"Notes", class: "form-control" %>
-                </div>
-                <%= submit_tag "Pick Up and Create Ride" %>
-              <% end %>
-          <% else %>
-            <% if post.pending? %>
-              This ride has been temporarily reserved by <%= post.get_reserver %>
-            <% else %>
-              This ride has been successfuly reserved by <%= post.get_reserver %>
+
+        <% if !post.reserved? %>
+          <% if post.user != current_user %>
+            <%= form_for DriverPost.new, url: driver_posts_with_indirect_booking_path do |f| %>
+              <%= f.hidden_field :from, value: post.from %>
+              <%= f.hidden_field :destination, value: post.destination %>
+              <%= f.hidden_field :date, value: post.date %>
+              <%= f.hidden_field :time, value: post.time %>
+              <%= f.hidden_field :post_id, value: post.id %>
+              <%= f.hidden_field :user_id, value: post.user.id %>
+              <div class="field form-group">
+                <%= f.text_field :price, placeholder:"Price", autofocus: true, class: "form-control" %>
+              </div>
+              <div class="field form-group">
+                <%= f.text_field :quantity, placeholder:"Quantity", class: "form-control" %>
+              </div>
+              <div class="field form-group">
+                <%= f.text_field :note, placeholder:"Notes", class: "form-control" %>
+              </div>
+              <%= submit_tag "Pick Up and Create Ride" %>
             <% end %>
           <% end %>
+        <% else %>
+          <% if post.pending? %>
+            This ride has been temporarily reserved by <%= post.get_reserver %>
+          <% else %>
+            This ride has been successfuly reserved by <%= post.get_reserver %>
+          <% end %>
         <% end %>
+
+
 
         <% if post.user == current_user %>
           <span class="post-icon pull-right">

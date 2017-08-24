@@ -19,6 +19,12 @@
         <br>
         <div class="panel panel-default">
           <div class="panel-body">
+            <%= render '/components/pickup_requests_panel', pickup_requests: @pickup_requests %>
+          </div>
+        </div>
+        <br>
+        <div class="panel panel-default">
+          <div class="panel-body">
             <%= render '/components/friend_request_panel', requests: @requests %>
           </div>
         </div>
