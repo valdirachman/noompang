@@ -25,6 +25,15 @@
           </span>
         </p>
         <div class="row" style="margin-left:-15px">
+          <% if post.reserved? %>
+            <div class="col-sm-6">
+              <p>Riders:</p>
+              <% for request in post.reserved_requests %>
+                  <%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
+                  <p style="font-weight:400; padding-left:10px;"><b><%= request.user.username %></b></p>
+              <% end %>
+            </div>
+          <% end %>
           <div class="col-sm-6">
         <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= post.available_seats%></b> seats available out of <%= post.quantity %></p>
       </div>

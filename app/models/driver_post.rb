@@ -29,11 +29,19 @@ class DriverPost < ActiveRecord::Base
     self.direct_bookings.reserved.where(user_id: user_id).exists? || self.indirect_bookings.reserved.where(user_id: user_id).exists?
   end
 
+  def reserved?
+    self.direct_bookings.reserved.exists? || self.indirect_bookings.reserved.exists?
+  end
+
   def get_reserve_status_by_user(user_id)
     if self.direct_bookings.reserved.where(user_id: user_id).exists?
       self.direct_bookings.reserved.where(user_id: user_id).first.status
     else
       self.indirect_bookings.reserved.where(user_id: user_id).first.status
     end
+  end
+
+  def reserved_requests
+    self.direct_bookings.reserved + self.indirect_bookings.reserved
   end
 end
