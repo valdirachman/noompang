@@ -24,22 +24,28 @@
             <%= post.destination %>
           </span>
         </p>
-        <p style="font-weight:400; padding-left:10px;">Available Seats: <%= post.available_seats %> out of <%= post.quantity %></p>
-        <p style="font-weight:400; padding-left:10px;">Price / person: <%= post.price %></p>
+        <div class="row" style="margin-left:-15px">
+          <div class="col-sm-6">
+        <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= post.available_seats%></b> seats available out of <%= post.quantity %></p>
+      </div>
+      <div class="col-sm-6">
+        <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= post.price %></b> per ride</p>
+      </div>
+        </div>
         <% if post.note && post.note != "" %>
-          <p style="font-weight:400; padding-left:10px;"><%= post.note %></p>
+          <p style="font-weight:400; padding: 5px 0 10px 10px"><%= post.note %></p>
         <% end %>
         <% if post.user != current_user %>
           <% if !post.reserved_by_user?(current_user.id) %>
             <%= form_for DirectBooking.new, url: direct_bookings_path do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %></td>
               <%= f.hidden_field :driver_post_id, value: post.id %></td>
-              <%= submit_tag "Join" %>
+              <%= submit_tag "Join this ride", class: "btn btn-success btn-xs", style: "float:right" %>
             <% end %>
           <% else %>
             <% case post.get_reserve_status_by_user(current_user.id)
-            when 0 %> Status: Waiting for driver's approval
-            <% when 1 %> Status: Join request accepted!
+            when 0 %> <div class="alert alert-danger" style="padding: 5px 0px 5px 10px;"> Status: Waiting for driver's approval</div>
+            <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">Status: Join request accepted! </div>
             <% end %>
             <br>
           <% end %>

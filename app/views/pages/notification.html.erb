@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-3" id="left-panels">
+    <div class="panel panel-default panel-body">
+      <div class="line-bottom profile-font">
+      <%= render '/components/user_panel', user: current_user %>
+      </div>
+    </div>
+      <div class="panel panel-default panel-body">
+        <%= render '/components/profile_panel', profile: @profile, user: current_user %>
+    </div>
+  </div>
+  <div class="col-sm-6 ">
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= render '/components/join_requests_panel', join_requests: @join_requests %>
+          </div>
+        </div>
+        <br>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= render '/components/friend_request_panel', requests: @requests %>
+          </div>
+        </div>
+
+  </div>
+  <div class="col-sm-3">
+    <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
+    <%= render '/components/about_panel' %>
+  </div>
+</div>

@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   get '/user/:id' => 'pages#profile', as: 'user_profile'
 
-  get '/friend_request' => 'pages#friend_request'
+  get '/notification' => 'pages#notification'
 
   get '/add/:id', to: 'friends#add', as: 'add_friend'
 
