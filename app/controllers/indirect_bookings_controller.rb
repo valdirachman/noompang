@@ -25,7 +25,7 @@ class IndirectBookingsController < ApplicationController
   end
 
   def accept
-    if (@indirect_booking.driver_post.user == current_user)
+    if (@indirect_booking.user == current_user)
       @indirect_booking.accept
       respond_to do |format|
         format.html { redirect_to home_path, notice: 'Booking was successfully accepted.' }
@@ -38,7 +38,7 @@ class IndirectBookingsController < ApplicationController
   end
 
   def reject
-    if (@indirect_booking.driver_post.user == current_user)
+    if (@indirect_booking.user == current_user)
       @indirect_booking.reject
       respond_to do |format|
         format.html { redirect_to home_path, notice: 'Booking was successfully rejected.' }

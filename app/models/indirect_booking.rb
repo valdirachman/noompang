@@ -7,7 +7,8 @@ class IndirectBooking < ActiveRecord::Base
   scope :rejected, -> { where(status: 2) }
   scope :pending, -> { where(status: 0) }
   scope :reserved, -> { where("status = ? OR status = ?", 0, 1) }
-  
+  scope :pending_of_user, -> (user_id) { where(user_id: user_id).pending }
+
   def accept
     self.update(status: 1)
   end

@@ -28,4 +28,16 @@ class Post < ActiveRecord::Base
       "Ride reposted"
     end
   end
+
+  def reserved?
+    self.indirect_bookings.reserved.exists?
+  end
+
+  def pending?
+    self.indirect_bookings.reserved.first.status == 0
+  end
+
+  def get_reserver
+    self.indirect_bookings.reserved.first.user.username
+  end
 end

@@ -102,6 +102,7 @@ class PagesController < ApplicationController
   def friend_request
     @requests = current_user.pending_invited_by
     @join_requests = DirectBooking.pending_of_user(current_user.id)
+    @pickup_requests = IndirectBooking.pending_of_user(current_user.id)
     @profile = current_user.profile
     friends = current_user.friends
     @recommended_friends = []

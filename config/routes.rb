@@ -54,6 +54,7 @@ Rails.application.routes.draw do
 
   resources :driver_posts, only: [:create, :destroy]
 
+  post 'driver_posts_with_booking', to: 'driver_posts#create_with_indirect_booking', as: 'driver_posts_with_indirect_booking'
   post 'direct_bookings', to: 'direct_bookings#create', as: 'direct_bookings'
   get 'direct_bookings/:id/accept', to: 'direct_bookings#accept', as: 'accept_direct_booking'
   get 'direct_bookings/:id/reject', to: 'direct_bookings#reject', as: 'reject_direct_booking'

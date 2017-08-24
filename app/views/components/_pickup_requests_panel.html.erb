@@ -1,0 +1,15 @@
+<% for request in pickup_requests %>
+  Ride: <br>
+  <%= request.driver_post.from %>
+  <%= request.driver_post.destination %>
+  <%= request.driver_post.date %>
+  <%= request.driver_post.time %>
+  <br>
+  Requestor:
+  <br>
+  <%= image_tag request.driver_post.user.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "border-radius:50%;" %>
+  <%= request.driver_post.user.username %>
+  <br>
+  <%= button_to "Accept" , accept_indirect_booking_path(request.id), method: :get %>
+  <%= button_to "Reject" , reject_indirect_booking_path(request.id), method: :get %>
+<% end %>
