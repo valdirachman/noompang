@@ -1,62 +1,273 @@
-<%= form_for(@newPost) do |f| %>
+<div class="panel panel-default">
+
+<ul class="nav nav-pills nav-justified" role="tablist" style="border-radius:0px">
+
+  <li role="form-post" class="active"><a href="#driver-post" aria-control="driver-post" role="tab" data-toggle="tab"> Offer Ride </a></li>
+
+  <li role="form-post"><a href="#rider-post" aria-control="rider-post" role="tab" data-toggle="tab">  Request Ride </a></li>
+
+</ul>
 
 
-  <div class="panel panel-default">
+
+<div class="tab-content">
+
+<div role="tabpanel" class="tab-pane fade in active" id="driver-post">
+
+<%= form_for(DriverPost.new) do |f| %>
+
+
+
     <div class="panel-body row">
 
       <div class="col-sm-6">
+
         <img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up">
+
         <%= f.label :from %>
+
         <div class="field form-group" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          <%= f.text_field :from, placeholder: "Example: Dago, Bandung", autofocus: true, class: "form-control", style: "font-size: 12px"%>
+
+          <%= f.text_field :from, placeholder: "Example: Dago, Bandung", autofocus: true, class: "form-control", style: "font-size: 12px"  %>
+
         </div>
+
       </div>
+
       <div class="col-sm-6">
+
         <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off">
+
         <%= f.label :to %>
+
         <div class="field form-group">
+
           <%= f.text_field :destination, placeholder:"Example: Pasar Minggu, Jakarta", class: "form-control", style: "font-size: 12px"  %>
+
         </div>
+
       </div>
+
     </div>
 
+
+
       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
         <div class="panel-body row">
+
       <div class="col-sm-6">
+
         <img src="/images/calendar.png" style="max-height:15px; margin-top:-4px;">
+
         <%= f.label :travel_date %>
+
         <div class="field form-group">
+
           <%= f.date_select :date %>
+
         </div>
+
       </div>
+
       <div class="col-sm-6">
+
           <img src="/images/time.png" style="max-height:15px; margin-top:-4px;">
+
         <%= f.label :time %>
+
         <div class="field form-group">
+
           <%= f.time_select :time %>
+
         </div>
+
       </div>
 
-      <div class="col-sm-12">
-        <div class="field form-group">
-          <img src="/images/notes.png" style="max-height:15px; margin-top:-4px;">
-          <%= f.label :Ride_details %>
-          <p> Add further details about your ride, it will help the passenger or driver to understand your post better. <p><br>
-          <%= f.text_area :note, placeholder:"Example: Saya mau ke Jakarta nih karena ada acara, Kalau mau ikut klik join aja ya, nanti saya kontak via message atau saya japri", class: "form-control", style: "font-size: 12px"  %> <br>
-          <p> Your details can be only seen by your friends </p>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="col-sm-3 col-sm-offset-9">
-          <div class="actions">
-            <%= f.submit "Create Ride", class: "btn btn-primary", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
-              </div>
-            </div>
+        <div class="col-sm-6">
+
+        <img src="/images/seats.png" style="max-height:15px; margin-top:-4px;">
+
+        <%= f.label :number_of_seats %>
+
+          <div class="field form-group">
+
+            Available seats <%= f.select :quantity, 1..5 %>
+
           </div>
+
         </div>
+
+        <div class="col-sm-6">
+
+          <img src="/images/price.png" style="max-height:15px; margin-top:-4px;">
+
+          <%= f.label :travel_price %>
+
+          <div class="field form-group">
+
+            <%= f.text_field :price, placeholder: "Example: 150000", class: "form-control", style: "font-size: 12px"  %>
+
+          </div>
+
+        </div>
+
+      <div class="col-sm-12">
+
+        <div class="field form-group">
+
+          <img src="/images/notes.png" style="max-height:15px; margin-top:-4px;">
+
+          <%= f.label :Ride_details %>
+
+          <p> Add further details about your ride, it will help the passenger or driver to understand your post better. <p><br>
+
+          <%= f.text_area :note, placeholder:"Example: Saya mau ke Jakarta nih karena ada acara, Kalau mau ikut klik join aja ya, nanti saya kontak via message atau saya japri", class: "form-control", style: "font-size: 12px"  %> <br>
+
+          <p> Your details can be only seen by your friends </p>
+
+        </div>
+
       </div>
-  </div>
 
+      <div class="col-sm-12">
 
+        <div class="col-sm-3 col-sm-offset-9">
+
+          <div class="actions">
+
+            <%= f.submit "Offer Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
 
 <% end %>
+
+</div>
+
+
+
+<div role="tabpanel" class="tab-pane fade" id="rider-post">
+
+<%= form_for(@newPost) do |f| %>
+
+    <div class="panel-body row">
+
+
+
+      <div class="col-sm-6">
+
+        <img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up">
+
+        <%= f.label :from %>
+
+        <div class="field form-group" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
+          <%= f.text_field :from, placeholder: "Example: Dago, Bandung", autofocus: true, class: "form-control", style: "font-size: 12px"%>
+
+        </div>
+
+      </div>
+
+      <div class="col-sm-6">
+
+        <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off">
+
+        <%= f.label :to %>
+
+        <div class="field form-group">
+
+          <%= f.text_field :destination, placeholder:"Example: Pasar Minggu, Jakarta", class: "form-control", style: "font-size: 12px"  %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+        <div class="panel-body row">
+
+      <div class="col-sm-6">
+
+        <img src="/images/calendar.png" style="max-height:15px; margin-top:-4px;">
+
+        <%= f.label :travel_date %>
+
+        <div class="field form-group">
+
+          <%= f.date_select :date %>
+
+        </div>
+
+      </div>
+
+      <div class="col-sm-6">
+
+          <img src="/images/time.png" style="max-height:15px; margin-top:-4px;">
+
+        <%= f.label :time %>
+
+        <div class="field form-group">
+
+          <%= f.time_select :time %>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="col-sm-12">
+
+        <div class="field form-group">
+
+          <img src="/images/notes.png" style="max-height:15px; margin-top:-4px;">
+
+          <%= f.label :Ride_details %>
+
+          <p> Add further details about your ride, it will help the passenger or driver to understand your post better. <p><br>
+
+          <%= f.text_area :note, placeholder:"Example: Saya mau ke Jakarta nih karena ada acara, Kalau mau ikut klik join aja ya, nanti saya kontak via message atau saya japri", class: "form-control", style: "font-size: 12px"  %> <br>
+
+          <p> Your details can be only seen by your friends </p>
+
+        </div>
+
+      </div>
+
+      <div class="col-sm-12">
+
+        <div class="col-sm-3 col-sm-offset-9">
+
+          <div class="actions">
+
+            <%= f.submit "Request Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+  </div>
+
+<% end %>
+
+</div>
+
+</div>
+
+</div>
