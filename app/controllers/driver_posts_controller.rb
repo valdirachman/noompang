@@ -11,10 +11,10 @@ class DriverPostsController < ApplicationController
     respond_to do |f|
       if (@post.save)
         f.html { redirect_to home_drivers_path, notice: "Ride created!" }
-        # friends = current_user.friends
-        # friends.each do |friend|
-        #   DriverPostMailer.delay.post_email(friend, @post)
-        # end
+        friends = current_user.friends
+        friends.each do |friend|
+          PostMailer.delay.new_driver_post(friend, @post)
+        end
       else
         f.html { redirect_to home_path, notice: "Error: Ride Not Saved. Some of the field hasn't been filled"}
       end
@@ -28,6 +28,7 @@ class DriverPostsController < ApplicationController
       if (@post.save)
         @indirect_booking = IndirectBooking.create(driver_post_id: @post.id, user_id: indirect_params[:user_id], post_id: indirect_params[:post_id], status: 0)
         f.html { redirect_to home_path, notice: "Ride created!" }
+        PostMailer.delay.new_pickup(current_user, @post, User.find(indirect_params[:user_id]))
         # friends = current_user.friends
         # friends.each do |friend|
         #   DriverPostMailer.delay.post_email(friend, @post)
