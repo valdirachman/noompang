@@ -27,12 +27,14 @@
     <%= request.driver_post.destination %>
   </span>
 </p>
-<div class="col-xs-6">
-<%= button_to "Accept" , accept_direct_booking_path(request.id), method: :get, class: "btn btn-success btn-xs", style: "padding-left:16px; padding-right:15px;"%>
-</div>
-
-<div class="col-xs-6">
-<%= button_to "Reject" , reject_direct_booking_path(request.id), method: :get, class: "btn btn-danger btn-xs", style: "padding-left:16px; padding-right:15px;"%>
+<% if request.driver_post.note && request.driver_post.note != "" %>
+  <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= request.driver_post.note %></p>
+<% end %>
+<br>
+<div class="col-xs-12"><ul>
+<li style="display:inline-block"><%= button_to "Accept" , accept_direct_booking_path(request.id), method: :get, class: "btn btn-success btn-xs", style: "padding-left:16px; padding-right:15px;"%></li>
+<li style="display:inline-block">
+<%= button_to "Reject" , reject_direct_booking_path(request.id), method: :get, class: "btn btn-danger btn-xs", style: "padding-left:16px; padding-right:15px;"%></li></ul>
 </div>
 </div>
 

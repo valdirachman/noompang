@@ -1,4 +1,4 @@
-<h4>Your Offered Rides</h4>
+<h4>My Ride Offers</h4>
 <% for post in driver_posts %>
   <hr>
   <p class="post-date"><span class="post-date-time">
@@ -25,7 +25,9 @@
         </span>
         <% end %>
   </p>
-
+  <% if post.note && post.note != "" %>
+    <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
+  <% end %>
   <% if post.reserved? %>
     <div class="col-sm-12" style="margin: 10px 0 10px 0">
       <p style="font-weight:400; padding-left:10px;">Passangers:</p>

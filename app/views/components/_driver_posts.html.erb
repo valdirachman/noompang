@@ -31,20 +31,22 @@
         <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= post.available_seats%></b> seats available out of <%= post.quantity %></p>
       </div>
       <div class="col-sm-6">
-        <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= post.price %></b> per ride</p>
+        <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= post.price %></b> per seat</p>
       </div>
       <div class="col-sm-12">
+
       <% if post.note && post.note != "" %>
-        <p style="font-weight:400; padding: 5px 0 10px 10px"><%= post.note %></p>
+        <p style="font-weight:400; padding: 5px 0 10px 10px"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
       <% end %>
     </div>
       <% if post.reserved? %>
         <div class="col-sm-12" style="margin: 10px 0 10px 0">
-          <p style="font-weight:400; padding-left:10px;">Passangers:</p>
+          <p style="font-weight:400; padding-left:10px;">Passengers:</p>
           <ul>
+
           <% for request in post.reserved_requests %>
-              <li  style="display:inline-block"><%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded", style: "margin: 5px 5px 5px 15px" %>
-              <p style="font-weight:400; padding-left:15px;"><b><%= request.user.username %></b></p></li>
+            <%= link_to user_profile_path(request.user.username) do%>
+              <li  style="display:inline-block" data-toggle="tooltip" data-placement="top" title="<%= request.user.username %>"><%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded avatar-hover", style: "margin: 5px 5px 5px 15px" %></li> <% end %>
           <% end %>
           </ul>
         </div>

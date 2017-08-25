@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 <ul class="nav nav-pills nav-justified" role="tablist" style="border-radius:0px; border: solid 0.5px; border-color: #efefef" >
-  <li role="form-post" class="active"><a href="#driver-post" aria-control="driver-post" role="tab" data-toggle="tab"> Offer Ride </a></li>
-  <li role="form-post"><a href="#rider-post" aria-control="rider-post" role="tab" data-toggle="tab">  Request Ride </a></li>
+  <li role="form-post" class="active"><a href="#driver-post" aria-control="driver-post" role="tab" data-toggle="tab"> Offer a Ride </a></li>
+  <li role="form-post"><a href="#rider-post" aria-control="rider-post" role="tab" data-toggle="tab">  Request a Ride </a></li>
 </ul>
 
 
@@ -78,11 +78,11 @@
 
           <img src="/images/price.png" style="max-height:15px; margin-top:-4px;">
 
-          <%= f.label :travel_fee %>
+          <%= f.label :Passenger_contribution %>
 
           <div class="field form-group">
 
-            <%= f.text_field :price, placeholder: "Example: 150000", class: "form-control", style: "font-size: 12px"  %>
+            <%= f.text_field :price, placeholder: "Example: 20.000 per seat", class: "form-control", style: "font-size: 12px"  %>
 
           </div>
 
@@ -112,7 +112,7 @@
 
           <div class="actions">
 
-            <%= f.submit "Offer Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
+            <%= f.submit "Offer a Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
 
               </div>
 
@@ -227,7 +227,7 @@
 
           <div class="actions">
 
-            <%= f.submit "Request Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
+            <%= f.submit "Request a Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; height:35px;"%>
 
               </div>
 

@@ -142,4 +142,7 @@ class PagesController < ApplicationController
   def stories
 
   end
+
+  def terms_and_conditions
+  end
 end
