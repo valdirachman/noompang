@@ -1,20 +1,40 @@
-<p>Offered Rides Today</p>
+<h4>Your Offered Rides</h4>
 <% for post in driver_posts %>
-  Ride: <br>
-  <%= post.from %>
-  <%= post.destination %>
-  <%= post.date %>
-  <%= post.time %>
-  <br>
-  Requestor:
-  <br>
+  <hr>
+  <p class="post-date"><span class="post-date-time">
+    <% if post.date === Date.today %>
+      <%= post.date.strftime("Today, %-d %b") %>
+    <% else %>
+      <%= post.date.strftime("%A, %-d %b") %>
+    <% end %>
+    - <%= post.time.strftime("%H:%M")  %>
+  </span></p>
+  <p class="post-content">
+    <span class="post-destination">
+
+        <img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up">
+        <%= post.from %>
+        <img src="/images/arrow.png" style="max-height:6px;">
+      <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off">
+      <%= post.destination %></span>
+      <% if post.user == current_user %>
+        <span class="post-icon pull-right">
+          <%= link_to post, method: :delete do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </span>
+        <% end %>
+  </p>
+
   <% if post.reserved? %>
-    <div class="col-sm-6">
-      <p>Riders:</p>
+    <div class="col-sm-12" style="margin: 10px 0 10px 0">
+      <p style="font-weight:400; padding-left:10px;">Passangers:</p>
+      <ul>
       <% for request in post.reserved_requests %>
-          <%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
-          <p style="font-weight:400; padding-left:10px;"><b><%= request.user.username %></b></p>
+          <li  style="display:inline-block"><%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded", style: "margin: 5px 5px 5px 15px" %>
+          <p style="font-weight:400; padding-left:15px;"><b><%= request.user.username %></b></p></li>
       <% end %>
+      </ul>
     </div>
   <% end %>
 <% end %>

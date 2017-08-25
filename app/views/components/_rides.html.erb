@@ -1,3 +1,4 @@
+<%if !posts.empty? %>
 <% for post in posts %>
   <div class="panel panel-default post-panel ride-hover-master" id="post-panel">
     <div class="ride-hover">
@@ -41,6 +42,7 @@
         <% if post.note && post.note != "" %>
           <p style="font-weight:400; padding-left:10px;"><%= post.note %></p>
         <% end %>
+
         <% if post.user != current_user && post.original == nil && !post.reposts.find_by_user_id(current_user.id) %>
           <span class="post-icon pull-right">
             <%= link_to repost_post_path(post), method: :post do %>
@@ -58,23 +60,57 @@
               <%= f.hidden_field :time, value: post.time %>
               <%= f.hidden_field :post_id, value: post.id %>
               <%= f.hidden_field :user_id, value: post.user.id %>
-              <div class="field form-group">
-                <%= f.text_field :price, placeholder:"Price", autofocus: true, class: "form-control" %>
+              <div class="btn btn-xs btn-primary" style="float:right" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=post.id.to_s%>" aria-expanded="false" aria-controls="collapse<%=post.id.to_s%>"> Pick this ride </div>
+
+
+
+              <div id="collapse<%=post.id.to_s%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <br><hr>
+              <!-- boundaries -->
+              <div class="col-sm-6">
+              <img src="/images/seats.png" style="max-height:15px; margin-top:-4px;">
+
+              <%= f.label :number_of_seats %>
+                <div class="field form-group">
+                  Available seats <%= f.select :quantity, 1..5 %>
+                </div>
               </div>
-              <div class="field form-group">
-                <%= f.text_field :quantity, placeholder:"Quantity", class: "form-control" %>
+              <div class="col-sm-6">
+                <img src="/images/price.png" style="max-height:15px; margin-top:-4px;">
+                <%= f.label :travel_price %>
+                <div class="field form-group">
+                  <%= f.text_field :price, placeholder: "Example: 150000", class: "form-control", style: "font-size: 12px"  %>
+                </div>
               </div>
-              <div class="field form-group">
-                <%= f.text_field :note, placeholder:"Notes", class: "form-control" %>
+
+              <div class="col-sm-12">
+                <div class="field form-group">
+                  <img src="/images/notes.png" style="max-height:15px; margin-top:-4px;">
+                  <%= f.label :Ride_details %>
+                  <br>
+                  <%= f.text_area :note, placeholder:"Example: Saya mau ke Jakarta nih karena ada acara, Kalau mau ikut klik join aja ya, nanti saya kontak via message atau saya japri", class: "form-control", style: "font-size: 12px"  %> <br>
+                  <p> Your offer will be adjusted based on current ride request </p>
+                </div>
               </div>
-              <%= submit_tag "Pick Up and Create Ride" %>
+              <div class="col-sm-6 col-sm-offset-6">
+                <div class="actions">
+                  <%= submit_tag "Pick Up and Create Ride" ,class: "btn btn-success btn-xs", style: "float:right" %>
+                </div>
+              </div>
+              <!-- boundaries -->
+            </div>
+
+
+
+
             <% end %>
           <% end %>
         <% else %>
-          <% if post.pending? %>
-            This ride has been temporarily reserved by <%= post.get_reserver %>
+          <% if post.pending? %><br><div class="alert alert-danger" style="padding: 5px 0px 5px 10px;">
+            This ride has been temporarily reserved by <%= post.get_reserver %></div>
           <% else %>
-            This ride has been successfuly reserved by <%= post.get_reserver %>
+            <br>
+            <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">This ride has been successfuly reserved by <%= post.get_reserver %></div>
           <% end %>
         <% end %>
 
@@ -103,3 +139,9 @@
   </div> -->
 </div>
 <% end %>
+<% else %>
+<div style="text-align:center">
+<h3>No Request Ride</h3>
+<p> Find your friends or invite your friends to Noompang to find Passanger </p>
+</div>
+ <%end%>

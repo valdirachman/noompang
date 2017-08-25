@@ -1,3 +1,4 @@
+<%if !posts.empty? %>
 <% for post in posts %>
   <div class="panel panel-default post-panel ride-hover-master" id="post-panel">
     <div class="ride-hover">
@@ -25,25 +26,30 @@
           </span>
         </p>
         <div class="row" style="margin-left:-15px">
-          <% if post.reserved? %>
-            <div class="col-sm-6">
-              <p>Riders:</p>
-              <% for request in post.reserved_requests %>
-                  <%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
-                  <p style="font-weight:400; padding-left:10px;"><b><%= request.user.username %></b></p>
-              <% end %>
-            </div>
-          <% end %>
+
           <div class="col-sm-6">
         <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= post.available_seats%></b> seats available out of <%= post.quantity %></p>
       </div>
       <div class="col-sm-6">
         <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= post.price %></b> per ride</p>
       </div>
+      <div class="col-sm-12">
+      <% if post.note && post.note != "" %>
+        <p style="font-weight:400; padding: 5px 0 10px 10px"><%= post.note %></p>
+      <% end %>
+    </div>
+      <% if post.reserved? %>
+        <div class="col-sm-12" style="margin: 10px 0 10px 0">
+          <p style="font-weight:400; padding-left:10px;">Passangers:</p>
+          <ul>
+          <% for request in post.reserved_requests %>
+              <li  style="display:inline-block"><%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded", style: "margin: 5px 5px 5px 15px" %>
+              <p style="font-weight:400; padding-left:15px;"><b><%= request.user.username %></b></p></li>
+          <% end %>
+          </ul>
         </div>
-        <% if post.note && post.note != "" %>
-          <p style="font-weight:400; padding: 5px 0 10px 10px"><%= post.note %></p>
-        <% end %>
+      <% end %>
+        </div>
         <% if post.user != current_user %>
           <% if !post.reserved_by_user?(current_user.id) %>
             <%= form_for DirectBooking.new, url: direct_bookings_path do |f| %>
@@ -56,7 +62,6 @@
             when 0 %> <div class="alert alert-danger" style="padding: 5px 0px 5px 10px;"> Status: Waiting for driver's approval</div>
             <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">Status: Join request accepted! </div>
             <% end %>
-            <br>
           <% end %>
         <% end %>
         <% if post.user == current_user %>
@@ -82,3 +87,9 @@
   </div> -->
 </div>
 <% end %>
+<% else %>
+<div style="text-align:center">
+<h3>No Availabe Ride</h3>
+<p> Find your friends or invite your friends to Noompang to see more available rides </p>
+</div>
+ <%end%>

@@ -1,15 +1,45 @@
+<% if !pickup_requests.empty? %>
+<h4> Pickup Request </h4>
+<hr>
 <% for request in pickup_requests %>
-  Ride: <br>
-  <%= request.driver_post.from %>
-  <%= request.driver_post.destination %>
-  <%= request.driver_post.date %>
-  <%= request.driver_post.time %>
-  <br>
-  Requestor:
-  <br>
-  <%= image_tag request.driver_post.user.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "border-radius:50%;" %>
-  <%= request.driver_post.user.username %>
-  <br>
-  <%= button_to "Accept" , accept_indirect_booking_path(request.id), method: :get %>
-  <%= button_to "Reject" , reject_indirect_booking_path(request.id), method: :get %>
+
+<div class="row">
+<div class="col-xs-2">
+<%= image_tag request.driver_post.user.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "border-radius:50%;" %>
+<%= request.driver_post.user.username %>
+</div>
+
+<div class="col-xs-10">
+<p class="post-date"><span class="post-date-time">
+  <% if request.driver_post.date === Date.today %>
+    <%= request.driver_post.date.strftime("Today, %-d %b") %>
+  <% else %>
+    <%= request.driver_post.date.strftime("%A, %-d %b") %>
+  <% end %>
+  - <%= request.driver_post.time.strftime("%H:%M")  %>
+</span></p>
+<p class="post-content">
+  <span class="post-destination">
+    <img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up">
+    <%= request.driver_post.from %>
+    <img src="/images/arrow.png" style="max-height:6px;">
+    <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off">
+    <%= request.driver_post.destination %>
+  </span>
+</p>
+
+  <div class="col-xs-6"
+  <%= button_to "Accept" , accept_indirect_booking_path(request.id), method: :get, class: "btn btn-success btn-xs", style: "padding-left:16px; padding-right:15px;" %>
+  </div>
+  <div class="col-xs-6">
+  <%= button_to "Reject" , reject_indirect_booking_path(request.id), method: :get, class: "btn btn-danger btn-xs", style: "padding-left:16px; padding-right:15px;" %>
+  </div>
+</div>
+</div>
+<hr>
 <% end %>
+<% else %>
+<h4> Pickup Request </h4>
+<hr>
+<p> There's no pickup request </p>
+<%end%>

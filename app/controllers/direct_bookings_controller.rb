@@ -11,7 +11,7 @@ class DirectBookingsController < ApplicationController
       @direct_booking.status = 0
       respond_to do |f|
         if (@direct_booking.save)
-          f.html { redirect_to home_path, notice: "Booking created!" }
+          f.html { redirect_to home_drivers_path, notice: "Your join request has been sent! Wait for Driver to respond" }
         else
           f.html { redirect_to home_path, notice: "Error: Booking Not Saved."}
         end

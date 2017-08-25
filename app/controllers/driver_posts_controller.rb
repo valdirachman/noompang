@@ -10,13 +10,13 @@ class DriverPostsController < ApplicationController
     @post.user_id = current_user.id # assign the post to the user who created it
     respond_to do |f|
       if (@post.save)
-        f.html { redirect_to home_path, notice: "Ride created!" }
+        f.html { redirect_to home_drivers_path, notice: "Ride created!" }
         # friends = current_user.friends
         # friends.each do |friend|
         #   DriverPostMailer.delay.post_email(friend, @post)
         # end
       else
-        f.html { redirect_to home_path, notice: "Error: Ride Not Saved."}
+        f.html { redirect_to home_path, notice: "Error: Ride Not Saved. Some of the field hasn't been filled"}
       end
     end
   end
