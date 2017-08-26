@@ -24,9 +24,9 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  get '/home' => 'pages#home', as: 'home'
+  get '/home' => 'pages#home_drivers', as: 'home'
 
-  get '/home/drivers' => 'pages#home_drivers', as: 'home_drivers'
+  get '/home/ride_requests' => 'pages#home', as: 'home_ride_requests'
 
   get 'users/sign_in' => 'users/sign_in'
 
@@ -38,13 +38,15 @@ Rails.application.routes.draw do
 
   get 'about/team' => 'about#team'
 
+  get 'about/terms_and_conditions' => 'about#terms_and_conditions'
+
   get 'about/how_it_works' => 'about#how_it_works' , as: 'how_it_works'
 
   get 'stories' => 'pages#stories'
 
   get '/user/:id' => 'pages#profile', as: 'user_profile'
 
-  get '/notification' => 'pages#notification'
+  get '/notification' => 'pages#notification', as: 'notification'
 
   get '/active_rides' => 'pages#active_rides'
 

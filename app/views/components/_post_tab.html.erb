@@ -1,14 +1,14 @@
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
     <%= link_to home_path do %>
-      <button type="button" class="btn btn-default"  style="border-radius: 3px 0px 0px 3px">Ride Requests </button>
-    <% end %>
-  </div>
-  <div class="btn-group" role="group">
-    <%= link_to home_drivers_path do %>
-    <button type="button" class="btn btn-default" style="border-radius: 0px 0px 0px 0px"> Available Rides </button>
+    <button type="button" class="btn btn-default" style="border-radius: 3px 0px 0px 3px"> Ride Offers </button>
     <% end %>
  </div>
+  <div class="btn-group" role="group">
+    <%= link_to home_ride_requests_path do %>
+      <button type="button" class="btn btn-default"  style="border-radius: 0px 0px 0px 0px">Ride Requests  </button>
+    <% end %>
+  </div>
  <div class="btn-group" role="group">
    <%= link_to active_rides_path do %>
    <button type="button" class="btn btn-default" style="border-radius: 0px 3px 3px 0px"> My Active Rides </button>

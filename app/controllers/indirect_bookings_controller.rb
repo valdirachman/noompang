@@ -29,7 +29,7 @@ class IndirectBookingsController < ApplicationController
       @indirect_booking.accept
       PostMailer.delay.accept_pickup(@indirect_booking.driver_post.user, @indirect_booking.driver_post, current_user)
       respond_to do |format|
-        format.html { redirect_to home_path, notice: 'Booking was successfully accepted.' }
+        format.html { redirect_to notification_path, notice: 'Booking was successfully accepted.' }
       end
     else
       respond_to do |format|
@@ -43,7 +43,7 @@ class IndirectBookingsController < ApplicationController
       @indirect_booking.reject
       PostMailer.delay.reject_pickup(@indirect_booking.driver_post.user, @indirect_booking.driver_post, current_user)
       respond_to do |format|
-        format.html { redirect_to home_path, notice: 'Booking was successfully rejected.' }
+        format.html { redirect_to notification_path, notice: 'Booking was successfully rejected.' }
       end
     else
       respond_to do |format|

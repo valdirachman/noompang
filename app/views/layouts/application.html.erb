@@ -56,6 +56,10 @@
       <body>
         <%= yield %>
       </body>
+      <% elsif controller.action_name == 'terms_and_conditions' %>
+      <body>
+        <%= yield %>
+      </body>
     <% else %>
       <body class="bg-devise">
         <div class="container" id="container-devise">

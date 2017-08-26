@@ -40,7 +40,7 @@
             <%= post.destination %></span>
         </p>
         <% if post.note && post.note != "" %>
-          <p style="font-weight:400; padding-left:10px;"><%= post.note %></p>
+          <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
         <% end %>
 
         <% if post.user != current_user && post.original == nil && !post.reposts.find_by_user_id(current_user.id) %>
@@ -60,7 +60,7 @@
               <%= f.hidden_field :time, value: post.time %>
               <%= f.hidden_field :post_id, value: post.id %>
               <%= f.hidden_field :user_id, value: post.user.id %>
-              <div class="btn btn-xs btn-primary" style="float:right" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=post.id.to_s%>" aria-expanded="false" aria-controls="collapse<%=post.id.to_s%>"> Pick this ride </div>
+              <div class="btn btn-xs btn-primary" style="float:right" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=post.id.to_s%>" aria-expanded="false" aria-controls="collapse<%=post.id.to_s%>"> pick up</div>
 
 
 
