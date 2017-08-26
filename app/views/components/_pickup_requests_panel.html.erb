@@ -30,7 +30,7 @@
 <% if post.note && post.note != "" %>
   <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= request.driver_post.note %></p>
 <% end %>
-  <div class="col-xs-6"
+  <div class="col-xs-6">
   <%= button_to "Accept" , accept_indirect_booking_path(request.id), method: :get, class: "btn btn-success btn-xs", style: "padding-left:16px; padding-right:15px;" %>
   </div>
   <div class="col-xs-6">

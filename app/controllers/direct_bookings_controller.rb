@@ -12,6 +12,7 @@ class DirectBookingsController < ApplicationController
       respond_to do |f|
         if (@direct_booking.save)
           f.html { redirect_to home_path, notice: "Your join request has been sent! Wait for Driver to respond" }
+          PostMailer.delay.new_join(@direct_booking.driver_post.user, DriverPost.find(direct_booking_params[:driver_post_id]), @direct_booking.user)
         else
           f.html { redirect_to home_path, notice: "Error: Booking Not Saved."}
         end
@@ -26,6 +27,7 @@ class DirectBookingsController < ApplicationController
   def accept
     if (@direct_booking.driver_post.user == current_user)
       @direct_booking.accept
+      PostMailer.delay.accept_join(current_user, @direct_booking.driver_post, @direct_booking.user)
       respond_to do |format|
         format.html { redirect_to notification_path, notice: 'Booking was successfully accepted.' }
       end
@@ -39,6 +41,7 @@ class DirectBookingsController < ApplicationController
   def reject
     if (@direct_booking.driver_post.user == current_user)
       @direct_booking.reject
+      PostMailer.delay.reject_join(current_user, @direct_booking.driver_post, @direct_booking.user)
       respond_to do |format|
         format.html { redirect_to notification_path, notice: 'Booking was successfully rejected.' }
       end
