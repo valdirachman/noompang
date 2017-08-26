@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   has_many :posts, dependent: :destroy # remove a user's post if user is deleted
+  has_many :driver_posts, dependent: :destroy
+  has_many :direct_bookings, dependent: :destroy
+  has_many :indirect_bookings, dependent: :destroy
+
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 

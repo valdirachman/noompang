@@ -41,18 +41,14 @@
                    <tr>
                      <td>
                        <br>
-                 <% if @post.original != nil %>
-                   <%= image_tag @post.original.user.profile.avatar.url(:thumb) ,style: "border-radius: 50%; max-height:35px;" %>
-                 <% else %>
+
                    <%= image_tag @post.user.profile.avatar.url(:thumb) ,style: "border-radius: 50%; max-height:35px"  %>
-                 <% end %>
+
                </td>
                <td width="400" style="padding: 18px 0px 0px 10px">
-                <% if @post.original != nil %>
-                  <b><%= @post.original.user.username %></b>
-                <% else %>
+
                   <b><%= @post.user.username %></b>
-                <% end %>
+
                 just posted a new ride!
               </td>
                   </tr>
@@ -80,6 +76,17 @@
               </td>
              </tr>
 
+             <tr style="padding-top: 10px;">
+               <td style="padding-top: 10px;">
+               <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= @post.available_seats%></b> seats available out of <%= @post.quantity %></p>
+             </td>
+           </tr>
+           <tr style="padding-top: 10px;">
+             <td style="padding-top: 10px;">
+               <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= @post.price %></b> per ride</p>
+             </td>
+           </tr>
+
              <tr>
               <td style="padding-top: 10px;">
                 Notes:<% if @post.note && @post.note != "" %>
@@ -96,11 +103,9 @@
      <hr>
      <tr>
       <td style="padding: 10px 30px 30px 30px; font-size: 14px;">
-        See<% if @post.original != nil %>
-            <b><%= @post.original.user.username %>'s</b>
-          <% else %>
+        See
             <b><%= @post.user.username %>'s</b>
-          <% end %>other posts at <a href="www.noompang.com"> noompang.com </a>
+        other posts at <a href="www.noompang.com"> noompang.com </a>
       </td>
      </tr>
      </table>

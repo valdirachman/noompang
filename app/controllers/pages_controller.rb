@@ -32,6 +32,35 @@ class PagesController < ApplicationController
     end
   end
 
+  def home_drivers
+    ids = current_user.friends.map{|f| f.id} << current_user.id
+    posts = DriverPost.self_and_friends (ids)
+    posts = posts.today
+    @posts = posts.paginate(page: params[:page], per_page: 10)
+    @newPost = DriverPost.new
+    @profile = current_user.profile
+
+    friends = current_user.friends
+    @recommended_friends = []
+    if (not friends.empty?)
+      reference_friend = friends.find(friends.pluck(:id).shuffle.first)
+      friends_of_reference_friend = reference_friend.friends.find_not_friends(current_user)
+      @recommended_friends = User.where(id: friends_of_reference_friend.map(&:id).sample(4)) - [current_user]
+      if @recommended_friends.empty?
+        new_friends = User.find_not_friends(current_user)
+        @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
+      end
+    else
+      new_friends = User.find_not_friends(current_user)
+      @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def profile
     #grab the username from the URL as :id
     @current_user ||= User.find_by(id: session[:user_id])
@@ -70,8 +99,10 @@ class PagesController < ApplicationController
     @posts = Post.all
   end
 
-  def friend_request
+  def notification
     @requests = current_user.pending_invited_by
+    @join_requests = DirectBooking.pending_of_user(current_user.id)
+    @pickup_requests = IndirectBooking.pending_of_user(current_user.id)
     @profile = current_user.profile
     friends = current_user.friends
     @recommended_friends = []
@@ -90,6 +121,12 @@ class PagesController < ApplicationController
 
   end
 
+  def active_rides
+    @rider_posts = Post.where(user_id: current_user.id).today
+    @driver_posts = DriverPost.where(user_id: current_user.id).today
+    @profile = current_user.profile
+  end
+
   def about_us
 
   end
@@ -104,5 +141,8 @@ class PagesController < ApplicationController
 
   def stories
 
+  end
+
+  def terms_and_conditions
   end
 end

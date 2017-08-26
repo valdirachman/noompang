@@ -163,6 +163,10 @@ h1{
     -webkit-transition:  box-shadow .05s ease-in;
 }
 
+//Post rides driver
+.avatar-hover:hover {
+  background-color: #f4f5f7;
+}
 .ride-hover-master:hover {
   background-color: #f4f5f7;
 }
@@ -279,6 +283,21 @@ h1{
 .about-panel {
   line-height: 22px;
 }
+
+//form-post
+.form-post-modal {
+  content: "";
+  background-color: rgba(0,0,0,.8);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.nav-pills >li >a {
+  border-radius: 0px 0px 0px 0px;
+}
+
+
 //components-rides
 .post-creation {
   float: right !important;

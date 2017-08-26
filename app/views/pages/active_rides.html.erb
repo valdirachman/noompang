@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-3" id="left-panels">
+    <div class="panel panel-default panel-body">
+      <div class="line-bottom profile-font">
+      <%= render '/components/user_panel', user: current_user %>
+      </div>
+    </div>
+      <div class="panel panel-default panel-body">
+        <%= render '/components/profile_panel', profile: @profile, user: current_user %>
+    </div>
+  </div>
+  <div class="col-sm-6 timeline-column">
+    <%= render '/components/post_tab' %>
+      <br>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= render '/components/rider_posts_panel', rider_posts: @rider_posts %>
+          </div>
+        </div>
+        <br>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= render '/components/driver_posts_panel', driver_posts: @driver_posts %>
+          </div>
+        </div>
+
+  </div>
+  <div class="col-sm-3">
+    <%= render '/components/about_panel' %>
+  </div>
+</div>

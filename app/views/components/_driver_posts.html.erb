@@ -1,0 +1,97 @@
+<%if !posts.empty? %>
+<% for post in posts %>
+  <div class="panel panel-default post-panel ride-hover-master" id="post-panel">
+    <div class="ride-hover">
+    <div class="panel-body row">
+      <div class="col-xs-2 col-md-1" style="padding-top:10px;">
+        <%= image_tag post.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
+      </div>
+      <div class="col-xs-10 col-md-11 col">
+        <p class="post-title"><span class="post-owner"><%= link_to post.user.username, user_profile_path(post.user.username) %></span><span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span></p>
+        <p class="post-date"><span class="post-date-time">
+          <% if post.date === Date.today %>
+            <%= post.date.strftime("Today, %-d %b") %>
+          <% else %>
+            <%= post.date.strftime("%A, %-d %b") %>
+          <% end %>
+          - <%= post.time.strftime("%H:%M")  %>
+        </span></p>
+        <p class="post-content">
+          <span class="post-destination">
+            <img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up">
+            <%= post.from %>
+            <img src="/images/arrow.png" style="max-height:6px;">
+            <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off">
+            <%= post.destination %>
+          </span>
+        </p>
+        <div class="row" style="margin-left:-15px">
+
+          <div class="col-sm-6">
+        <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= post.available_seats%></b> seats available out of <%= post.quantity %></p>
+      </div>
+      <div class="col-sm-6">
+        <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= post.price %></b> per seat</p>
+      </div>
+      <div class="col-sm-12">
+
+      <% if post.note && post.note != "" %>
+        <p style="font-weight:400; padding: 5px 0 10px 10px"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
+      <% end %>
+    </div>
+      <% if post.reserved? %>
+        <div class="col-sm-12" style="margin: 10px 0 10px 0">
+          <p style="font-weight:400; padding-left:10px;">Passengers:</p>
+          <ul>
+
+          <% for request in post.reserved_requests %>
+            <%= link_to user_profile_path(request.user.username) do%>
+              <li  style="display:inline-block" data-toggle="tooltip" data-placement="top" title="<%= request.user.username %>"><%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded avatar-hover", style: "margin: 5px 5px 5px 15px" %></li> <% end %>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+        </div>
+        <% if post.user != current_user %>
+          <% if !post.reserved_by_user?(current_user.id) %>
+            <%= form_for DirectBooking.new, url: direct_bookings_path do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %></td>
+              <%= f.hidden_field :driver_post_id, value: post.id %></td>
+              <%= submit_tag "Join this ride", class: "btn btn-success btn-xs", style: "float:right" %>
+            <% end %>
+          <% else %>
+            <% case post.get_reserve_status_by_user(current_user.id)
+            when 0 %> <div class="alert alert-danger" style="padding: 5px 0px 5px 10px;"> Status: Waiting for driver's approval</div>
+            <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">Status: Join request accepted! </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% if post.user == current_user %>
+          <span class="post-icon pull-right">
+            <%= link_to post, method: :delete do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!--<div class="panel-footer" style="height: 40px;" >  row for comments
+    <div class="col-xs-2">
+      <p>avatar</p>
+    </div>
+    <div class="col-xs-8">
+      <p>comment section</p>
+    </div>
+    <div class="col-xs-2">
+      <p>submit</p>
+    </div>
+  </div> -->
+</div>
+<% end %>
+<% else %>
+<div style="text-align:center">
+<h3>No Availabe Ride</h3>
+<p> Find your friends or invite your friends to Noompang to see more available rides </p>
+</div>
+ <%end%>

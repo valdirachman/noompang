@@ -16,7 +16,7 @@
     <%= render '/components/post_form' %>
     <br>
     <div class="my-posts">
-      <%= render '/components/rides', posts: @posts %>
+      <%= render '/components/driver_posts', posts: @posts %>
     </div>
     <div class="infinite-scrolling">
       <%= will_paginate @posts %>

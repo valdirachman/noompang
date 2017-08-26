@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  has_many :indirect_bookings, dependent: :destroy
 
   # For repost
   has_many :reposts, :foreign_key => "original_id", :class_name => "Post"
@@ -26,5 +27,21 @@ class Post < ActiveRecord::Base
       reposter.save
       "Ride reposted"
     end
+  end
+
+  def reserved?
+    self.indirect_bookings.reserved.exists?
+  end
+
+  def pending?
+    self.indirect_bookings.reserved.first.status == 0
+  end
+
+  def accepted?
+    self.indirect_bookings.reserved.first.status == 1
+  end
+
+  def get_reserver
+    self.indirect_bookings.reserved.first.driver_post.user.username
   end
 end
