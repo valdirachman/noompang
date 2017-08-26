@@ -28,7 +28,7 @@ class IndirectBookingsController < ApplicationController
     if (@indirect_booking.user == current_user)
       @indirect_booking.accept
       respond_to do |format|
-        format.html { redirect_to home_path, notice: 'Booking was successfully accepted.' }
+        format.html { redirect_to notification_path, notice: 'Booking was successfully accepted.' }
       end
     else
       respond_to do |format|
@@ -41,7 +41,7 @@ class IndirectBookingsController < ApplicationController
     if (@indirect_booking.user == current_user)
       @indirect_booking.reject
       respond_to do |format|
-        format.html { redirect_to home_path, notice: 'Booking was successfully rejected.' }
+        format.html { redirect_to notification_path, notice: 'Booking was successfully rejected.' }
       end
     else
       respond_to do |format|

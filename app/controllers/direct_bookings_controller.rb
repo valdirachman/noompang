@@ -11,7 +11,7 @@ class DirectBookingsController < ApplicationController
       @direct_booking.status = 0
       respond_to do |f|
         if (@direct_booking.save)
-          f.html { redirect_to home_drivers_path, notice: "Your join request has been sent! Wait for Driver to respond" }
+          f.html { redirect_to home_path, notice: "Your join request has been sent! Wait for Driver to respond" }
         else
           f.html { redirect_to home_path, notice: "Error: Booking Not Saved."}
         end
@@ -27,7 +27,7 @@ class DirectBookingsController < ApplicationController
     if (@direct_booking.driver_post.user == current_user)
       @direct_booking.accept
       respond_to do |format|
-        format.html { redirect_to home_path, notice: 'Booking was successfully accepted.' }
+        format.html { redirect_to notification_path, notice: 'Booking was successfully accepted.' }
       end
     else
       respond_to do |format|
@@ -40,7 +40,7 @@ class DirectBookingsController < ApplicationController
     if (@direct_booking.driver_post.user == current_user)
       @direct_booking.reject
       respond_to do |format|
-        format.html { redirect_to home_path, notice: 'Booking was successfully rejected.' }
+        format.html { redirect_to notification_path, notice: 'Booking was successfully rejected.' }
       end
     else
       respond_to do |format|

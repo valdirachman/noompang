@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   get '/user/:id' => 'pages#profile', as: 'user_profile'
 
-  get '/notification' => 'pages#notification'
+  get '/notification' => 'pages#notification', as: 'notification'
 
   get '/active_rides' => 'pages#active_rides'
 
