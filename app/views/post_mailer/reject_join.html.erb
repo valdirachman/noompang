@@ -1,8 +1,176 @@
-<%= @driver.username %> has rejected you to join their ride!
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  </style>
+  <body style="margin: 0; padding: 0;" bgcolor="#e9ebee">
 
-<%= @post.from %>
-<%= @post.destination %>
-<%= @post.date %>
-<%= @post.time %>
-<%= @post.price %>
-<%= @post.quantity %>
+    <table cellpadding="0" cellspacing="0" width="100%" style="font-family:Helvetica, Arial">
+      <tr>
+        <tr>
+          <br>
+        </tr>
+       <td>
+         <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; border-top-style:solid; border-top-color:#1e2f4d;border-width: 7px" bgcolor="white" >
+
+       <tr>
+        <td align="center" style="padding: 0 0 0 0; margin-top:-15px">
+          <br><br><br>
+         <%= image_tag("logos/Logo Noompang inverse small.png", style:"max-height:35px") %>
+        </td>
+       </tr>
+
+          <td style="padding: 0px 30px 30px 30px;">
+          <table cellpadding="0" cellspacing="0" width="100%" >
+       <tr>
+        <td style="padding-top: 20px;">
+         <p style="color:#333333; font-size: 35px" >Hello <%= @driver.username %></p>
+        </td>
+       </tr>
+
+       <table>
+            <hr>
+       <tr>
+         <td>
+
+           <table>
+             <tr>
+               <td>
+                 <table>
+                   <tr>
+                     <td>
+                       <br>
+
+                   <%= image_tag @post.user.profile.avatar.url(:thumb) ,style: "border-radius: 50%; max-height:35px"  %>
+
+               </td>
+               <td width="400" style="padding: 18px 0px 0px 10px">
+
+                  <b><%= @post.user.username %></b>
+
+                just posted a new ride!
+              </td>
+                  </tr>
+                    </table>
+               </td>
+             </tr>
+
+             <tr>
+              <td style="padding-top: 10px; font-size: 25px;">
+
+                  <% if @post.date === Date.today %>
+                  <%= @post.date.strftime("Today, %-d %b") %>
+                <% else %>
+                  <%= @post.date.strftime("%A, %-d %b") %>
+                <% end %>
+                - <%= @post.time.strftime("%H:%M")  %>
+              </td>
+             </tr>
+
+             <tr style="padding-top: 10px;">
+              <td style="padding-top: 10px;">
+                 <%= image_tag("from-circle.png", style:"max-height:15px; margin: 0px 10px -2px 10px") %> <%= @post.from %>
+                 <%= image_tag("arrow.png", style:"max-height:6px; margin: 0 10px 3px 10px") %>
+                 <%= image_tag("to-circle.png", style:"max-height:15px; margin: 0px 10px -2px 0;") %> <%= @post.destination %>
+              </td>
+             </tr>
+
+             <tr style="padding-top: 10px;">
+               <td style="padding-top: 10px;">
+               <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= @post.available_seats%></b> seats available out of <%= @post.quantity %></p>
+             </td>
+           </tr>
+           <tr style="padding-top: 10px;">
+             <td style="padding-top: 10px;">
+               <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= @post.price %></b> per ride</p>
+             </td>
+           </tr>
+
+             <tr>
+              <td style="padding-top: 10px;">
+                Notes:<% if @post.note && @post.note != "" %>
+                  <%= @post.note %>
+                <% end %>
+              </td>
+             </tr>
+           </table>
+
+         </td>
+
+       </tr>
+     </table>
+     <hr>
+     <tr>
+      <td style="padding: 10px 30px 30px 30px; font-size: 14px;">
+        See
+            <b><%= @post.user.username %>'s</b>
+        other posts at <a href="www.noompang.com"> noompang.com </a>
+      </td>
+     </tr>
+     </table>
+
+     </td>
+   </tr>
+   <tr>
+
+       <tr align="center">
+        <td style="padding: 0px 30px 30px 30px; background-color:#e9ebee">
+          <table cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td style="font-size:12px; color:#b5bac1; background-color:#e9ebee ; color:#666666; " align="center">
+                <br><br>
+                Follow Noompang's social media for more information
+              </td>
+            </tr>
+            <tr>
+
+               <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <br>
+                  <br>
+                 <td>
+                  <a href="https://www.facebook.com/noompangcom">
+                    <%= image_tag("explore/facebook.png", style:"max-height:35px;") %>
+                    </a>
+                 </td>
+                 <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
+                 <td>
+                  <a href="https://twitter.com/noompangcom?lang=en">
+                    <%= image_tag("explore/twitter.png", style:"max-height:35px;") %>
+                  </a>
+                 </td>
+                 <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
+                 <td>
+                  <a href="https://www.instagram.com/noompangcom/?hl=en"><%= image_tag("explore/instagram.png", style:"max-height:35px;") %></a>
+                 </td>
+                 <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
+                 <td>
+                  <a href="https://line.me/R/ti/p/@qer6098s"><%= image_tag("explore/line.png", style:"max-height:35px;") %> </a>
+                 </td>
+                </tr>
+               </table>
+             </tr>
+
+          <tr>
+            <td style="font-size:12px; color:#b5bac1; background-color:#e9ebee ; color:#666666; " align="center">
+              This email is intended for <%= @driver.username %>, because you follow <%= @post.user.username %> account on noompang
+            </td>
+          </tr>
+          <tr>
+           <td style="font-size:12px; color:#b5bac1; background-color:#e9ebee ; color:#666666;  " align="center">
+             <br>
+            © Copyright 2017, Noompang, Inc. All rights reserved.
+          </td>
+         </tr>
+
+          </table>
+        </td>
+       </tr>
+
+         </table>
+       </td>
+      </tr>
+     </table>
+  </body>
+</html>
