@@ -3,10 +3,6 @@
   <div class="panel panel-default post-panel ride-hover-master" id="post-panel">
     <div class="ride-hover">
     <div class="panel-body row">
-      <% if post.original != nil %>
-          <p class="post-repost" style="font-size:12px;"><span class="post-reposter"><span class="glyphicon glyphicon-retweet"></span> &nbsp; reposted by  <%= post.user.username %></span></p>
-        <br>
-      <% end %>
       <div class="col-xs-2 col-md-1" style="padding-top:10px;">
         <% if post.original != nil %>
           <%= image_tag post.original.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
@@ -43,14 +39,6 @@
           <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
         <% end %>
 
-        <% if post.user != current_user && post.original == nil && !post.reposts.find_by_user_id(current_user.id) %>
-          <span class="post-icon pull-right">
-            <%= link_to repost_post_path(post), method: :post do %>
-              <span class="glyphicon glyphicon-retweet"></span>
-            <% end %>
-          </span>
-        <% end %>
-
         <% if !post.reserved? %>
           <% if post.user != current_user %>
             <%= form_for DriverPost.new, url: driver_posts_with_indirect_booking_path do |f| %>
@@ -60,7 +48,7 @@
               <%= f.hidden_field :time, value: post.time %>
               <%= f.hidden_field :post_id, value: post.id %>
               <%= f.hidden_field :user_id, value: post.user.id %>
-              <div class="btn btn-xs btn-primary" style="float:right" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=post.id.to_s%>" aria-expanded="false" aria-controls="collapse<%=post.id.to_s%>"> pick up</div>
+              <div class="btn btn-xs btn-primary" style="float:right" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=post.id.to_s%>" aria-expanded="false" aria-controls="collapse<%=post.id.to_s%>">Pick Up</div>
 
 
 
@@ -77,9 +65,9 @@
               </div>
               <div class="col-sm-6">
                 <img src="/images/price.png" style="max-height:15px; margin-top:-4px;">
-                <%= f.label :travel_price %>
+                <%= f.label :passenger_contribution %>
                 <div class="field form-group">
-                  <%= f.text_field :price, placeholder: "Example: 150000", class: "form-control", style: "font-size: 12px"  %>
+                  <%= f.text_field :price, placeholder: "Example: 20000", class: "form-control", style: "font-size: 12px"  %>
                 </div>
               </div>
 

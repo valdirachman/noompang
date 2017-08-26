@@ -1,5 +1,5 @@
 <% if !join_requests.empty? %>
-<h4> Ride Request </h4>
+<h4> Join Request </h4>
 <hr>
 <% for request in join_requests %>
 <div class="row">
@@ -27,7 +27,7 @@
     <%= request.driver_post.destination %>
   </span>
 </p>
-<% if request.driver_post.note && request.driver_post.note != "" %>
+<% if request.driver_post.note.present? %>
   <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= request.driver_post.note %></p>
 <% end %>
 <br>
@@ -44,7 +44,7 @@
 
 <% end %>
 <% else %>
-<h4> Ride Request </h4>
+<h4> Join Request </h4>
 <hr>
-<p> There's no ride requests </p>
+<p> There's no join request </p>
 <% end %>

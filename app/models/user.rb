@@ -63,4 +63,12 @@ class User < ActiveRecord::Base
   def self.search(query)
     where("username like ?", "%#{query}%")
   end
+
+  def has_notification
+    self.pending_invited_by.count + DirectBooking.pending_of_user(self.id).count + IndirectBooking.pending_of_user(self.id).count > 0
+  end
+
+  def num_notification
+    self.pending_invited_by.count + DirectBooking.pending_of_user(self.id).count + IndirectBooking.pending_of_user(self.id).count
+  end
 end
