@@ -113,6 +113,9 @@ h1{
   }
 }
 
+.panel .panel-default {
+  border-radius: 3px;
+}
 //field css for sign in, sign up, etc
 
 .sign-user-logo {
@@ -169,6 +172,46 @@ h1{
 }
 .ride-hover-master:hover {
   background-color: #f4f5f7;
+}
+
+//timline tab
+.post-tab-ul {
+  font-size: 0;
+  position: relative;
+  padding: 0;
+  margin: 2px 0 0 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+.post-tab-li {
+  display: inline-block;
+  font-size: 14px;
+  width: 33.3%;
+  height: 60px;
+  background: white;
+  text-align: center;
+  line-height: 60px;
+  color: black;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+    box-shadow: 0 2px 0px rgba(0,0,0,0.04);
+}
+
+.post-tab-li:hover {
+ background-color: #efefef;
+}
+
+.post-tab-slider {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  border-bottom: 4px solid;
+  border-color:  #19478a;
+
 }
 
 //css navbar responsive
@@ -1137,7 +1180,7 @@ h1{
   padding: 0px 0 10px 30px;
 }
 .panel {
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 @media (max-width: 768px) {

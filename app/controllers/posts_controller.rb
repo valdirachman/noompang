@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to home_path, notice: 'Ride was successfully deleted.' }
+      format.html { redirect_to home_ride_requests_path, notice: 'Ride was successfully deleted.' }
     end
   end
 

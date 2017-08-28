@@ -1,4 +1,5 @@
 <h4> My Ride Requests </h4>
+<% if !rider_posts.empty? %>
 <% for post in rider_posts %>
 <hr>
 <p class="post-date"><span class="post-date-time">
@@ -40,3 +41,7 @@
 
 
 <% end %>
+<%else %>
+<hr>
+<p> There's no active ride request </p>
+<%end%>

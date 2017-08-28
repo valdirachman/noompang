@@ -11,7 +11,17 @@
   </div>
 
   <div class="col-sm-6 col-xs-12 timeline-column">
-    <%= render '/components/post_tab' %>
+    <ul class="post-tab-ul">
+      <%= link_to home_path do %>
+      <li class="post-tab-li" id="tab1" style="border-radius:3px 0 0 3px"> Ride Offers </li>
+      <% end %>
+      <%= link_to home_ride_requests_path do %>
+      <li class="post-tab-li post-tab-slider" id="tab2"> Ride Request </li>
+      <% end %>
+      <%= link_to active_rides_path do %>
+      <li class="post-tab-li" id="tab3" style="border-radius:0 3px 3px 0"> My Active Rides </li>
+      <% end %>
+    </ul>
     <br>
     <%= render '/components/post_form' %>
     <br>
