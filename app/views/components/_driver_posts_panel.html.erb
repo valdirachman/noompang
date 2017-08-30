@@ -1,4 +1,5 @@
 <h4>My Ride Offers</h4>
+<% if !driver_posts.empty? %>
 <% for post in driver_posts %>
   <hr>
   <p class="post-date"><span class="post-date-time">
@@ -17,17 +18,20 @@
         <img src="/images/arrow.png" style="max-height:6px;">
       <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off">
       <%= post.destination %></span>
-      <% if post.user == current_user %>
-        <span class="post-icon pull-right">
-          <%= link_to post, method: :delete do %>
-            <span class="glyphicon glyphicon-trash"></span>
-          <% end %>
-        </span>
-        <% end %>
+
   </p>
   <% if post.note && post.note != "" %>
     <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
   <% end %>
+  
+  <% if post.user == current_user %>
+    <span class="post-icon pull-right">
+      <%= link_to post, method: :delete do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+    </span>
+    <% end %>
+
   <% if post.reserved? %>
     <div class="col-sm-12" style="margin: 10px 0 10px 0">
       <p style="font-weight:400; padding-left:10px;">Passangers:</p>
@@ -40,3 +44,7 @@
     </div>
   <% end %>
 <% end %>
+<%else %>
+<hr>
+<p> There's no active ride offer </p>
+<%end%>
