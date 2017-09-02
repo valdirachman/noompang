@@ -477,6 +477,11 @@ h1{
   color: grey;
 }
 
+@media (max-width:768px){
+  #post-image-avatar{
+    padding-left: 0;
+  }
+}
 
 /*basic Properties */
 .row {
@@ -788,7 +793,7 @@ h1{
   .homephone{
     text-align: center;
     max-height: 350px;
-    padding: 50px 0 0 100px;
+    padding: 50px 0 0 20px;
   }
 }
 @media (min-width: 1050px) {
@@ -796,7 +801,6 @@ h1{
     max-height: 450px;
     padding: 50px 0 0 0px;
     text-align: center;
-    padding-left: 130px;
   }
 }
 
@@ -984,13 +988,13 @@ h1{
 }
 #timelineimg {
   max-height: 600px;
-  padding: 50px 100px 50px 180px
+  padding: 50px 100px 50px 20px
 }
 
 @media (max-width: 1450px) {
   #timelineimg {
     max-height: 500px;
-    padding: 30px 50px 30px 50px
+    padding: 30px 50px 30px 10px
   }
 }
 
@@ -1004,29 +1008,29 @@ h1{
 @media (max-width: 768px) {
   #timelineimg {
     height: 210px;
-    padding: 0;
+    padding: 0 0 0 40px;
   }
 }
 
 
 .timeline-content{
-  padding: 140px 150px 50px 150px;
+  padding: 140px 10px 50px 150px;
 }
 
 @media (max-width: 1450px) {
   .timeline-content{
-    padding: 60px 50px 20px 100px;
+    padding: 60px 10px 20px 100px;
   }
 }
 
 @media (max-width: 992px) {
   .timeline-content{
-    padding: 20px 30px 20px 30px;
+    padding: 20px 20px 20px 30px;
   }
 }
 @media (max-width: 768px) {
   .timeline-content{
-    padding: 20px 30px 40px 30px;
+    padding: 20px 20px 40px 30px;
     text-align: center;
 
   }
@@ -1140,7 +1144,7 @@ h1{
 }
 
 .benefit-content {
-  min-height: 320px;
+  min-height: 330px;
   padding: 20px 10px 20px 10px;
   background-color: #284c70;
   box-shadow: -1px 3px 6px rgba(14,20,33,.7);
@@ -1296,11 +1300,11 @@ h1{
 
 /*HOW NO 1*/
 #how-to-1-img{
-  max-height: 300px;
+  max-height: 200px;
 }
 @media (max-width: 768px){
   #how-to-1-img{
-    max-height: 160px;
+    max-height: 130px;
   }
 }
 
@@ -1310,7 +1314,7 @@ h1{
 }
 
 .explore-friends{
-padding: 0 50px 0 300px;
+padding: 0 50px 0 70px;
 }
 @media (max-width: 1400px){
   .explore-friends{

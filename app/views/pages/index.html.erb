@@ -48,7 +48,7 @@
               <!-- divide 2, pics and form outside container-->
               <!-- new row for phone pic and form-->
               <!-- section form -->
-              <section class="form-section">
+              <section class="form-section container">
                 <div class="col-sm-5 col-sm-push-7" id="user-form">
 
                   <div class="sign-up-form">
@@ -118,7 +118,9 @@
                 </div><!-- header content -->
               </section><!-- Background header image -->
 
-              <section class="row application-section">
+              <section class="application-section">
+                <div class="container">
+                <div class="row">
                 <div class="col-lg-6 col-lg-push-6 timeline-content">
                   <h2> Cari Teman Seperjalanan</h2>
                     <p> Tulis perjalananmu agar kamu tidak bosan sendirian di jalan. Kamu juga bisa mengatur
@@ -128,14 +130,15 @@
                 <div class="col-lg-6 col-lg-pull-6" class="timelineimg">
                   <img src="images/explore/timeline.png" id="timelineimg"/>
                 </div>
+              </div>
+              </div>
               </section>
 
-              <section class="benefit-section ">
-                  <div class="benefit-title">
-                    <div class="container">
+              <section class="benefit-section">
+                  <div class="benefit-title container">
                       <h2> Keuntungan Pakai Noompang</h2>
-                    </div>
                   </div>
+                  <div class="container">
                   <div class="row">
                   <div class="benefit-inside">
                   <div class="col-sm-4 benefit-box">
@@ -160,10 +163,12 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
                   <button type="button" class="btn btn-lg btn-warning"><%= link_to "Selengkapnya", how_it_works_path , style: "color:white;"%></button>
               </section>
 
-              <section class="section-how-it-works" id="how-it-works">
+              <section class="section-how-it-works container" id="how-it-works">
                 <div class="how-title container">
                   <h2> How it Works </h2>
                   <h3> Start Your Journey in just a Few Steps!  </h3>

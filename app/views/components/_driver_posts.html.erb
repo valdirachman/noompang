@@ -3,10 +3,10 @@
   <div class="panel panel-default post-panel ride-hover-master" id="post-panel">
     <div class="ride-hover">
     <div class="panel-body row">
-      <div class="col-xs-2 col-md-1" style="padding-top:10px;">
+      <div class="col-xs-2" style="padding-top:10px;" id="post-image-avatar">
         <%= image_tag post.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
       </div>
-      <div class="col-xs-10 col-md-11 col">
+      <div class="col-xs-10" style="border-left: 0.5px solid;border-color:#e3e3e3">
         <p class="post-title"><span class="post-owner"><%= link_to post.user.username, user_profile_path(post.user.username) %></span><span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span></p>
         <p class="post-date"><span class="post-date-time">
           <% if post.date === Date.today %>
@@ -62,7 +62,7 @@
           <% else %>
             <% case post.get_reserve_status_by_user(current_user.id)
             when 0 %> <div class="alert alert-danger" style="padding: 5px 0px 5px 10px;"> Status: Waiting for driver's approval</div>
-            <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">Status: Join request accepted! </div>
+            <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">You are in this ride </div>
             <% end %>
           <% end %>
         <% end %>
