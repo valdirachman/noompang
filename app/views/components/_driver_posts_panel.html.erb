@@ -1,7 +1,12 @@
-<h4>My Ride Offers</h4>
+<div class="panel panel-default">
+  <div class="row">
+    <div class="col-sm-12 panel-title">
+      <h4> My Ride Offers </h4>
+    </div>
+  </div>
+  <div class="panel-body">
 <% if !driver_posts.empty? %>
 <% for post in driver_posts %>
-  <hr>
   <p class="post-date"><span class="post-date-time">
     <% if post.date === Date.today %>
       <%= post.date.strftime("Today, %-d %b") %>
@@ -23,7 +28,7 @@
   <% if post.note && post.note != "" %>
     <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
   <% end %>
-  
+
   <% if post.user == current_user %>
     <span class="post-icon pull-right">
       <%= link_to post, method: :delete do %>
@@ -45,6 +50,7 @@
   <% end %>
 <% end %>
 <%else %>
-<hr>
 <p> There's no active ride offer </p>
 <%end%>
+</div>
+</div>

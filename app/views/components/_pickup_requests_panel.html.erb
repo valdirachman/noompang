@@ -1,6 +1,11 @@
+<div class="panel panel-default">
+  <div class="row">
+    <div class="col-sm-12 panel-title">
+      <h4> Pickup Request </h4>
+    </div>
+  </div>
+  <div class="panel-body">
 <% if !pickup_requests.empty? %>
-<h4> Pickup Request </h4>
-<hr>
 <% for request in pickup_requests %>
 
 <div class="row">
@@ -41,7 +46,7 @@
 <hr>
 <% end %>
 <% else %>
-<h4> Pickup Request </h4>
-<hr>
 <p> There's no pickup request </p>
 <%end%>
+</div>
+</div>

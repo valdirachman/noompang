@@ -1,10 +1,13 @@
-
-  <div class="panel-body">
+<div class="panel panel-default panel-body">
+  <div class="line-bottom profile-font">
     <div class="row">
       <div class="col-sm-12 userpanel-avatar " style="text-align: center; "><%= image_tag @profile.avatar.url(:medium), class: "avatar-profile img-rounded" %></div>
       <div class="col-sm-12 userpanel-username" style="text-align: center;"><h4><%= user.username %></h4></div>
 
-      <p class="p-content" style="padding:10px 0 20px 0; text-align:center;"><%= @profile.description %></p>
+      <p class="p-content" style="padding:10px 0 20px 0; text-align:center;"><% if !@profile.description.empty? %>
+        <%= @profile.description %>
+      <%else %>
+    <%end %></p>
 
       <div class="col-sm-12">
 
@@ -19,4 +22,5 @@
         <% end %>
       </div>
     </div>
-  </div>
+</div>
+</div>

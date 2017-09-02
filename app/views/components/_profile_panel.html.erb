@@ -1,17 +1,50 @@
+<div class="panel panel-default">
 
+  <div class="row">
+    <div class="col-sm-12 panel-title">
+      <h4> My Profile      <small> <% if user.id == current_user.id %>
+              <%= link_to '.Edit profile', edit_profile_path(profile) %>
+            <% end %> </small></h4>
+    </div>
+  </div>
   <div class="panel-body">
     <div class="row ">
+      <div class="col-sm-12">
       <% if !profile.is_nil? && !profile.is_empty? %>
-      <h4> About </h4>
+        <% if profile.name? %>
+          <p> My name is <a><%= profile.name %></a></p>
+          <% value = 5 %>
+          <%else %>
+          <%end%>
 
-        <p style="margin-top:10px"> My name is <a><%= profile.name %></a></p>
-        <p style="margin-top:10px"> Work in <a><%= profile.occupation %></a></p>
-        <p style="margin-top:10px"> From<a> <%= profile.occupation_place %></a></p>
+          <% if profile.occupation? %>
+          <p style="margin-top:10px"> Work in <a><%= profile.occupation %></a></p>
+          <% value = value + 5 %>
+          <%else %>
+          <%end%>
 
-      <% elsif user.id == current_user.id %>
-        <p class="post-content"><%= link_to 'Update your profile', edit_profile_path(profile) %></p>
+          <% if profile.occupation_place? %>
+          <p style="margin-top:10px"> From<a> <%= profile.occupation_place %></a></p>
+          <% value = value + 5 %>
+          <%else %>
+          <%end%>
+
+        <% if user.id == current_user.id %>
+          <hr>
+        <p><strong> Profile progress </strong></p>
+        <div class="progress" style="margin-top:5px;">
+          <div class="progress-bar progress-bar-striped " role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:<%= value.to_s %>%">
+          <%= value.to_s %>% Complete
+          </div>
+        </div>
+        <% else %>
+        <% end %>
+      <% elsif user.id == current_user.id || profile.gender? || !profile.gender? %>
+        <p class="post-content"><%= link_to 'Your profile is empty. Update your profile now', edit_profile_path(profile) %></p>
       <% else %>
         <p class="post-content"><%= user.username %> has no profile yet!</p>
       <% end %>
+      </div>
     </div>
   </div>
+</div>

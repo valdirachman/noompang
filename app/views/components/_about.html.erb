@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="row">
+    <div class="col-sm-12 panel-title">
+      <h4> Overview </h4>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-6">
+        <% if @profile.address? %>
+        <p><%= @profile.address %></p>
+        <p style="margin-top:10px">
+        <% else %>
+        <% end %>
+        <p>
+        <%= @profile.age %>,
+        <% if @profile.gender? %>
+          Male</p>
+          <% else %>
+          Female</p>
+          <%end %>
+          <p style="margin-top:10px"><%= @profile.user.last_sign_in_at.strftime("%A, %-d %b") %></p>
+
+      </div>
+      <div class="col-xs-6">
+        <p><%= @profile.major %></p>
+
+          <%if @profile.university? %>
+          <p style="margin-top:10px">
+          <%= @profile.university %></p>
+          <p style="margin-top:10px">
+          <%else %>
+          <%end%>
+          <p>
+          <%= @profile.user.created_at.strftime("%A, %-d %b") %></p>
+      </div>
+    </div>
+  </div>
+</div>

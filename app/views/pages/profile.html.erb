@@ -1,51 +1,30 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="profile-header">
-      <h3 style="text-align:center"><%= @username %>'s profile page </h3>
-    </div>
-  </div>
-</div>
-
 
 <div class="row">
-
   <div class="col-sm-3">
-    <div class="panel panel-default panel-body">
-      <div class="line-bottom profile-font">
       <%= render '/components/user_panel', user: @user %>
-    </div>
-    </div>
-    <div class="panel panel-default panel-body">
       <%= render '/components/profile_panel', profile: @profile, user: @user %>
-    </div>
   </div>
 
-  <div class="col-sm-6 timeline-column">
+
+  <div class="col-sm-6 profile-column">
+    <ul class="post-tab-profile-ul">
+      <%= link_to user_profile_path do %>
+      <li class="post-tab-profile-li  post-tab-profile-slider" id="tab1" style="border-radius:3px 0 0 3px"> About </li>
+      <% end %>
+      <%= link_to user_rides_path do %>
+      <li class="post-tab-profile-li" id="tab2"> Rides</li>
+      <% end %>
+      <%= link_to see_friends_path do %>
+      <li class="post-tab-profile-li" id="tab3" style="border-radius:0 3px 3px 0"> Friends </li>
+      <% end %>
+      <%= link_to active_rides_path do %>
+      <li class="post-tab-profile-li" id="tab4" style="border-radius:0 3px 3px 0"> reviews </li>
+      <% end %>
+    </ul>
+    <div>
     <br>
-    <% if (current_user.friend_with? User.find_by_username(params[:id])) || (current_user.id == User.find_by_username(params[:id]).id) %>
-      <div class="my-posts">
-        <%= render '/components/rides', posts: @posts %>
-      </div>
-      <div class="infinite-scrolling">
-        <%= will_paginate @posts %>
-      </div>
-    <% else %>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <p><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> You have to be friend with <%= @username %> to see the rides!</p>
-        </div>
-      </div>
-    <% end %>
-  </div>
 
-  <div class="col-sm-3">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <center>
-           <%= render '/components/add_friend_button', :user => User.find_by_username(params[:id]) %>
-        </center>
-      </div>
-    </div>
-    <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
+      <%= render '/components/about', profile: @profile , user: @user%>
+
   </div>
 </div>

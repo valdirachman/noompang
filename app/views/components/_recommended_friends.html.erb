@@ -1,19 +1,25 @@
 <% if not recommended_friends.empty? %>
   <div class="panel panel-default">
+    <div class="row">
+      <div class="col-sm-12 panel-title">
+        <h4> Recommended Friends </h4>
+      </div>
+    </div>
     <div class="panel-body">
-        <h4 class="recommended">Recommended Friends</h4>
         <% for friend in recommended_friends %>
-          <hr>
+
           <div class="row">
             <div class="col-xs-2">
               <%= image_tag friend.profile.avatar.url(:thumb), class: "avatar-recommended img-rounded", style: "border-radius:50%;" %>
             </div>
             <div class="col-xs-10" style="padding-top:5px">
-              <span class="post-title"><a href="/user/<%= friend.username %>"><%= friend.username %></a></span>
+              <span class="post-title"><a href="/user/<%= friend.username %>"><%= friend.username  %></a></span>
 
               <span class="post-title" style="float:right;"><%= render '/components/add_friend_button', user: friend %></span>
             </div>
+
           </div>
+            <hr>
         <% end %>
     </div>
   </div>

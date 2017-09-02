@@ -1,17 +1,11 @@
 <div class="row">
   <div class="col-sm-3" id="left-panels">
-    <div class="panel panel-default panel-body">
-      <div class="line-bottom profile-font">
-      <%= render '/components/user_panel', user: current_user %>
-      </div>
-    </div>
-      <div class="panel panel-default panel-body">
-        <%= render '/components/profile_panel', profile: @profile, user: current_user %>
-    </div>
+      <%= render '/components/my_user_panel', user: current_user %>
+      <%= render '/components/profile_panel', profile: @profile, user: current_user %>
+
   </div>
   <div class="col-sm-6 timeline-column">
-
-    <ul class="post-tab-ul">
+    <ul class="post-tab-ul panel panel-default">
       <%= link_to home_path do %>
       <li class="post-tab-li" id="tab1" style="border-radius:3px 0 0 3px"> Ride Offers </li>
       <% end %>
@@ -24,17 +18,9 @@
     </ul>
 
       <br>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <%= render '/components/rider_posts_panel', rider_posts: @rider_posts %>
-          </div>
-        </div>
-        <br>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <%= render '/components/driver_posts_panel', driver_posts: @driver_posts %>
-          </div>
-        </div>
+      <%= render '/components/rider_posts_panel', rider_posts: @rider_posts %>
+      <br>
+      <%= render '/components/driver_posts_panel', driver_posts: @driver_posts %>
 
   </div>
   <div class="col-sm-3">

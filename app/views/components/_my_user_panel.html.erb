@@ -1,0 +1,32 @@
+<div class="panel panel-default panel-body">
+  <div class="line-bottom profile-font">
+    <div class="row">
+      <div class="col-xs-4 userpanel-avatar " style="text-align: center; padding-top:10px"><%= image_tag @profile.avatar.url(:thumb), class: "avatar-profile img-rounded", style: "height: 60px" %>
+      </div>
+
+      <div class="col-xs-8 userpanel-username">
+        <h4><%= user.username %></h4>
+        <p style="padding-bottom:6px"><%= @profile.description %></p>
+
+        <div class="col-xs-6" style="opacity: 0.7;padding-left:0">
+          <p>Rides</p>
+          <h6 style="font-size: 150%; font-weight: 300;"><%= user.posts.count %></h6>
+        </div>
+
+        <%= link_to see_friends_path(@profile.user.username) do %>
+        <div class="col-xs-6" style="font-size: 100%; opacity: 0.7; padding-left:0">
+        <p>Friends</p>
+        <h6 style="font-size: 150%; font-weight: 300;"><%= user.friends.count %></h6>
+        </div>
+        <% end %>
+      </div>
+
+
+
+      <div class="col-sm-12">
+
+
+      </div>
+    </div>
+</div>
+</div>

@@ -1,7 +1,12 @@
+<div class="panel panel-default">
+  <div class="row">
+    <div class="col-sm-12 panel-title">
+      <h4> Friend Request</h4>
+    </div>
+  </div>
+  <div class="panel-body">
 <% if !@requests.empty? %>
-  <h4> Friend Request </h4>
   <% for @r in @requests %>
-    <hr>
     <div class="row">
       <div class="col-sm-12">
         <div class="col-sm-3 col-xs-3 col-md-3 col-xl-3 float-right" style="text-align:center;">
@@ -25,8 +30,8 @@
   <% end %>
 <% else %>
 
- <h4> Friend Request </h4>
-  <hr>
   <p>There's no friend request yet!</p>
 
 <% end %>
+</div>
+</div>

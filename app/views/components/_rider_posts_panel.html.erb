@@ -1,7 +1,12 @@
-<h4> My Ride Requests </h4>
+<div class="panel panel-default">
+  <div class="row">
+    <div class="col-sm-12 panel-title">
+      <h4> My Ride Request </h4>
+    </div>
+  </div>
+  <div class="panel-body">
 <% if !rider_posts.empty? %>
 <% for post in rider_posts %>
-<hr>
 <p class="post-date"><span class="post-date-time">
   <% if post.date === Date.today %>
     <%= post.date.strftime("Today, %-d %b") %>
@@ -42,6 +47,7 @@
 
 <% end %>
 <%else %>
-<hr>
 <p> There's no active ride request </p>
 <%end%>
+</div>
+</div>

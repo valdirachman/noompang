@@ -13,8 +13,9 @@ class FriendsController < ApplicationController
   end
 
   def see_friends
-    @profile = current_user.profile
+
     @user = User.find_by_username(params[:id])
+    @profile = @user.profile
     if @user
       @friends = @user.friends
     else
@@ -36,6 +37,6 @@ class FriendsController < ApplicationController
       new_friends = User.find_not_friends(current_user)
       @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
     end
-    
+
   end
 end
