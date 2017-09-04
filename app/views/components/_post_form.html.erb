@@ -1,13 +1,12 @@
-<div class="panel panel-default">
-<ul class="nav nav-pills nav-justified" role="tablist" style="border-radius:0px; border: solid 0.5px; border-color: #efefef" >
+<div class="panel-default panel">
+<ul class="nav nav-pills nav-justified" role="tablist" style="border-radius:0px; border-bottom:0.5px solid;border-color: #efefef" >
   <li role="form-post" class="active"><a href="#driver-post" aria-control="driver-post" role="tab" data-toggle="tab"> Offer a Ride </a></li>
   <li role="form-post"><a href="#rider-post" aria-control="rider-post" role="tab" data-toggle="tab">  Request a Ride </a></li>
 </ul>
 
-
-
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane fade in active" id="driver-post">
+
 <%= form_for(DriverPost.new) do |f| %>
 
 
@@ -233,5 +232,4 @@
 </div>
 
 </div>
-
 </div>

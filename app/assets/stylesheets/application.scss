@@ -18,7 +18,7 @@
 
 body {
   background-color: #e9ebee;
-  font-family: 'open sans', sans-serif;
+  font-family: Arial, sans-serif;
   overflow-x: hidden;
 
 }
@@ -29,13 +29,13 @@ ul {
 }
 
 p {
-  font-family: 'open sans', sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   font-size: 12px;
 }
 
 h1,h2,h3,h4 {
-  font-family: 'cabin', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 h1{
@@ -46,7 +46,7 @@ h1{
 
 .bg-devise {
   background: url(../bgsign.png);
-  font-family: 'open sans', sans-serif;
+  font-family: Arial, sans-serif;
   background-repeat: no-repeat;
   background-color: #1e2f4d;
   background-position: center;
@@ -158,6 +158,13 @@ h1{
     padding-right: 0px;
   }
 }
+
+@media(max-width:768px){
+  #about-user-panel {
+    padding: 0;
+  }
+}
+
 //field css for sign in, sign up, etc
 
 .sign-user-logo {
@@ -415,7 +422,32 @@ h1{
     padding-right: 0;
   }
 }
+//button css
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus {
+  border-top: 4px solid;
+  border-color:  #19478a;
+  color: black;
+  background-color: white;
+}
 
+.nav-pills > li.active > a:hover{
+  border-top: 4px solid;
+  border-color:  #19478a;
+  color: black;
+  background-color: #efeeee;
+}
+
+.nav-pills > li > a:hover{
+  border-top: 4px solid;
+  border-color:  #efeeee;
+  color: black;
+  background-color: #efeeee;
+}
+
+.nav-pills > li > a {
+    border-radius: 0px 0px 0px 0px;
+    color: black;
+}
 
 //form-post
 .form-post-modal {
@@ -655,7 +687,7 @@ h1{
 .header .content-text > p{
   padding: 0 40px 0 40px;
   color: #304262;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Arial, sans-serif;
   font-weight: 400;
   font-size: 30px;
   padding: 0 0 0 0;
@@ -727,7 +759,7 @@ h1{
 .form-control-index{
   background-color: #d4d9e1;
   font-weight: normal;
-  font-family: 'open sans', sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 12px;
 }
 
@@ -807,7 +839,7 @@ h1{
 
 /*footer css */
 .footer-section{
-  font-family: 'open sans', sans-serif;
+  font-family: Arial, sans-serif;
   font-weight:400;
   font-size: 16px;
   color: #346094;
@@ -948,14 +980,14 @@ h1{
 
 .riders-content h3  {
   color: white;
-  font-family: 'Open Sans',sans-serif;
+  font-family: Arial,sans-serif;
   font-weight: 300;
   margin-bottom: 30px;
 }
 @media (max-width: 768px) {
   .riders-content h3  {
     color: white;
-    font-family: 'Open Sans',sans-serif;
+    font-family: Arial,sans-serif;
     font-weight: 300;
     margin-bottom: 30px;
     font-size: 15px;
@@ -1007,11 +1039,16 @@ h1{
 
 @media (max-width: 768px) {
   #timelineimg {
-    height: 210px;
-    padding: 0 0 0 40px;
+    height: 220px;
+    padding: 0 0 0 10px;
   }
 }
-
+@media (max-width: 350px) {
+  #timelineimg {
+    height: 200px;
+    padding: 0 0 0 0px;
+  }
+}
 
 .timeline-content{
   padding: 140px 10px 50px 150px;
@@ -1045,7 +1082,7 @@ h1{
 }
 
 .timeline-content p{
-  font-family: 'Open Sans', sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 20px;
   font-weight: 500;
   padding: 0;
@@ -1055,7 +1092,7 @@ h1{
 
 @media (max-width: 768px) {
   .timeline-content p{
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 16px;
     text-align: center;
     font-weight: 500;
@@ -1087,7 +1124,7 @@ h1{
   }
 }
 .benefit-section p{
-  font-family: 'Open Sans', sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
 }
 
@@ -1360,7 +1397,7 @@ padding: 0 50px 0 70px;
   padding: 5px 10px 5px 10px;
   margin: -2px 0 0 0;
   font-size: 12px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0 0 0 40px;
 }
 
@@ -1391,7 +1428,7 @@ padding: 0 50px 0 70px;
 }
 
 .form-group option {
-  font-family: 'Open Sans', sans-serif;
+  font-family: Arial, sans-serif;
   font-weight: 500;
 }
 .explore-form-post {
@@ -1489,7 +1526,7 @@ padding: 0 50px 0 70px;
   }
 }
 .how-content p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 20px;
   font-weight: 500;
   padding: 0;
@@ -1499,7 +1536,7 @@ padding: 0 50px 0 70px;
 
 @media (max-width: 768px) {
   .how-content p{
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 16px;
     text-align: center;
     font-weight: 500;

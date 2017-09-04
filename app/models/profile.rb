@@ -10,10 +10,10 @@ class Profile < ActiveRecord::Base
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 5.megabytes
 
   def is_nil?
-    return self.name.nil? && self.occupation.nil? && self.occupation_place.nil? && self.description.nil? && self.address.nil? && self.hobby.nil? && self.age.nil? && self.gender.nil? && self.university.nil? && self.major.nil? && self.about.nil?
+    return self.name.nil? && self.occupation.nil? && self.occupation_place.nil?
   end
 
   def is_empty?
-    return self.name.empty? && self.occupation.empty? && self.occupation_place.empty? && self.description.empty? && self.address.empty? && self.hobby.empty? && self.age.empty? && self.gender.empty? && self.university.empty? && self.major.empty? && self.about.empty?
+    return self.name.empty? && self.occupation.empty? && self.occupation_place.empty?
   end
 end
