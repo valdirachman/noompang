@@ -33,6 +33,7 @@
             <%= f.email_field :email, class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Email address", style: "font-size: 15px;"%>
           </div>
 
+          <% if @user.password_required?%>
           <div class="input-group input-group-lg" style="margin-bottom: 17px;">
             <span class="input-group-addon sign-password-logo" id="sizing-addon2" style="background-color:white"></span>
             <%= f.password_field :password, autocomplete: "off", class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Password", style: "font-size: 15px;"%>
@@ -50,7 +51,7 @@
             <span class="input-group-addon sign-password-logo" id="sizing-addon2" style="background-color:white"></span>
             <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control plc-clr", aria_describedby: "sizing-addon2", placeholder: "Password confirmation", style: "font-size: 15px;"%>
           </div>
-
+          <% end %>
           <div>
             <%= f.submit "Sign Up", class: "btn-form" %>
           </div>

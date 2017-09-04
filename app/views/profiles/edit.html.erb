@@ -94,6 +94,27 @@
       <% end %>
       </div>
     </div>
+
+    <div class="panel panel-default">
+      <div class="row">
+        <div class="col-sm-12 panel-title">
+          <h4> About </h4>
+        </div>
+      </div>
+      <div class="panel-body">
+        <a href="/auth/facebook"> login with fb </a>
+        <% for authentication in @authentications %>
+          <% if authentication.provider? %>
+            <%= authentication.user_id %>
+            <%= authentication.provider %>
+            <%= authentication.uid %>
+            <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
+          <% elsif%>
+
+          <%end %>
+        <% end %>
+      </div>
+      </div>
     </div>
 
     <div class="col-sm-3 col-xs-12">

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'users/index'
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => 'registrations'}
   resources :users do
     member do
       get :following, :followers
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+  resources :authentications
 
   root 'pages#index'
 
@@ -46,7 +48,7 @@ Rails.application.routes.draw do
 
   get '/user/:id' => 'pages#profile', as: 'user_profile'
 
-  get '/rides/:id' => 'pages#rides', as: 'user_rides' 
+  get '/rides/:id' => 'pages#rides', as: 'user_rides'
 
   get '/notification' => 'pages#notification', as: 'notification'
 
@@ -57,6 +59,8 @@ Rails.application.routes.draw do
   get '/accept/:id', to: 'friends#accept', as: 'accept_friend'
 
   get '/friends/:id', to: 'friends#see_friends', as: 'see_friends'
+
+  get '/auth/:provider/callback' => 'authentications#create'
 
   resources :driver_posts, only: [:create, :destroy]
 

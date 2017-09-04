@@ -29,7 +29,16 @@ class User < ActiveRecord::Base
   scope :not_friends, -> (current_user) { where user_id: friends }
 
   # helper methods
+  # for Authentication social media
+  has_many :authentications
 
+  def apply_omniauth(omniauth)
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  end
+  
+  def password_required?
+    (authentications.empty? || !password.blank?) && super
+  end
   # for creating empty profile
   def create_profile
     self.profile = Profile.create

@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
 
   def edit
     # use this to populate a form in your view
+    @authentications = current_user.authentications if current_user
     @profile = current_user.profile
     friends = current_user.friends
     @recommended_friends = []

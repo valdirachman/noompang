@@ -35,7 +35,12 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'figaro'
 # Paperclip for attachment support
 gem 'paperclip', '~> 5.0.0'
+# Omniauth for social media log-in
+gem 'omniauth'
 
+gem 'omniauth-facebook'
+
+gem 'omniauth-twitter'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
