@@ -26,22 +26,23 @@
     <% if post.note && post.note != "" %>
       <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
     <% end %>
-    <% if post.user == current_user %>
-      <span class="post-icon pull-right">
-        <%= link_to post, method: :delete do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-      </span>
-      <% end %>
 </p>
   <% if post.reserved? %>
-    <% if post.pending? %>
-      This ride has been temporarily reserved by <%= post.get_reserver %>
-    <% else %>
-      This ride has been successfuly reserved by <%= post.get_reserver %>
-    <% end %>
+  <% if post.pending? %><br><div class="alert alert-danger" style="padding: 5px 0px 5px 10px;">
+    <%= link_to user_profile_path(post.get_reserver), class: "alert-link" do %>
+    <%= post.get_reserver %> <%end%>is picking up this ride request</div>
+  <% else %>
+    <br>
+    <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">This ride request has been picked up by <%= link_to user_profile_path(post.get_reserver), class: "alert-link" do %><%= post.get_reserver %><% end %></div>
   <% end %>
-
+  <% end %>
+  <% if post.user == current_user %>
+    <span class="post-icon pull-right">
+      <%= link_to post, method: :delete do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+    </span>
+    <% end %>
 
 
 

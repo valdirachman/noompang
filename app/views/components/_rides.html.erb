@@ -58,14 +58,13 @@
               <!-- boundaries -->
               <div class="col-sm-6">
               <img src="/images/seats.png" style="max-height:15px; margin-top:-4px;">
-
               <%= f.label :number_of_seats %>
-                <div class="field form-group">
+                <div class="field form-group" style="font-size:12px;">
                   Available seats <%= f.select :quantity, 1..5 %>
                 </div>
               </div>
               <div class="col-sm-6">
-                <img src="/images/price.png" style="max-height:15px; margin-top:-4px;">
+                <img src="/images/price.png" style="max-height:12px; margin-top:-3px;">
                 <%= f.label :passenger_contribution %>
                 <div class="field form-group">
                   <%= f.text_field :price, placeholder: "Example: 20000", class: "form-control", style: "font-size: 12px"  %>
@@ -96,10 +95,11 @@
           <% end %>
         <% else %>
           <% if post.pending? %><br><div class="alert alert-danger" style="padding: 5px 0px 5px 10px;">
-            This ride has been temporarily reserved by <%= post.get_reserver %></div>
+            <%= link_to user_profile_path(post.get_reserver), class: "alert-link" do %>
+            <%= post.get_reserver %> <%end%>is picking up this ride request</div>
           <% else %>
             <br>
-            <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">This ride has been successfuly reserved by <%= post.get_reserver %></div>
+            <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">This ride request has been picked up by <%= link_to user_profile_path(post.get_reserver), class: "alert-link" do %><%= post.get_reserver %><% end %></div>
           <% end %>
         <% end %>
 

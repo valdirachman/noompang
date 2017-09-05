@@ -11,7 +11,7 @@ class DirectBookingsController < ApplicationController
       @direct_booking.status = 0
       respond_to do |f|
         if (@direct_booking.save)
-          f.html { redirect_to home_path, notice: "Your join request has been sent! Wait for Driver to respond" }
+          f.html { redirect_to home_path, notice: "Your join request has been sent! Waiting for driver's approval" }
           PostMailer.delay.new_join(@direct_booking.driver_post.user, DriverPost.find(direct_booking_params[:driver_post_id]), @direct_booking.user)
         else
           f.html { redirect_to home_path, notice: "Error: Booking Not Saved."}
@@ -19,7 +19,7 @@ class DirectBookingsController < ApplicationController
       end
     else
       respond_to do |f|
-        f.html { redirect_to home_path, notice: "The Ride is full!" }
+        f.html { redirect_to home_path, notice: "This Ride is full!" }
       end
     end
   end

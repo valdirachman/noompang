@@ -12,13 +12,22 @@
         <p style="margin-top:10px">
         <% end %>
         <p>
+        <% if @profile.age? %>
         <%= @profile.age %>,
+        <%end%>
         <% if @profile.gender? %>
           Male</p>
           <% else %>
           Female</p>
           <%end %>
-          <p style="margin-top:10px">Last log in <b><%= @profile.user.last_sign_in_at.strftime("%A, %-d %b") %></b></p>
+          <p style="margin-top:10px">
+            <%if @profile.user.last_sign_in_at? %>
+            Last log in <b>
+              <%= @profile.user.last_sign_in_at.strftime("%A, %-d %b") %></b>
+            <%else%>
+            Has not log in
+            <%end%>
+          </p>
 
       </div>
       <div class="col-xs-6">
