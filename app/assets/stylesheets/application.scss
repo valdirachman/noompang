@@ -128,11 +128,21 @@ h1{
 @media(max-width:415px){
   #post-panel {
     border-radius: 0;
+    margin-bottom: 15px;
   }
 }
 .panel {
   border-radius: 3px;
 }
+
+
+@media(max-width:415px){
+  .panel {
+    border-radius: 0;
+    margin-bottom: 5px;
+  }
+}
+
 
 .panel-title {
   border-bottom:solid 0.3px;

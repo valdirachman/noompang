@@ -9,7 +9,7 @@
 <% for request in pickup_requests %>
 
 <div class="row">
-<div class="col-xs-2">
+<div class="col-xs-2" id="post-image-avatar">
 <%= image_tag request.driver_post.user.profile.avatar.url(:thumb), class: "avatar-find img-rounded avatar-post", style: "border-radius:50%;" %>
 <%= request.driver_post.user.username %>
 </div>
@@ -35,6 +35,12 @@
 <% if request.driver_post.note.present? %>
   <p style="font-weight:400; padding-left:10px;"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= request.driver_post.note %></p>
 <% end %>
+<div class="col-sm-6" style="padding-left:0">
+<p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= request.driver_post.available_seats%></b> seats available out of <%= request.driver_post.quantity %></p>
+</div>
+<div class="col-sm-6">
+<p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= request.driver_post.price %></b> per seat</p>
+</div>
 <br>
 <div class="col-xs-12"><ul>
 <li style="display:inline-block"><%= button_to "Accept" , accept_indirect_booking_path(request.id), method: :get, class: "btn btn-success btn-xs", style: "padding-left:16px; padding-right:15px;"%></li>

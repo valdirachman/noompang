@@ -5,14 +5,14 @@
       <%= render '/components/profile_panel', profile: @profile, user: current_user %>
   </div>
 
-  <div class="col-sm-6 ">
+  <div class="col-sm-6 timeline-column" >
       <%= render '/components/join_requests_panel', join_requests: @join_requests %>
       <br>
       <%= render '/components/pickup_requests_panel', pickup_requests: @pickup_requests %>
       <br>
       <%= render '/components/friend_request_panel', requests: @requests %>
   </div>
-  
+
   <div class="col-sm-3">
     <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
     <%= render '/components/about_panel' %>

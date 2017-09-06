@@ -8,7 +8,7 @@
 <% if !join_requests.empty? %>
 <% for request in join_requests %>
 <div class="row">
-<div class="col-xs-2">
+<div class="col-xs-2" id="post-image-avatar">
 <%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar-find img-rounded avatar-post", style: "border-radius:50%;" %>
 <%= request.user.username %>
 </div>
