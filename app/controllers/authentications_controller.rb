@@ -10,12 +10,12 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Sign in successfully with facebook"
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user
-      current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'],:name => omniauth.info.name, :oauth_token => omniauth.credentials.token, :oauth_expires_at => Time.at(omniauth.credentials.expires_at))
       flash[:notice] = "Authentication successfull"
       redirect_to home_path
     else
       user = User.new
-      user.apply_omniauth(omniauth)
+      user.authenticationsapply_omniauth(omniauth)
       if user.save
         flash[:notice] = "Sign in successfully with Facebook"
         sign_in_and_redirect(:user, user)

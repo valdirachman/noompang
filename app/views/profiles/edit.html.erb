@@ -108,6 +108,9 @@
             <%= authentication.user_id %>
             <%= authentication.provider %>
             <%= authentication.uid %>
+            <%= authentication.name %>
+            <%= authentication.oauth_expires_at %>
+            <%= authentication.oauth_token %>
             <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
           <% elsif%>
 

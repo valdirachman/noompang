@@ -36,7 +36,12 @@ class User < ActiveRecord::Base
   has_many :authentications
 
   def apply_omniauth(omniauth)
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :name => omniauth.info.name, :oauth_token => omniauth.credentials.token, :oauth_expires_at => Time.at(omniauth.credentials.expires_at))
+  end
+
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(authentications.oauth_token)
   end
 
   def password_required?
