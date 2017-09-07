@@ -102,7 +102,6 @@
         </div>
       </div>
       <div class="panel-body">
-        <a href="/auth/facebook"> login with fb </a>
         <% for authentication in @authentications %>
           <% if authentication.provider? %>
             <%= authentication.user_id %>

@@ -15,9 +15,9 @@ class AuthenticationsController < ApplicationController
       redirect_to home_path
     else
       user = User.new
-      user.authenticationsapply_omniauth(omniauth)
+      user.apply_omniauth(omniauth)
       if user.save
-        flash[:notice] = "Sign in successfully with Facebook"
+        flash[:notice] = "Sign up successfully with Facebook"
         sign_in_and_redirect(:user, user)
       else
         session[:omniauth] = omniauth.except('extra')
