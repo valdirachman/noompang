@@ -3,13 +3,13 @@ class PostMailer < ApplicationMailer
   def post_email(user, post)
     @user = user
     @post = post
-    mail(to: @user.email, subject: 'New Requested Ride!')
+    mail(to: @user.email, subject: 'New ride request from ' + user.username)
   end
 
   def new_driver_post(user, post)
     @user = user
     @post = post
-    mail(to: @user.email, subject: 'New Offered Ride!')
+    mail(to: @user.email, subject: 'New ride offer from ' + user.username)
   end
 
   # [RIDER] nerima email pick up
@@ -25,7 +25,7 @@ class PostMailer < ApplicationMailer
     @rider = rider
     @driver = driver
     @post = post
-    mail(to: @driver.email, subject: rider.username + ' has accepted to join your ride!')
+    mail(to: @driver.email, subject: rider.username + ' has accepted your ride offer!')
   end
 
   # [DRIVER] nerima email rider reject pickup
@@ -41,7 +41,7 @@ class PostMailer < ApplicationMailer
     @rider = rider
     @driver = driver
     @post = post
-    mail(to: @driver.email, subject: rider.username + ' has requested to join your ride!')
+    mail(to: @driver.email, subject: rider.username + ' wants to join your ride!')
   end
 
   # [RIDER] nerima email kalo dia di pick up driver

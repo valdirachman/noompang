@@ -6,7 +6,7 @@
 
   <div class="col-sm-6" id="friends-of">
 
-        <ul class="post-tab-profile-ul">
+        <ul class="post-tab-profile-ul panel panel-default">
           <%= link_to user_profile_path do %>
           <li class="post-tab-profile-li " id="tab1" style="border-radius:3px 0 0 3px"> About </li>
           <% end %>
@@ -15,9 +15,6 @@
           <% end %>
           <%= link_to see_friends_path do %>
           <li class="post-tab-profile-li post-tab-profile-slider" id="tab3" style="border-radius:0 3px 3px 0"> Friends </li>
-          <% end %>
-          <%= link_to active_rides_path do %>
-          <li class="post-tab-profile-li" id="tab4" style="border-radius:0 3px 3px 0"> reviews </li>
           <% end %>
         </ul>
         <br>

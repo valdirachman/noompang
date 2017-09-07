@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901055104) do
+ActiveRecord::Schema.define(version: 20170907072842) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",    limit: 65535
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(version: 20170901055104) do
     t.string   "university",          limit: 255
     t.string   "major",               limit: 255
     t.text     "about",               limit: 65535
+    t.integer  "progress",            limit: 4
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
