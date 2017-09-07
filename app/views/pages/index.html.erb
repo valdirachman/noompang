@@ -56,14 +56,14 @@
                       <h1 style=""> Join the network now</h1>
                       <h3 style="margin-top:5px;"> Create new account. </h3><br>
                       <%= render '/devise/registrations/new_index'%>
-                      <h4> Already have an account? <a id="switch-signup"> Click here</a></h4>
+                      <h5 style="margin-top:-15px;"> Already have an account? <a id="switch-signup"> Click here</a></h5>
                     </div>
 
                     <div id="sign-in-form" style=" text-align:left; display:none">
                       <h1 style=""> Invite your friends</h1>
                       <h3 style="margin-top:5px;"> More friends, more rides! </h3><br>
                       <%= render '/devise/sessions/new_index'%>
-                      <h4> Don't have an account? <a id="switch-signin">Join here </a></h4>
+                      <h5 style="margin-top:-15px;"> Don't have an account? <a id="switch-signin">Join here </a></h5>
                     </div>
                   </div>
                 </div>
@@ -103,7 +103,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                              <h4 class="modal-title" id="gridSystemModalLabel">Sign Up</h4>
+                              <h4 class="modal-title" id="gridSystemModalLabel">Join our ride sharing network</h4>
                             </div>
                             <div class="modal-body">
                               <%= render '/devise/registrations/new'%>
