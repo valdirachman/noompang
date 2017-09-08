@@ -7,7 +7,7 @@
         <%= image_tag post.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
       </div>
       <div class="col-xs-10" style="border-left: 0.5px solid;border-color:#e3e3e3">
-        <p class="post-title"><span class="post-owner"><%= link_to post.user.username, user_profile_path(post.user.username) %></span><span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span></p>
+        <p class="post-title"><span class="post-owner"><b><%= link_to post.user.username, user_profile_path(post.user.username) %></b></span><span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span></p>
         <p class="post-date"><span class="post-date-time">
           <% if post.date === Date.today %>
             <%= post.date.strftime("Today, %-d %b") %>
@@ -41,7 +41,7 @@
     </div>
       <% if post.reserved? %>
         <div class="col-sm-12" style="margin: 10px 0 10px 0">
-          <p style="font-weight:400; padding-left:10px;">Passengers:</p>
+          <p style="font-weight:400; padding-left:10px;"><b>Passengers:</p></b>
           <ul>
 
           <% for request in post.reserved_requests %>

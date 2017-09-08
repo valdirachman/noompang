@@ -459,6 +459,41 @@ h1{
     color: black;
 }
 
+.btn-inverse {
+  border: 0.5px solid;
+  border-color: #337ab7;
+  padding: 1px 10px 1px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  background-color: white;
+  color:#337ab7;
+  line-height: 18px;
+}
+.btn-inverse:hover {
+  color: white;
+  border-color: #276091;
+  background-color: #276091;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.btn-accept {
+  border: 0.5px solid;
+  border-color: #337ab7;
+  padding: 1px 10px 1px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  background-color: #337ab7;
+  color:white;
+  line-height: 18px;
+}
+.btn-accept:hover {
+  color: white;
+  border-color: #276091;
+  background-color: #276091;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
 //form-post
 .form-post-modal {
   content: "";
@@ -486,14 +521,6 @@ h1{
   padding-left: 10px;
   line-height: 20px;
 }
-
-@media (min-width:768px){
-  font-size: 20px;
-  font-weight: 600;
-  padding-left: 10px;
-  line-height: 22px;
-}
-
 
 .post-title {
   text-align: left;
