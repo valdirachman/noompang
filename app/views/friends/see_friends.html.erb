@@ -1,38 +1,72 @@
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3" id="friends-of">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h4 style="text-align:center; font-weight: 400;">Friends of <%= @user.username %> </h4>
-        <% if !@friends.empty? %>
-          <% for @u in @friends %>
-            <hr>
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="col-xs-3 float-right" style="text-align:center;">
-                <%= image_tag @u.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "width: 45px; border-radius:50%;"%>
-              </div>
-              <div class="col-xs-6">
-                <div class="row">
-                <p style="font-size:120%"><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
-                </div>
-                <div class="row">
-                <p style="font-size: 100%; font-weight: 300;"><%= @u.friends.count %> friends </p>
-                </div>
-              </div>
-              <div class="col-xs-3"
-              <span class="pull-right" id="friend-status"><%= render '/components/add_friend_button', :user => @u %></span>
+  <div class="col-sm-3">
+      <%= render '/components/user_panel', user: @user %>
+      <%= render '/components/profile_panel', profile: @profile, user: @user %>
+  </div>
+
+  <div class="col-sm-6" id="friends-of">
+
+        <ul class="post-tab-profile-ul panel panel-default">
+          <%= link_to user_profile_path do %>
+          <li class="post-tab-profile-li " id="tab1" style="border-radius:3px 0 0 3px"> About </li>
+          <% end %>
+          <%= link_to user_rides_path do %>
+          <li class="post-tab-profile-li" id="tab2"> Rides</li>
+          <% end %>
+          <%= link_to see_friends_path do %>
+          <li class="post-tab-profile-li post-tab-profile-slider" id="tab3" style="border-radius:0 3px 3px 0"> Friends </li>
+          <% end %>
+        </ul>
+        <br>
+        <div class="panel panel-default">
+          <div class="row">
+            <div class="col-sm-12 panel-title">
+              <h4>Friends of <%= @user.username %> </h4>
             </div>
           </div>
+          <div class="panel-body">
+
+        <% if !@friends.empty? %>
+          <% for @u in @friends %>
+
+
+              <div class="col-xs-4 friends-panel" style="text-align:center;">
+                <div class="panel panel-default">
+                  <div class="panel-body friends-panel-body">
+                    <div class="row">
+                <div class="col-xs-12">
+                  <%= image_tag @u.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "width: 60px; border-radius:50%;"%>
+                </div>
+              </div>
+                <div class="col-xs-12">
+                  <div class="row">
+                  <p><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
+                  </div>
+                  <div class="row">
+                  <p><%= @u.friends.count %> friends </p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                <div class="col-xs-12">
+                  <p><%= render '/components/add_friend_button', :user => @u %></p>
+                </div>
+              </div>
+              </div>
             </div>
+          </div>
+
           <% end %>
         <% else %>
-          <p>User not found</p>
+          <p><%= @user.username %> does not have any friends</p>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 col-xs-12">
+
+  <div class="col-sm-3">
     <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
     <%= render '/components/about_panel' %>
   </div>
+
 </div>

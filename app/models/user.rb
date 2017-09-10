@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   # For messaging functionality between users
   acts_as_messageable
 
+  validates_presence_of :username
+  
   has_many :posts, dependent: :destroy # remove a user's post if user is deleted
   has_many :driver_posts, dependent: :destroy
   has_many :direct_bookings, dependent: :destroy

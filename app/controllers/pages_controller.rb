@@ -127,6 +127,39 @@ class PagesController < ApplicationController
     @profile = current_user.profile
   end
 
+  def rides
+    @current_user ||= User.find_by(id: session[:user_id])
+    @user = User.find_by_username(params[:id])
+    if (@user)
+      @username = params[:id]
+      @profile = @user.profile
+      #posts = Post.all.where("user_id = ?", @user.id)
+
+      posts = @user.posts
+      @posts = posts.paginate(page: params[:page], per_page: 10)
+      @newPost = Post.new
+
+      friends = @user.friends
+      @recommended_friends = []
+      if (not friends.empty?)
+        new_friends = friends.find_not_friends(current_user)
+        @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
+      else
+        new_friends = User.find_not_friends(current_user)
+        @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
+      end
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      respond_to do |f|
+        f.html { redirect_to home_path, notice: "User not found!" }
+      end
+    end
+  end
+
   def about_us
 
   end

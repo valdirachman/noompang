@@ -48,7 +48,7 @@
               <!-- divide 2, pics and form outside container-->
               <!-- new row for phone pic and form-->
               <!-- section form -->
-              <section class="form-section">
+              <section class="form-section container">
                 <div class="col-sm-5 col-sm-push-7" id="user-form">
 
                   <div class="sign-up-form">
@@ -56,14 +56,14 @@
                       <h1 style=""> Join the network now</h1>
                       <h3 style="margin-top:5px;"> Create new account. </h3><br>
                       <%= render '/devise/registrations/new_index'%>
-                      <h4> Already have an account? <a id="switch-signup"> Click here</a></h4>
+                      <h5 style="margin-top:-15px;"> Already have an account? <a id="switch-signup"> Click here</a></h5>
                     </div>
 
                     <div id="sign-in-form" style=" text-align:left; display:none">
                       <h1 style=""> Invite your friends</h1>
                       <h3 style="margin-top:5px;"> More friends, more rides! </h3><br>
                       <%= render '/devise/sessions/new_index'%>
-                      <h4> Don't have an account? <a id="switch-signin">Join here </a></h4>
+                      <h5 style="margin-top:-15px;"> Don't have an account? <a id="switch-signin">Join here </a></h5>
                     </div>
                   </div>
                 </div>
@@ -76,7 +76,7 @@
               <section class="headerbg">
                 <div class="container">
                   <div class="riders-content">
-                    <h1> Bergabung dalam Jejaring Sosial Kendaraan di Indonesia </h1>
+                    <h1 style="font-family: 'cabin' "> Bergabung dalam Jejaring Sosial Kendaraan di Indonesia </h1>
                     <h3> Terkoneksi dengan Jadwal Perjalanan Teman-Temanmu</h3>
                     <ul>
 
@@ -103,7 +103,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                              <h4 class="modal-title" id="gridSystemModalLabel">Sign Up</h4>
+                              <h4 class="modal-title" id="gridSystemModalLabel">Join our ride sharing network</h4>
                             </div>
                             <div class="modal-body">
                               <%= render '/devise/registrations/new'%>
@@ -118,24 +118,27 @@
                 </div><!-- header content -->
               </section><!-- Background header image -->
 
-              <section class="row application-section">
+              <section class="application-section">
+                <div class="container">
+                <div class="row">
                 <div class="col-lg-6 col-lg-push-6 timeline-content">
-                  <h2> Cari Teman Seperjalanan</h2>
+                  <h2><b> Cari Teman Seperjalanan </b></h2>
                     <p> Tulis perjalananmu agar kamu tidak bosan sendirian di jalan. Kamu juga bisa mengatur
                     pengeluaran perjalananmu bersama temanmu agar lebih efisien! </p>
-                    <button type="button" class="btn btn-lg btn-success" id="scroll-to-how"><p> How It Works </p></button>
+                    <button type="button" class="btn btn-lg btn-success" id="scroll-to-how"><p>How It Works</p></button>
                 </div>
                 <div class="col-lg-6 col-lg-pull-6" class="timelineimg">
                   <img src="images/explore/timeline.png" id="timelineimg"/>
                 </div>
+              </div>
+              </div>
               </section>
 
-              <section class="benefit-section ">
-                  <div class="benefit-title">
-                    <div class="container">
+              <section class="benefit-section">
+                  <div class="benefit-title container">
                       <h2> Keuntungan Pakai Noompang</h2>
-                    </div>
                   </div>
+                  <div class="container">
                   <div class="row">
                   <div class="benefit-inside">
                   <div class="col-sm-4 benefit-box">
@@ -160,18 +163,20 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
                   <button type="button" class="btn btn-lg btn-warning"><%= link_to "Selengkapnya", how_it_works_path , style: "color:white;"%></button>
               </section>
 
-              <section class="section-how-it-works" id="how-it-works">
+              <section class="section-how-it-works container" id="how-it-works">
                 <div class="how-title container">
-                  <h2> How it Works </h2>
+                  <h2><b> How it Works </b></h2>
                   <h3> Start Your Journey in just a Few Steps!  </h3>
                 </div> <!-- Title for How it works section -->
 
                 <div class="how-1 row">
                   <div class="col-sm-6 how-content">
-                    <h3> Login atau Sign Up</h3>
+                    <h3><b> Login atau Sign Up </b></h3>
                       <p> Untuk menggunakan Noompang, kamu harus login terlebih dahulu. Jika belum punya akun, kamu harus melakukan registrasi dan verifikasi akun kamu. Dapat di <a href="" data-toggle="modal" data-target="#signInModal">klik disini </a></p>
                     </div>
                     <div class="col-sm-6"  class="center-img">
@@ -181,7 +186,7 @@
 
                 <div class="how-2 row">
                   <div class="col-sm-6 col-sm-push-6 how-content">
-                    <h3> Add Teman Kamu</h3>
+                    <h3><b> Add Teman Kamu </b></h3>
                       <p> Kamu dapat melihat perjalanan teman kamu jika kamu dan temanmu sudah berstatus sebagai teman di Noompang. Semakin banyak teman, semakin banyak juga pilihan perjalananmu!  </p>
                   </div>
 
@@ -243,7 +248,7 @@
 
                 <div class="how-3 row">
                 <div class="col-sm-6 how-content">
-                  <h3> Tulis Perjalananmu</h3>
+                  <h3><b> Tulis Perjalananmu </b></h3>
                     <p> Noompang merupakan platform dua arah. Kamu bisa toompangi orang atau noompang orang. </p>
                   </div>
                   <div class="col-sm-6">
@@ -342,7 +347,7 @@
 
               <div class="how-3 row" id="post-ride" style="display:none">
               <div class="col-sm-6 how-content" style="text-align:right">
-                <h3 > Selamat!</h3>
+                <h3 ><b>  Selamat! </b></h3>
                   <p> Kamu sudah post perjalanan pertamamu! Tunggu apalagi? yuk gabung klik <a href="#" data-toggle="modal" data-target="#signInModal">di sini </a></p>
                 </div>
                 <div class="col-sm-6">
@@ -375,7 +380,7 @@
 
               <div class="how-3 row" id="repost-ride" style="display:none">
               <div class="col-sm-6 how-content" style="text-align:right">
-                <h3 > Repost Perjalanan Temanmu</h3>
+                <h3 ><b> Repost Perjalanan Temanmu</b></h3>
                   <p> Di Noompang, kamu bisa repost perjalanan teman kamu! Sebarkan informasi perjalanan teman-temanmu agar semakin ramai dan efisien! </a></p>
                 </div>
                 <div class="col-sm-6">
@@ -411,7 +416,7 @@
 
                 <div class="how-4 row">
                   <div class="how-content">
-                  <h3>Hubungi Teman Seperjalananmu</h3>
+                  <h3><b>Hubungi Teman Seperjalananmu</b></h3>
                   <p> Tahap terakhir adalah hubungi teman kamu yang perjalanannya sama. Kamu bisa jadi penoompang ataupun bisa toompangi teman kamu, semua tergantung kesepakatan kalian! Have a safe trip!</p>
                 </div>
                 <div>

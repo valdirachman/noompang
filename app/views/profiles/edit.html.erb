@@ -1,56 +1,102 @@
 <% provide(:title, "Edit Profile") %>
-    <div class="row">
 
-        <div class="col-sm-3" style="padding:0; border-radius:0;">
-          <a href="#">
-          <div class="panel-body profile-hvr" style="border-radius:0;">
-             <p><span class="glyphicon glyphicon-tasks" aria-hidden="true" style="padding-right:10px; margin-top:5px; "></span> Update your profile</p>
+
+        <div class="col-sm-3" style="padding:0; border-radius:3px;">
+
+          <div class="panel panel-default">
+              <div class="row">
+                <div class="col-sm-12 panel-title">
+                  <h4> Profile Picture </h4>
+                </div>
+              </div>
+            <div class="panel-body">
+            <%= form_for @profile, html: { multipart: true } do |f| %>
+            <div class="field form-group">
+              <div style="text-align:center">
+              <%= image_tag @profile.avatar.url(:medium), style: "max-height: 180px; border-radius:50%;" %>
+            </div>
+              <div style="padding-top:20px;">
+              <%= f.file_field :avatar %>
+              <hr>
+              <div class="field form-group">
+                <%= f.label :about_me %>
+              <%= f.text_field :description, placeholder: "Short Bio", class: 'form-control' %>
+              </div>
+
+                <%= f.submit "Save image", class: "btn btn-primary pull-right" %>
+              <%end%>
+                </div>
+              </div>
+            </div>
           </div>
-            </a>
+
         </div>
-        <div class="col-sm-6">
-        <div class="panel panel-body">
 
+        <div class="col-sm-6 profile-edit-column">
+        <div class="panel panel-default">
+          <div class="row">
+            <div class="col-sm-12 panel-title">
+              <h4> My Profile </h4>
+            </div>
+          </div>
+          <div class="panel-body">
       <%= form_for @profile, html: { multipart: true } do |f| %>
-      <div class="field form-group">
-        <%= f.label :profile_picture %><br>
-        <div style="text-align:center">
-        <%= image_tag @profile.avatar.url(:medium), style: "max-height: 120px; border-radius:50%;" %>
+
+      <div class="field form-group row">
+        <div class="col-sm-3"><%= f.label :name, style: "line-height:2" %></div>
+        <div class="col-sm-9"><%= f.text_field :name, placeholder: "Type your name here",class: 'form-control' %></div>
       </div>
-        <div style="padding-top:20px;">
-        <%= f.file_field :avatar %>
+      <br>
+      <div class="field form-group row">
+        <div class="col-sm-3"><%= f.label :age, style: "line-height:2" %></div>
+        <div class="col-sm-3" style='padding: 0 15px 0 15px'><%= f.text_field :age, placeholder: "24", class: 'form-control' %></div>
+        <div class="col-sm-6 profile-gender" >
+        <%= f.label :gender, "Male", :value => "true"  %>
+        <%= f.radio_button :gender, true %>
+        <%= f.label :gender, "Female", :value => "false" %>
+        <%= f.radio_button :gender, false %></div>
       </div>
+      <hr>
+      <div class="field form-group row">
+        <div class="col-sm-3"><%= f.label :occupation, style: "line-height:2" %></div>
+        <div class="col-sm-9"><%= f.text_field :occupation, placeholder: "Marketing", class: 'form-control' %></div>
+      </div>
+      <br>
+      <div class="field form-group row">
+        <div class="col-sm-3"><%= f.label :occupation_place, style: "line-height:2" %></div>
+        <div class="col-sm-9"><%= f.text_field :occupation_place, placeholder: "Jakarta", class: 'form-control' %></div>
+      </div>
+      <hr>
+      <div class="field form-group row">
+        <div class="col-sm-3"><%= f.label :Home_address, style: "line-height:2" %></div>
+        <div class="col-sm-9"><%= f.text_field :address, placeholder: "Pondok Indah, Jakarta", class: 'form-control' %></div>
+      </div>
+      <br>
+      <div class="field form-group row">
+        <div class="col-sm-3"><%= f.label :university, style: "line-height:2" %></div>
+        <div class="col-sm-9"><%= f.text_field :university, placeholder: "ITB,UI,Unpad", class: 'form-control' %></div>
+      </div>
+      <br>
+      <div class="field form-group row">
+        <div class="col-sm-3"><%= f.label :Major, style: "line-height:2" %></div>
+        <div class="col-sm-9"><%= f.text_field :major, placeholder: "Business Administration", class: 'form-control' %></div>
+      </div>
+      <br>
+
+      <hr>
+      <div class="field form-group row">
+        <%= f.label :About_me, style: "line-height:2" %>
+        <%= f.text_area :about, placeholder: "Tell us more about yourself!", class: 'form-control' %>
       </div>
 
-      <div class="field form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-
-      <div class="field form-group">
-        <%= f.label :occupation %>
-        <%= f.text_field :occupation, class: 'form-control' %>
-      </div>
-
-      <div class="field form-group">
-        <%= f.label :occupation_place %>
-        <%= f.text_field :occupation_place, class: 'form-control' %>
-      </div>
-
-      <div class="field form-group">
-        <%= f.label :about_me %>
-        <%= f.text_field :description, class: 'form-control' %>
-      </div>
-
+      <br>
       <%= f.submit "Save changes", class: "btn btn-primary pull-right" %>
       <% end %>
       </div>
     </div>
+    </div>
+
     <div class="col-sm-3 col-xs-12">
       <%= render '/components/recommended_friends', recommended_friends: @recommended_friends %>
       <%= render '/components/about_panel' %>
     </div>
-    </div>
-
-  </div>
-</div>

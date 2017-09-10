@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822130919) do
+ActiveRecord::Schema.define(version: 20170907072842) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",    limit: 65535
@@ -170,8 +170,14 @@ ActiveRecord::Schema.define(version: 20170822130919) do
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
-    t.string   "education",           limit: 255
     t.string   "address",             limit: 255
+    t.text     "hobby",               limit: 65535
+    t.integer  "age",                 limit: 4
+    t.boolean  "gender"
+    t.string   "university",          limit: 255
+    t.string   "major",               limit: 255
+    t.text     "about",               limit: 65535
+    t.integer  "progress",            limit: 4
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

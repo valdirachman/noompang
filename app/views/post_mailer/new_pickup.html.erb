@@ -7,108 +7,106 @@
   <body style="margin: 0; padding: 0;" bgcolor="#e9ebee">
 
     <table cellpadding="0" cellspacing="0" width="100%" style="font-family:Helvetica, Arial">
+
       <tr>
-        <tr>
-          <br>
-        </tr>
-       <td>
-         <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; border-top-style:solid; border-top-color:#1e2f4d;border-width: 7px" bgcolor="white" >
 
-       <tr>
-        <td align="center" style="padding: 0 0 0 0; margin-top:-15px">
-          <br><br><br>
-         <%= image_tag("logos/Logo Noompang inverse small.png", style:"max-height:35px") %>
-        </td>
-       </tr>
+       <td style="text-align:center">
 
-          <td style="padding: 0px 30px 30px 30px;">
-          <table cellpadding="0" cellspacing="0" width="100%" >
-       <tr>
-        <td style="padding-top: 20px;">
-         <p style="color:#333333; font-size: 35px" >Hello <%= @driver.username %></p>
-        </td>
-       </tr>
+         <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;" bgcolor="white" >
+
+
+           <tr align="center">
+
+            <td align="center" style="padding: 0 0 0 0; margin-top:-15px">
+              <%= image_tag("border-img.png", style:"max-height:3.5px;") %>
+              <br><br><br>
+             <%= image_tag("logos/Logo Noompang inverse small.png", style:"max-height:35px") %>
+            </td>
+           </tr>
+
+           <tr>
+            <td style="padding: 0px 30px 30px 30px;">
+              <table cellpadding="0" cellspacing="0" width="100%" >
+               <tr>
+                <td style="padding-top: 20px; border-bottom:0.5px solid; padding-bottom:20px;border-color:#e6e6e6">
+                 <h2 style="color:#1e2f4d;" >Hello <%= @rider.username %>,</h2>
+                 <b style="color:#2190c1;"><%= @driver.username %></b> is offering you a ride. Join the ride now!
+                </td>
+               </tr>
 
        <table>
-            <hr>
+
        <tr>
          <td>
 
-           <table>
+
+           <table >
              <tr>
+               <td style="padding:0 20px 0 20px">  <%= image_tag @post.user.profile.avatar.url(:thumb) ,style: "border-radius: 50%; max-height:80px"  %>
+               </td>
+
                <td>
-                 <table>
+                 <table style="border-left:0.5px solid; border-color:#e6e6e6;padding-left:20px">
                    <tr>
+                    <td style="padding-top: 10px;">
+                      <h3>
+                        <% if @post.date === Date.today %>
+                        <%= @post.date.strftime("Today, %-d %b") %>
+                      <% else %>
+                        <%= @post.date.strftime("%A, %-d %b") %>
+                      <% end %>
+                      - <%= @post.time.strftime("%H:%M")  %></h3>
+                    </td>
+                   </tr>
+
+                   <tr>
+                    <td>
+                       <p style="color: #666666"><%= image_tag("from-circle.png", style:"max-height:15px; margin: 0 5px -2px 0") %> <%= @post.from %>
+                       <%= image_tag("arrow.png", style:"max-height:6px; margin: 0 10px 3px 10px") %>
+                       <%= image_tag("to-circle.png", style:"max-height:15px; margin: 0 5px -2px 0;") %> <%= @post.destination %>
+                    </td>
+                   </tr>
+
+                   <tr style="padding-top: 10px;">
                      <td>
-                       <br>
+                     <table style="padding-top: 10px">
+                       <tr>
+                         <td>
+                         <p><b style="font-size:22px"><%= @post.available_seats%></b> seats available out of <%= @post.quantity %></p>
+                       </td>
+                       <td style="padding-left:15px">
+                         <p> IDR <b style="font-size:22px"><%= @post.price %></b> per ride</p>
+                       </td>
+                       </tr>
+                     </table>
+                    </td>
+                   </tr>
 
-                   <%= image_tag @post.user.profile.avatar.url(:thumb) ,style: "border-radius: 50%; max-height:35px"  %>
+                   <tr>
+                    <td style="padding-top: 10px;">
+                      <p><%= image_tag("notes.png", style:"max-height:15px; margin: 0 5px -2px 0") %><% if @post.note && @post.note != "" %>
+                        <%= @post.note %></p>
+                      <% end %>
+                    </td>
+                   </tr>
 
+                 </table>
                </td>
-               <td width="400" style="padding: 18px 0px 0px 10px">
-
-                  <b><%= @post.user.username %></b>
-
-                just posted a new ride!
-              </td>
-                  </tr>
-                    </table>
-               </td>
-             </tr>
-
-             <tr>
-              <td style="padding-top: 10px; font-size: 25px;">
-
-                  <% if @post.date === Date.today %>
-                  <%= @post.date.strftime("Today, %-d %b") %>
-                <% else %>
-                  <%= @post.date.strftime("%A, %-d %b") %>
-                <% end %>
-                - <%= @post.time.strftime("%H:%M")  %>
-              </td>
-             </tr>
-
-             <tr style="padding-top: 10px;">
-              <td style="padding-top: 10px;">
-                 <%= image_tag("from-circle.png", style:"max-height:15px; margin: 0px 10px -2px 10px") %> <%= @post.from %>
-                 <%= image_tag("arrow.png", style:"max-height:6px; margin: 0 10px 3px 10px") %>
-                 <%= image_tag("to-circle.png", style:"max-height:15px; margin: 0px 10px -2px 0;") %> <%= @post.destination %>
-              </td>
-             </tr>
-
-             <tr style="padding-top: 10px;">
-               <td style="padding-top: 10px;">
-               <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= @post.available_seats%></b> seats available out of <%= @post.quantity %></p>
-             </td>
-           </tr>
-           <tr style="padding-top: 10px;">
-             <td style="padding-top: 10px;">
-               <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= @post.price %></b> per ride</p>
-             </td>
-           </tr>
-
-             <tr>
-              <td style="padding-top: 10px;">
-                Notes:<% if @post.note && @post.note != "" %>
-                  <%= @post.note %>
-                <% end %>
-              </td>
              </tr>
            </table>
-
          </td>
-
        </tr>
+
+       <tr>
+        <td style="padding: 20px 30px 30px 0px;border-top:0.5px solid;border-color:#e6e6e6">
+          See
+              <b><%= @driver.username %>'s</b>
+          other posts at <b><a href="www.noompang.com" style="color:#2190c1; text-decoration:none"> noompang.com </a></b>
+        </td>
+       </tr>
+
      </table>
-     <hr>
-     <tr>
-      <td style="padding: 10px 30px 30px 30px; font-size: 14px;">
-        See
-            <b><%= @post.user.username %>'s</b>
-        other posts at <a href="www.noompang.com"> noompang.com </a>
-      </td>
-     </tr>
-     </table>
+   </table>
 
      </td>
    </tr>
@@ -124,7 +122,6 @@
               </td>
             </tr>
             <tr>
-
                <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <br>
@@ -154,20 +151,21 @@
 
           <tr>
             <td style="font-size:12px; color:#b5bac1; background-color:#e9ebee ; color:#666666; " align="center">
-              This email is intended for <%= @driver.username %>, because you follow <%= @post.user.username %> account on noompang
+              This email is intended for <%= @rider.username %>, because you follow <%= @driver.username %> account on noompang
             </td>
           </tr>
           <tr>
            <td style="font-size:12px; color:#b5bac1; background-color:#e9ebee ; color:#666666;  " align="center">
              <br>
             © Copyright 2017, Noompang, Inc. All rights reserved.
+            <br><br>
           </td>
          </tr>
-
+            <br><br>
           </table>
         </td>
        </tr>
-
+          <br><br>
          </table>
        </td>
       </tr>
