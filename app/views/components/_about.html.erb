@@ -46,3 +46,21 @@
     </div>
   </div>
 </div>
+
+<% if @profile.about? %>
+<div class="panel panel-default">
+  <div class="row">
+    <div class="col-sm-12 panel-title">
+      <h4> About Me </h4>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <p><%= @profile.about %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>

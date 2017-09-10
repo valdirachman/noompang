@@ -1133,6 +1133,7 @@ h1{
     font-size: 16px;
     text-align: center;
     font-weight: 500;
+    line-height: 22px;
   }
 }
 
@@ -1318,6 +1319,12 @@ h1{
   font-size: 20px;
   font-weight: 300;
 }
+@media (max-width:768px){
+  .how-title h3 {
+    font-size: 16px;
+  }
+}
+
 
 .how-1{
   padding: 40px 0 10px 30px;
@@ -1562,6 +1569,7 @@ padding: 0 50px 0 70px;
     font-weight: 600;
   }
 }
+
 .how-content p {
   font-family: Arial, sans-serif;
   font-size: 20px;
@@ -1577,7 +1585,7 @@ padding: 0 50px 0 70px;
     font-size: 16px;
     text-align: center;
     font-weight: 500;
-    line-height: normal;
+    line-height: 22px;
   }
 }
 
