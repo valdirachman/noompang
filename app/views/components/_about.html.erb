@@ -7,10 +7,6 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-6">
-        <% if @profile.address? %>
-          <p><img src="/images/address.png" style="max-height:15px; margin:-6px 3px 0 0;"> Hometown <b><%= @profile.address %></b></p>
-        <p style="margin-top:10px">
-        <% end %>
         <p>
         <% if @profile.age? %>
         <img src="/images/gender.png" style="max-height:15px; margin:-6px 3px 0 0"> <%= @profile.age %>,
