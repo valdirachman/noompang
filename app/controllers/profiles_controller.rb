@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
     if @profile.update_attributes(profile_params)
-      redirect_to home_path
+      redirect_to user_profile_path(current_user.username)
     else
       if @profile.errors.any?
         flash[:notice] = @profile.errors.full_messages.first
