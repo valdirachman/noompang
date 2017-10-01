@@ -4,7 +4,14 @@
       <div class="col-sm-12 userpanel-avatar " style="text-align: center; "><%= image_tag @profile.avatar.url(:medium), class: "avatar-profile img-rounded" %></div>
       <div class="col-sm-12 userpanel-username" style="text-align: center;"><h4><%= user.username %></h4></div>
 
-      <p class="p-content" style="padding:10px 0 20px 0; text-align:center;"><%= @profile.description %>
+      <p class="p-content" style="padding:10px 0 20px 0; text-align:center;">
+      <% if @profile.description? %>
+        <%= @profile.description %>
+      <% elsif user.id != current_user.id %>
+
+      <%else %>
+        <%= link_to 'Edit your bio', edit_profile_path(@profile) %>
+      <% end %>
       </p>
 
       <div class="col-sm-12">

@@ -1,0 +1,44 @@
+<% if not recommended_friends.empty? %>
+  <div class="panel panel-default">
+    <div class="row">
+      <div class="col-sm-12 panel-title">
+        <h4> Explore People </h4>
+      </div>
+    </div>
+    <div class="panel-body">
+      <% if not recommended_friends.empty? %>
+        <% for friend in recommended_friends %>
+
+        <div class="col-sm-3 col-xs-4  friends-panel" style="text-align:center;">
+          <div class="panel panel-default">
+            <div class="panel-body friends-panel-body">
+              <div class="row">
+          <div class="col-xs-12">
+            <%= image_tag friend.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "width: 60px; border-radius:50%;"%>
+          </div>
+        </div>
+          <div class="col-xs-12">
+            <div class="row">
+            <p><a href="/user/<%= friend.username %>"><%= friend.username %></a></p>
+            </div>
+            <div class="row">
+            <p><%= friend.friends.count %> friends </p>
+            </div>
+          </div>
+          <hr>
+              <div class="row">
+
+                <p><%= render '/components/add_friend_button', :user => friend %></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% end %>
+        <% else %>
+        <p>Oops.. I think you need to be friend with somebody first.</p>
+        <%end%>
+    </div>
+  </div>
+<% end %>

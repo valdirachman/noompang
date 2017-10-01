@@ -13,9 +13,10 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="nav-collapse-bg">
       <ul class="nav navbar-nav navbar-right">
 
-        <li  style="padding-left:0px; padding-right: 10px;">
+        <li  id="search-field">
 
           <%= form_tag(users_path, :method => "get", id: "search-form", role: "search", class: "form-search ngen-search-form") do %>
           <span id="search-trigger" class="form-search-submit glyphicon glyphicon-search" aria-hidden="true" style="width: 35px; padding-right: 25px;"></span>
@@ -34,34 +35,34 @@
               </div>
             </div> -->
 
-        <li style="padding-left:10px ; padding-right: 10px">
+        <li class="nav-dropdown" style="padding-left:10px ; padding-right: 10px">
           <%= link_to home_path do %>
-            <span data-toggle="tooltip" data-placement="bottom" title="Home" class="glyphicon glyphicon-home"></span>
+            <span data-toggle="tooltip" data-placement="bottom" title="Home" class="glyphicon glyphicon-home"> <p id="text-dropdown"> <b>Home </b></p></span>
           <% end %>
         </li>
-        <li style="padding-left:10px ; padding-right: 10px">
+        <li class="nav-dropdown" style="padding-left:10px ; padding-right: 10px">
           <%= link_to notification_path do %>
-            <span><span class="glyphicon glyphicon-bell" data-toggle="tooltip" data-placement="bottom" title="Notification"></span><% if current_user.has_notification %><span class="badge"> <%= current_user.num_notification %></span><% end %></span>
+            <span><span class="glyphicon glyphicon-bell" data-toggle="tooltip" data-placement="bottom" title="Notification"></span><% if current_user.has_notification %><span class="badge"> <%= current_user.num_notification %> </span><% end %> <p id="text-dropdown" style="padding-left:10px;"> Notification </p></span>
           <% end %>
         </li>
-        <li style="padding-left:10px ; padding-right: 10px">
+        <li class="nav-dropdown"  style="padding-left:10px ; padding-right: 10px">
           <%= link_to conversations_path do %>
-            <span data-toggle="tooltip" data-placement="bottom" title="Messages" class="glyphicon glyphicon-envelope"></span>
+            <span data-toggle="tooltip" data-placement="bottom" title="Messages" class="glyphicon glyphicon-envelope"> <p  id="text-dropdown"><b>  Message </b></p></span>
           <% end %>
         </li>
-        <li class="dropdown">
+        <li class="dropdown nav-dropdown" id="nav-profile-dropdown">
           <a href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 8px 10px 6px 20px;">
           <%= image_tag current_user.profile.avatar.url(:thumb), class: "avatar-nav img-rounded" %>
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/user/<%= current_user.username %>">Profile</a></li>
-            <li role="separator" class="divider"></li>
+            <li class="profile-dropdown"><a href="/user/<%= current_user.username %>">Profile</a></li>
             <li><%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
           </ul>
         </li>
       </ul>
+    </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

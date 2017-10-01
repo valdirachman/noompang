@@ -2,6 +2,7 @@
   <div class="col-sm-3">
       <%= render '/components/user_panel', user: @user %>
       <%= render '/components/profile_panel', profile: @profile, user: @user %>
+      <%= render '/components/friend_button_panel', user: @user %>
   </div>
 
   <div class="col-sm-6" id="friends-of">
@@ -48,9 +49,9 @@
                 </div>
                 <hr>
                 <div class="row">
-                <div class="col-xs-12">
+
                   <p><%= render '/components/add_friend_button', :user => @u %></p>
-                </div>
+
               </div>
               </div>
             </div>

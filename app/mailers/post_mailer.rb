@@ -3,13 +3,13 @@ class PostMailer < ApplicationMailer
   def post_email(user, post)
     @user = user
     @post = post
-    mail(to: @user.email, subject: 'New ride request from ' + user.username)
+    mail(to: @user.email, subject: 'New ride request from ' + @post.user.username)
   end
 
   def new_driver_post(user, post)
     @user = user
     @post = post
-    mail(to: @user.email, subject: 'New ride offer from ' + user.username)
+    mail(to: @user.email, subject: 'New ride offer from ' + @post.user.username)
   end
 
   # [RIDER] nerima email pick up

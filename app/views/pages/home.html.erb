@@ -5,6 +5,7 @@
   </div>
 
   <div class="col-sm-6 col-xs-12 timeline-column">
+    <%= render '/components/post_form' %>
     <ul class="post-tab-ul panel panel-default">
       <%= link_to home_path do %>
       <li class="post-tab-li" id="tab1" style="border-radius:3px 0 0 3px"> Ride Offers </li>
@@ -17,9 +18,7 @@
       <% end %>
     </ul>
     <br>
-    <%= render '/components/post_form' %>
-    <br>
-    <div class="my-posts">
+    <div class="my-posts" style="margin-top:17px;">
       <%= render '/components/rides', posts: @posts %>
     </div>
     <div class="infinite-scrolling">

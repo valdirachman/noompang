@@ -6,7 +6,7 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-xs-6">
+      <div class="col-sm-6">
         <p>
         <% if @profile.age? %>
         <img src="/images/gender.png" style="max-height:15px; margin:-6px 3px 0 0"> <%= @profile.age %>,
@@ -16,7 +16,7 @@
           <% else %>
           Female</p>
           <%end %>
-          <p style="margin-top:10px"> <img src="/images/login.png" style="max-height:15px;margin:-4px 3px 0 0">
+          <p style="margin-top:10px;"> <img src="/images/login.png" style="max-height:15px;margin:-4px 3px 0 0">
             <%if @profile.user.last_sign_in_at? %>
             Last log in <b>
               <%= @profile.user.last_sign_in_at.strftime("%-d %b") %></b>
@@ -24,9 +24,11 @@
             Has not log in
             <%end%>
           </p>
+          <p style="margin-top:10px; margin-bottom:10px">
+          <img src="/images/member.png" style="max-height:15px; margin:-4px 3px 0 0"> Member since <b><%= @profile.user.created_at.strftime("%-d %b") %></b></p>
 
       </div>
-      <div class="col-xs-6">
+      <div class="col-sm-6">
         <% if @profile.major? %>
         <p><img src="/images/major.png" style="max-height:15px; margin:-6px 3px 0 -2px">  Major in <b><%= @profile.major %></b></p>
         <%end%>
@@ -36,8 +38,7 @@
           University <b><%= @profile.university %></b></p>
           <p style="margin-top:10px">
           <%end%>
-          <p>
-          <img src="/images/member.png" style="max-height:15px; margin:-4px 3px 0 0"> Member since <b><%= @profile.user.created_at.strftime("%-d %b") %></b></p>
+
       </div>
     </div>
   </div>
