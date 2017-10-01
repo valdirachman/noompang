@@ -11,7 +11,7 @@
           <%= image_tag post.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
         <% end %>
       </div>
-      <div class="col-xs-10" style="border-left: 0.5px solid;border-color:#e3e3e3">
+      <div class="col-xs-10" style="border-left: 0.5px solid;border-color:#e3e3e3;">
 
         <% if post.original != nil %>
           <p class="post-title"><span class="post-owner"><%= link_to post.original.user.username, user_profile_path(post.original.user.username) %></span></p> <span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span>
@@ -63,7 +63,7 @@
                   Available seats <%= f.select :quantity, 1..5 %>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-6" style="padding-right: 10px;">
                 <img src="/images/price.png" style="max-height:12px; margin-top:-3px;">
                 <%= f.label :passenger_contribution %>
                 <div class="field form-group">
