@@ -10,7 +10,7 @@
 <div class="panel-body">
   <div class="row" style="padding-left:10px;">
     <div class="col-xs-12" id="post-image-avatar" style="background-color:#eff9fe;border-radius:5px;padding:12px 0 12px 10px">
-      <p><%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar-find img-rounded avatar-post", style: "border-radius:50%; max-height:30px;margin-right:10px;" %>
+      <p><%= image_tag request.driver_post.user.profile.avatar.url(:thumb), class: "avatar-find img-rounded avatar-post", style: "border-radius:50%; max-height:30px;margin-right:10px;" %>
       <b><%= request.driver_post.user.username %> </b>wants to pick you up!</p>
     </div>
 

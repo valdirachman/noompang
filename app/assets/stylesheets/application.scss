@@ -593,7 +593,7 @@ p#text-dropdown{
 
 .post-title {
   text-align: left;
-  margin-top: -10px;
+  padding: 8px 0 5px 10px;
 }
 .post-icon {
   text-align: left;
@@ -735,6 +735,10 @@ p#text-dropdown{
   .recommended-avatar{
     padding-left: 5px;
   }
+}
+.recommended-title {
+  text-align: left;
+  margin-top: -10px;
 }
 /*style header (incl. tagline) */
 

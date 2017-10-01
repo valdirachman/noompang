@@ -13,14 +13,14 @@
               <%= image_tag friend.profile.avatar.url(:thumb), class: "avatar-recommended img-rounded", style: "border-radius:50%;" %>
             </div>
             <div class="col-xs-10">
-              <span class="post-title" >
+              <span class="recommended-title" >
                 <a href="/user/<%= friend.username %>">
                 <%= friend.username  %> <br>
                 </a>
                 <%= friend.friends.count %> friends
               </span>
 
-              <span class="post-title" style="float:right;"><%= render '/components/add_friend_button', user: friend %></span>
+              <span class="recommended-title" style="float:right;"><%= render '/components/add_friend_button', user: friend %></span>
             </div>
 
           </div>
