@@ -9,10 +9,10 @@
   <% for @r in @requests %>
     <div class="row">
       <div class="col-sm-12">
-        <div class="col-xs-3 float-right" style="text-align:center;">
+        <div class="col-xs-3 friend-request-avatar float-right" style="text-align:center;">
         <%= image_tag @r.profile.avatar.url(:thumb), class: "avatar-find img-rounded", style: "border-radius:50%;" %>
       </div>
-      <div class="col-xs-6">
+      <div class="col-xs-6 ">
         <div class="row">
         <p style="font-size:120%"><a href="/user/<%= @r.username %>"><%= @r.username %></a></p>
         </div>

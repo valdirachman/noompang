@@ -235,6 +235,11 @@ h1{
   background-color: #f4f5f7;
 }
 
+@media (max-width:450px){
+  .friend-request-avatar {
+    padding-left: 0px;
+  }
+}
 //timline tab
 .post-tab-ul {
   font-size: 0;
