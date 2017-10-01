@@ -3,10 +3,11 @@
   <div class="col-sm-3">
       <%= render '/components/user_panel', user: @user %>
       <%= render '/components/profile_panel', profile: @profile, user: @user %>
+      <%= render '/components/friend_button_panel', user: @user %>
   </div>
 
 
-  <div class="col-sm-6 profile-column">
+  <div class="col-sm-6 timeline-column">
     <ul class="post-tab-profile-ul panel panel-default">
       <%= link_to user_profile_path do %>
       <li class="post-tab-profile-li " id="tab1" style="border-radius:3px 0 0 3px"> About </li>
@@ -23,7 +24,7 @@
 
 
     <% if (current_user.friend_with? User.find_by_username(params[:id])) || (current_user.id == User.find_by_username(params[:id]).id) %>
-      <div class="my-posts">
+      <div class="my-posts " style="margin-top:17px;">
         <%= render '/components/rides', posts: @posts %>
       </div>
       <div class="infinite-scrolling">

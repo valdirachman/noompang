@@ -5,7 +5,8 @@
 
   </div>
   <div class="col-sm-6 timeline-column">
-    <ul class="post-tab-ul panel panel-default">
+    <%= render '/components/post_form' %>
+    <ul class="post-tab-ul panel panel-default" style="margin-bottom:10px">
       <%= link_to home_path do %>
       <li class="post-tab-li" id="tab1" style="border-radius:3px 0 0 3px"> Ride Offers </li>
       <% end %>
@@ -16,10 +17,7 @@
       <li class="post-tab-li post-tab-slider" id="tab3" style="border-radius:0 3px 3px 0"> My Active Rides </li>
       <% end %>
     </ul>
-
-      <br>
       <%= render '/components/rider_posts_panel', rider_posts: @rider_posts %>
-      <br>
       <%= render '/components/driver_posts_panel', driver_posts: @driver_posts %>
 
   </div>

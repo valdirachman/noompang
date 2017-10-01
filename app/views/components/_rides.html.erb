@@ -129,9 +129,26 @@
 </div>
 <% end %>
 <% else %>
-<div style="text-align:center">
-<h3><b>No Request Ride</b></h3>
-<p> Find your friends or invite your friends to Noompang to find Passanger </p>
-<br>
-</div>
+  <div style="text-align:center">
+    <div class="row">
+      <div class="col-sm-12">
+        <br>
+        <%= image_tag("empty-request.png", style:"max-height:70px") %>
+        <br>
+        <br>
+        <h3>No Request Ride</h3>
+        <br>
+        <p> Let's build your ride sharing network. </p>
+        <p>Find your friends or invite your friends to Noompang to find Passanger </p>
+        <br>
+        <a style="text-decoration:none" href="/explore/people"><button class="btn-inverse">Get Started </button> </a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
  <%end%>

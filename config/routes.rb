@@ -58,6 +58,8 @@ Rails.application.routes.draw do
 
   get '/friends/:id', to: 'friends#see_friends', as: 'see_friends'
 
+  get '/explore/people', to: 'pages#explore_people', as: 'people'
+
   resources :driver_posts, only: [:create, :destroy]
 
   post 'driver_posts_with_booking', to: 'driver_posts#create_with_indirect_booking', as: 'driver_posts_with_indirect_booking'

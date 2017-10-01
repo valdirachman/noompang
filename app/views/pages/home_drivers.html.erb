@@ -4,7 +4,9 @@
       <%= render '/components/profile_panel', profile: @profile, user: current_user %>
   </div>
 
-  <div class="col-sm-6 col-xs-12 timeline-column">
+  <div class="col-sm-6 col-xs-12 timeline-column" id="middle-panels">
+      <%= render '/components/post_form' %>
+
     <ul class="post-tab-ul panel panel-default">
       <%= link_to home_path do %>
       <li class="post-tab-li  post-tab-slider" id="tab1" style="border-radius:3px 0 0 3px"> Ride Offers  </li>
@@ -16,12 +18,8 @@
       <li class="post-tab-li" id="tab3" style="border-radius:0 3px 3px 0"> My Active Rides </li>
       <% end %>
     </ul>
-
-
     <br>
-    <%= render '/components/post_form' %>
-    <br>
-    <div class="my-posts">
+    <div class="my-posts" style="margin-top:17px;">
       <%= render '/components/driver_posts', posts: @posts %>
     </div>
     <div class="infinite-scrolling">
