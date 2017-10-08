@@ -20,7 +20,11 @@ class ProfilesController < ApplicationController
       new_friends = User.find_not_friends(current_user)
       @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
     end
+  end
 
+  def avatar
+    # use this to populate a form in your view
+    @profile = current_user.profile
   end
 
   def update

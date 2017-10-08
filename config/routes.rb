@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :profiles
+  resources :profiles do
+    member do
+      get :avatar
+    end
+  end
 
   resources :relationships
 
