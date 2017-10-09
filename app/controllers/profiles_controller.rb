@@ -23,7 +23,14 @@ class ProfilesController < ApplicationController
   end
 
   def avatar
-    # use this to populate a form in your view
+    @profile = current_user.profile
+  end
+
+  def car
+    @profile = current_user.profile
+  end
+
+  def verification
     @profile = current_user.profile
   end
 
@@ -42,6 +49,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.require(:profile).permit(:name, :description, :occupation, :occupation_place, :avatar, :hobby, :age, :gender, :university, :major, :about)
+    params.require(:profile).permit(:name, :description, :occupation, :occupation_place, :avatar, :hobby, :age, :gender, :university, :major, :about, :phone)
   end
 end

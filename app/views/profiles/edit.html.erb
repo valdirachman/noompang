@@ -4,13 +4,14 @@
         <div class="col-sm-3" style="padding:0; border-radius:3px;">
 
           <div class="list-group">
+            <div class="list-group-item" style="background-color:#efefef"> <b>Profile </b></div>
             <%= link_to 'Personal Information', edit_profile_path(current_user.profile), class: "list-group-item active"  %>
             <%= link_to 'Avatar', avatar_profile_path(current_user.profile), class: "list-group-item"  %>
-            <a href="#" class="list-group-item">Morbi leo risus</a>
+            <%= link_to 'Verification', verification_profile_path(current_user.profile), class: "list-group-item"  %>
+            <%= link_to 'Car Information', vehicle_profile_path(current_user.profile), class: "list-group-item"  %>
             <a href="#" class="list-group-item">Porta ac consectetur ac</a>
             <a href="#" class="list-group-item">Vestibulum at eros</a>
           </div>
-
         </div>
 
         <div class="col-sm-6 profile-edit-column">
@@ -22,7 +23,6 @@
           </div>
           <div class="panel-body">
       <%= form_for @profile, html: { multipart: true } do |f| %>
-
       <div class="field form-group row">
         <div class="col-sm-3"><%= f.label :name, style: "line-height:2" %></div>
         <div class="col-sm-9"><%= f.text_field :name, placeholder: "Type your name here",class: 'form-control' %></div>
@@ -37,6 +37,12 @@
         <%= f.label :gender, "Female", :value => "false" %>
         <%= f.radio_button :gender, false %></div>
       </div>
+      <br>
+      <div class="field form-group">
+        <div class="col-sm-3"><%= f.label :description, style: "line-height:2" %></div>
+        <div class="col-sm-9"><%= f.text_field :description, placeholder: "Short Bio", class: 'form-control' %></div>
+      </div>
+      <br>
       <hr>
       <div class="field form-group row">
         <div class="col-sm-3"><%= f.label :occupation, style: "line-height:2" %></div>
@@ -57,14 +63,14 @@
         <div class="col-sm-3"><%= f.label :Major, style: "line-height:2" %></div>
         <div class="col-sm-9"><%= f.text_field :major, placeholder: "Business Administration", class: 'form-control' %></div>
       </div>
-      <br>
-
       <hr>
+      <div style="border:0; box-shadow:none;" class="well well-lg">
+      <p> Tell more about yourself, let members know more about your stories! </p>
       <div class="field form-group row">
         <%= f.label :About_me, style: "line-height:2" %>
         <%= f.text_area :about, placeholder: "Tell us more about yourself!", class: 'form-control' %>
       </div>
-
+      </div>
       <br>
       <%= f.submit "Save changes", class: "btn btn-primary pull-right" %>
       <% end %>

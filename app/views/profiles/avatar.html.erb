@@ -4,9 +4,11 @@
         <div class="col-sm-3" style="padding:0; border-radius:3px;">
 
           <div class="list-group">
+            <div class="list-group-item" style="background-color:#efefef"> <b>Profile </b></div>
             <%= link_to 'Personal Information', edit_profile_path(current_user.profile), class: "list-group-item"  %>
             <%= link_to 'Avatar', avatar_profile_path(current_user.profile), class: "list-group-item active"  %>
-            <a href="#" class="list-group-item">Morbi leo risus</a>
+            <%= link_to 'Verification', verification_profile_path(current_user.profile), class: "list-group-item"  %>
+            <%= link_to 'Car Information', vehicle_profile_path(current_user.profile), class: "list-group-item"  %>
             <a href="#" class="list-group-item">Porta ac consectetur ac</a>
             <a href="#" class="list-group-item">Vestibulum at eros</a>
           </div>
@@ -21,18 +23,20 @@
                 </div>
               </div>
             <div class="panel-body">
+              <p> Add your picture now! Let other members know what you look like, your travel can be easier. </p>
+              <br>
             <%= form_for @profile, html: { multipart: true } do |f| %>
             <div class="field form-group">
-              <div style="text-align:center">
+              <div style="text-align:center; border:0; box-shadow:none;" class="well well-lg">
               <%= image_tag @profile.avatar.url(:medium), style: "max-height: 180px; border-radius:50%;" %>
-            </div>
-              <div style="padding-top:20px;">
-              <%= f.file_field :avatar %>
-              <hr>
-              <div class="field form-group">
-                <%= f.label :about_me %>
-              <%= f.text_field :description, placeholder: "Short Bio", class: 'form-control' %>
+              <div align="center">
+                <%= f.file_field :avatar, style: "width: 180px; padding: 20px 0 20px 3px" %>
               </div>
+              <p style="color:grey"> PNG, JPG or GIF, max. 3MB </p>
+             </div>
+              <div style="padding-top:20px;">
+
+
 
                 <%= f.submit "Save image", class: "btn btn-primary pull-right" %>
               <%end%>

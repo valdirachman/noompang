@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:destroy]
+  before_action :set_post, only: [:show, :destroy]
 
   def new
     @post = Post.new
@@ -21,6 +21,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    
+  end
+
   def destroy
     @post.destroy
     respond_to do |format|
@@ -36,9 +40,10 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
   def post_params
     params.require(:post).permit(:user_id, :from, :destination, :note, :date, :time)
   end

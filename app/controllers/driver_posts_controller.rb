@@ -1,5 +1,5 @@
 class DriverPostsController < ApplicationController
-  before_action :set_post, only: [:destroy]
+  before_action :set_post, only: [:show, :destroy]
 
   def new
     @post = DriverPost.new
@@ -37,6 +37,10 @@ class DriverPostsController < ApplicationController
         f.html { redirect_to home_path, notice: "Error: Ride Not Saved."}
       end
     end
+  end
+
+  def show
+
   end
 
   def destroy
