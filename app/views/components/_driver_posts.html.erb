@@ -10,7 +10,7 @@
       <div class="col-xs-10 mpl mpr" style="border-left: 0.5px solid;border-color:#e3e3e3">
 
         <div class="row">
-          <div class="col-xs-12 ptph pbth">
+          <div class="col-xs-12 ptph pbth mpr">
             <p><b><%= link_to post.user.username, user_profile_path(post.user.username) %></b><span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span></p>
           </div>
 
@@ -40,7 +40,13 @@
           </div>
 
           <div class="col-xs-6 mpr">
-            <p><b><big style="font-size:18px"><%= post.available_seats%></big></b> seats available</p>
+            <p><b><big style="font-size:18px"><%= post.available_seats%></big></b>
+              <% if post.available_seats == 1 %>
+                seat
+              <%else%>
+                seats
+              <%end%>
+              available</p>
           </div>
 
           <div class="col-xs-6 mpr mpl">
@@ -78,14 +84,6 @@
           <% end %>
         <% end %>
         <% end %>
-        <% if post.user == current_user %>
-          <span class="post-icon pull-right">
-            <%= link_to post, method: :delete do %>
-              <span class="glyphicon glyphicon-trash"></span>
-            <% end %>
-          </span>
-        <% end %>
-
       </div>
     </div>
   </div>

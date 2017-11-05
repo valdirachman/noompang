@@ -63,7 +63,14 @@ h1{
     padding-top: 60px;
   }
 }
+//paddings
+.prnol {
+  padding-right: 0px;
+}
 
+.plnol {
+  padding-left: 0px
+}
 //mobile padding
 @media (max-width: 450px){
   .mpl {

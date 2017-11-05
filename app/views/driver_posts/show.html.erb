@@ -15,6 +15,34 @@
           <h4><%= @post.user.username %>'s ride offer<h4>
         </div>
       </div>
+      <% if @post.reserved_by_user?(current_user.id) %>
+      <% case @post.get_reserve_status_by_user(current_user.id)
+      when 0 %> <div class="alert alert-danger" style="padding: 5px 0px 5px 10px;">
+        <p>
+        <!-- direct bookings -->
+         <% if @post.indirect_bookings[0].nil? %>
+           Waiting for
+             <% if @post.user.id == current_user.id %>
+               your approval check
+                 <%= link_to notification_path, class: "alert-link" do %>
+                   <b>notification </b>
+                 <%end%>
+
+             <% else %>
+               driver's (<%= link_to user_profile_path(@post.user.username) do%><b><%= @post.user.username %></b><%end%>) approval
+             <% end %></p>
+         <% else %>
+            <% if @post.indirect_bookings[0].user_id == current_user.id %>
+              You haven't approve yourself in this ride. This ride created based on your ride request.
+            <% else %>
+              Waiting for driver's (<%= link_to user_profile_path(@post.user.username) do%><b><%= @post.user.username %></b><%end%>) approval
+            <% end %>
+         <% end %>
+
+     </div>
+      <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;"><p>You are in this ride. <%= @post.user.username %>'s phone <b>+62<%= @post.user.profile.phone %></b></p> </div>
+      <%end%>
+      <%end%>
       <div class="row lbbg" style="padding: 10px; margin-bottom:10px">
         <div class="col-xs-12" style="margin-bottom:10px;padding-left:0">
             <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b> Route Information</p></b>
@@ -105,19 +133,56 @@
                     <% end %>
                   </td>
                     <% case @post.get_reserve_status_by_user(request.user.id)
-                    when 0 %><td class="danger"> <div class="statm-show"><p> Waiting for
-                      <% if @post.user.id == current_user.id %>
-                      your approval check <%= link_to notification_path, class: "alert-link" do %> <b>notification </b> <%end%>
-                      <% else %>
-                      driver's approval
-                      <%end%></p></div>
+                    when 0 %>
+                    <td class="danger">
+                      <div class="statm-show">
+                        <p>
+
+                           <!-- direct bookings -->
+                            <% if @post.indirect_bookings[0].nil? %>
+                              Waiting for
+                                <% if @post.user.id == current_user.id %>
+                                  your approval check
+                                    <%= link_to notification_path, class: "alert-link" do %>
+                                      <b>notification </b>
+                                    <%end%>
+
+                                <% else %>
+                                  driver's (<%= link_to user_profile_path(@post.user.username) do%><b><%= @post.user.username %></b><%end%>) approval
+                                <% end %></p>
+                            <% else %>
+                            <!-- indirect bookings -->
+                                <% if @post.indirect_bookings[0].user_id == current_user.id && request.user.id == current_user.id %>
+                                  This is your ride request. Check your
+                                    <%= link_to notification_path, class: "alert-link" do %>
+                                      <b>notification. </b>
+                                    <%end%>
+                                <% elsif @post.indirect_bookings[0].user_id == request.user.id %>
+                                  This ride is <b><%= request.user.username %></b>'s ride request.
+                                <% else %>
+                                <% if @post.user.id == current_user.id %>
+                                  Waiting for your approval check
+                                    <%= link_to notification_path, class: "alert-link" do %>
+                                      <b>notification </b>
+                                    <%end%>
+
+                                <% else %>
+                                  Waiting for driver's (<%= link_to user_profile_path(@post.user.username) do%><b><%= @post.user.username %></b><%end%>) approval
+                                <% end %></p>
+                                <%end%>
+                            <% end %>
+                        </div>
                     <% when 1 %><td class="success"> <div class="statm-show"><p><%= request.user.username %>
                       <% if @post.user.id != current_user.id %>
                       has joined the ride
                       <% else %>
                       's phone <b>+62<%= request.user.profile.phone %></b>
-                    <% end%></p> </div>
+                      <% end%></p> </div>
                     <% end %>
+
+
+
+
                   </td>
                 </tr>
               <% end %>
@@ -148,10 +213,6 @@
                 <% end %>
               <% end %>
             <% else %>
-              <% case @post.get_reserve_status_by_user(current_user.id)
-              when 0 %> <div class="alert alert-danger" style="padding: 5px 0px 5px 10px;"> <p>Status: Waiting for driver's approval</p></div>
-              <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;"><p>You are in this ride. <%= @post.user.username %>'s phone <b>+62<%= @post.user.profile.phone %></b></p> </div>
-              <% end %>
             <% end %>
           <% elsif @post.user == current_user %>
             <span class="post-icon pull-right">

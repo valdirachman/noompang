@@ -4,13 +4,11 @@
         <div class="col-sm-3" style="padding:0; border-radius:3px;">
 
           <div class="list-group">
-            <div class="list-group-item" style="background-color:#efefef"> <b>Profile </b></div>
+            <div class="list-group-item" style="background-color:#efefef"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Profile </b></div>
             <%= link_to 'Personal Information', edit_profile_path(current_user.profile), class: "list-group-item"  %>
             <%= link_to 'Avatar', avatar_profile_path(current_user.profile), class: "list-group-item active"  %>
             <%= link_to 'Verification', verification_profile_path(current_user.profile), class: "list-group-item"  %>
             <%= link_to 'Car Information', vehicle_profile_path(current_user.profile), class: "list-group-item"  %>
-            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item">Vestibulum at eros</a>
           </div>
 
         </div>

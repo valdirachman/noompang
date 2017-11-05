@@ -43,7 +43,13 @@
               </div>
 
               <div class="col-xs-6 mpr">
-                <p><b><big style="font-size:18px"><%= post.available_seats%></big></b> seats available</p>
+                <p><b><big style="font-size:18px"><%= post.available_seats%></big></b>
+                  <% if post.available_seats == 1 %>
+                    seat
+                  <%else%>
+                    seats
+                  <%end%>
+                  available</p>
               </div>
 
               <div class="col-xs-6 mpr mpl">

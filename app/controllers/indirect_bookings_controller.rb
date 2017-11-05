@@ -42,6 +42,7 @@ class IndirectBookingsController < ApplicationController
     if (@indirect_booking.user == current_user)
       @indirect_booking.reject
       PostMailer.delay.reject_pickup(@indirect_booking.driver_post.user, @indirect_booking.driver_post, current_user)
+      @indirect_booking.destroy
       respond_to do |format|
         format.html { redirect_to notification_path, notice: 'Booking was successfully rejected.' }
       end

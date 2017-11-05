@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   resources :posts do
     member do
-      post :repost
+      post :repost,
+      :pickup
+      get :pickup
     end
   end
 

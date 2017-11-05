@@ -12,6 +12,7 @@ $(document).ready(function(){
     }
   })
 })
-
+$('#mirsa').popover('toggle')
+$('#mirsa').popover('hide')
 })
 })
