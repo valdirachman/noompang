@@ -12,7 +12,7 @@ $(document).ready(function(){
     }
   })
 })
-$('#mirsa').popover('toggle')
-$('#mirsa').popover('hide')
+$('#phonedetails').popover('toggle')
+$('#phonedetails').popover('hide')
 })
 })

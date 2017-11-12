@@ -29,7 +29,7 @@ class DirectBookingsController < ApplicationController
       @direct_booking.accept
       PostMailer.delay.accept_join(current_user, @direct_booking.driver_post, @direct_booking.user)
       respond_to do |format|
-        format.html { redirect_to notification_path, notice: 'Booking was successfully accepted.' }
+        format.html { redirect_to driver_post_path(@direct_booking.driver_post.id), notice: 'Booking was successfully accepted.' }
       end
     else
       respond_to do |format|

@@ -34,10 +34,11 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
   end
 
+
   def update
     @profile = current_user.profile
     if @profile.update_attributes(profile_params)
-      redirect_to user_profile_path(current_user.username)
+      redirect_to edit_profile_path(current_user.profile)
     else
       if @profile.errors.any?
         flash[:notice] = @profile.errors.full_messages.first
