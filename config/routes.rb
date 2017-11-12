@@ -8,13 +8,21 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :profiles
+  resources :profiles do
+    member do
+      get :avatar,
+      :vehicle,
+      :verification
+    end
+  end
 
   resources :relationships
 
   resources :posts do
     member do
-      post :repost
+      post :repost,
+      :pickup
+      get :pickup
     end
   end
 
@@ -60,7 +68,7 @@ Rails.application.routes.draw do
 
   get '/explore/people', to: 'pages#explore_people', as: 'people'
 
-  resources :driver_posts, only: [:create, :destroy]
+  resources :driver_posts, only: [:create, :show, :destroy]
 
   post 'driver_posts_with_booking', to: 'driver_posts#create_with_indirect_booking', as: 'driver_posts_with_indirect_booking'
   post 'direct_bookings', to: 'direct_bookings#create', as: 'direct_bookings'

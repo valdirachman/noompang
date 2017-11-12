@@ -1,0 +1,48 @@
+<% provide(:title, "Edit Profile") %>
+
+
+        <div class="col-sm-3" style="padding:0; border-radius:3px;">
+
+          <div class="list-group">
+            <div class="list-group-item" style="background-color:#efefef"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Profile </b></div>
+            <%= link_to 'Personal Information', edit_profile_path(current_user.profile), class: "list-group-item"  %>
+            <%= link_to 'Avatar', avatar_profile_path(current_user.profile), class: "list-group-item active"  %>
+            <%= link_to 'Verification', verification_profile_path(current_user.profile), class: "list-group-item"  %>
+          </div>
+
+        </div>
+
+        <div class="col-sm-6 profile-edit-column">
+          <div class="panel panel-default">
+              <div class="row">
+                <div class="col-sm-12 panel-title">
+                  <h4> Profile Picture </h4>
+                </div>
+              </div>
+            <div class="panel-body">
+              <p> Add your picture now! Let other members know what you look like, your travel can be easier. </p>
+              <br>
+            <%= form_for @profile, html: { multipart: true } do |f| %>
+            <div class="field form-group">
+              <div style="text-align:center; border:0; box-shadow:none;" class="well well-lg">
+              <%= image_tag @profile.avatar.url(:medium), style: "max-height: 180px; border-radius:50%;" %>
+              <div align="center">
+                <%= f.file_field :avatar, style: "width: 180px; padding: 20px 0 20px 3px" %>
+              </div>
+              <p style="color:grey"> PNG, JPG or GIF, max. 3MB </p>
+             </div>
+              <div style="padding-top:20px;">
+
+
+
+                <%= f.submit "Save image", class: "btn btn-primary pull-right" %>
+              <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <div class="col-sm-3 col-xs-12">
+      <%= render '/components/about_panel' %>
+    </div>

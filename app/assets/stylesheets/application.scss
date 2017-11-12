@@ -63,8 +63,77 @@ h1{
     padding-top: 60px;
   }
 }
-// nav bar
+//paddings
+.prnol {
+  padding-right: 0px;
+}
 
+.plnol {
+  padding-left: 0px
+}
+//mobile padding
+@media (max-width: 450px){
+  .mpl {
+    //mobile padding left
+    padding-left: 0px;
+  }
+  .mpr {
+    //mobile padding right
+    padding-right: 0px;
+  }
+}
+
+//mobile margin
+@media (max-width: 450px){
+  .mml {
+    //mobile margin left
+    margin-left: 0px;
+  }
+  .mmr {
+    //mobile margin right
+    margin-right: 0px;
+  }
+  .mmli {
+    //mobile margin left inverse
+    margin-left: 10px;
+  }
+  .mmri {
+    //mobile margin left inverse
+    margin-right: 10px;
+  }
+}
+
+.mbth {
+  //margin bottom half
+  margin-bottom: 5px;
+}
+.mtph {
+  //margin top half
+  margin-top: 5px;
+}
+
+.pbth {
+  //padding bottom half
+  padding-bottom: 5px;
+}
+
+.ptph {
+  //padding top half
+  padding-top: 5px;
+}
+
+
+//general components
+.lbbg {
+  //light blue background
+  background-color:#eff9fe;
+  border-radius:5px;
+}
+.lgbg {
+  //light grey background
+  background-color:#efefef;
+  border-radius:5px;
+}
 
 //columns
 @media (max-width: 450px){
@@ -226,7 +295,10 @@ h1{
      box-shadow: 1px 2px 1px 1px #b0b0b0;
     -webkit-transition:  box-shadow .05s ease-in;
 }
-
+.avatar-post {
+  max-height: 40px;
+  border-radius: 50%;
+}
 //Post rides driver
 .avatar-hover:hover {
   background-color: #f4f5f7;
@@ -234,12 +306,38 @@ h1{
 .ride-hover-master:hover {
   background-color: #f4f5f7;
 }
+.avatar-post-pass {
+  max-height: 30px;
+  border-radius: 50%;
+}
+.statm {
+  margin-top: 10px;
+  padding: 5px 0px 5px 10px;
+}
+.statm-show {
+  margin-top: 8px;
+  padding: 5px 0px 5px 0;
+}
 
 @media (max-width:450px){
   .friend-request-avatar {
     padding-left: 0px;
   }
+  .statm {
+    margin: 10px 0 0 10px;
+  }
+  .statm-show {
+    margin-top: 8px;
+    padding: 5px 0px 5px 0;
+  }
 }
+
+@media (max-width: 350px){
+  .statm {
+    margin: 2px 0 0 10px;
+  }
+}
+
 //timline tab
 .post-tab-ul {
   font-size: 0;
@@ -589,27 +687,9 @@ p#text-dropdown{
   color: #636c72 !important;
 }
 
-.post-date {
-  font-size: 16px;
-  font-weight: 600;
-  padding-left: 10px;
-  line-height: 20px;
-}
-
-.post-title {
-  text-align: left;
-  padding: 8px 0 5px 10px;
-}
 .post-icon {
   text-align: left;
   margin-left: 10px;
-}
-.post-content {
-  text-align: left;
-  margin: 5px 0 5px 10px;
-  font-weight: 400;
-  line-height: 22px;
-  color: grey;
 }
 
 .post-repost {
@@ -1704,10 +1784,7 @@ padding: 0 50px 0 70px;
   border-radius: 100%;
 }
 
-.avatar-post {
-  max-height: 40px;
-  border-radius: 50%;
-}
+
 
 .avatar-recommended {
   max-height: 40px;

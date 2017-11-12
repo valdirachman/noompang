@@ -1,0 +1,38 @@
+<div class="col-sm-3" style="padding:0; border-radius:3px;">
+
+  <div class="list-group">
+    <div class="list-group-item" style="background-color:#efefef"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Profile </b></div>
+    <%= link_to 'Personal Information', edit_profile_path(current_user.profile), class: "list-group-item"  %>
+    <%= link_to 'Avatar', avatar_profile_path(current_user.profile), class: "list-group-item"  %>
+    <%= link_to 'Verification', verification_profile_path(current_user.profile), class: "list-group-item active"  %>
+  </div>
+
+</div>
+
+<div class="col-sm-6 profile-edit-column">
+  <div class="panel panel-default">
+      <div class="row">
+        <div class="col-sm-12 panel-title">
+          <h4> Verification</h4>
+        </div>
+      </div>
+      <%= form_for @profile, html: { multipart: true } do |f| %>
+      <div class="panel-body">
+        <div style="border:0; box-shadow:none;" class="well well-lg">
+          <p> Your phone number will never be displayed on Noompang publicly. This number will appear for member who wants to <b>join your ride offer </b>or if you want to <b>join someone's ride offer </b>. Therefore, other members can contact you via your phone number.  </p>
+          <hr>
+          <%= f.label :Phone_Number, style: "line-height:2" %>
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">+62</span>
+            <%= f.telephone_field :phone, placeholder: "81XXXXXXXX", class: 'form-control' %>
+          </div>
+        </div>
+        <%= f.submit "Save changes", class: "btn btn-primary pull-right" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="col-sm-3 col-xs-12">
+<%= render '/components/about_panel' %>
+</div>

@@ -15,12 +15,12 @@
         <!-- value for progress bar -->
       <% if !profile.is_nil? && !profile.is_empty? %>
         <% if profile.name? %>
-          <p> My name is <a><%= profile.name %></a></p>
+          <p> Name <a><%= profile.name %></a></p>
           <%else %>
           <%end%>
 
           <% if profile.occupation? %>
-          <p style="margin-top:10px"> Work in <a><%= profile.occupation %></a></p>
+          <p style="margin-top:10px"> Work <a><%= profile.occupation %></a></p>
           <%else %>
           <%end%>
 

@@ -1,52 +1,71 @@
 <%if !posts.empty? %>
 <% for post in posts %>
+
   <div class="panel panel-default post-panel ride-hover-master" id="post-panel">
     <div class="ride-hover">
     <div class="panel-body row">
       <div class="col-xs-2" style="padding-top:10px;" id="post-image-avatar">
         <%= image_tag post.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
       </div>
-      <div class="col-xs-10" style="border-left: 0.5px solid;border-color:#e3e3e3">
-        <p class="post-title"><span class="post-owner"><b><%= link_to post.user.username, user_profile_path(post.user.username) %></b></span><span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span></p>
-        <p class="post-date"><span class="post-date-time">
-          <% if post.date === Date.today %>
-            <%= post.date.strftime("Today, %-d %b") %>
-          <% else %>
-            <%= post.date.strftime("%A, %-d %b") %>
-          <% end %>
-          - <%= post.time.strftime("%H:%M")  %>
-        </span></p>
-        <p class="post-content">
-          <span class="post-destination">
-            <img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up">
-            <%= post.from %>
-            <img src="/images/arrow.png" style="max-height:6px;">
-            <img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off">
-            <%= post.destination %>
-          </span>
-        </p>
-        <div class="row" style="margin-left:-15px">
+      <div class="col-xs-10 mpl mpr" style="border-left: 0.5px solid;border-color:#e3e3e3">
 
-          <div class="col-sm-6">
-        <p style="font-weight:400; padding-left:10px;"><b style="font-size:22px"><%= post.available_seats%></b> seats available out of <%= post.quantity %></p>
-      </div>
-      <div class="col-sm-6">
-        <p style="font-weight:400; padding-left:10px;"> IDR <b style="font-size:22px"><%= post.price %></b> per seat</p>
-      </div>
-      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-xs-12 ptph pbth">
+            <p><b><%= link_to post.user.username, user_profile_path(post.user.username) %></b><span class="post-creation"> <%= time_ago_in_words(post.created_at) %></span></p>
+          </div>
 
-      <% if post.note && post.note != "" %>
-        <p style="font-weight:400; padding: 5px 0 10px 10px"><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
-      <% end %>
-    </div>
+          <%= link_to driver_post_path(post.id), style: "text-decoration:none; color:black" do %>
+
+
+          <div class="col-xs-12 pbth mpr">
+            <p style="font-size:16px"><b><span class="post-date-time">
+              <% if post.date === Date.today %>
+                <%= post.date.strftime("Today, %-d %b") %>
+              <% else %>
+                <%= post.date.strftime("%A, %-d %b") %>
+              <% end %>
+              - <%= post.time.strftime("%H:%M")  %>
+            </span></b></p>
+          </div>
+
+          <div class="col-xs-12 pbth mpr" style="color:grey">
+            <div class="row" style="margin-bottom:5px;">
+              <p><img src="/images/from-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="top" title="Pick-up">
+              <%= post.from %></p>
+            </div>
+            <div class="row">
+              <p><img src="/images/to-circle.png" style="max-height:12px; margin-top:-3px;" data-toggle="tooltip" data-placement="bottom" title="Drop-off">
+              <%= post.destination %></p>
+            </div>
+          </div>
+
+          <div class="col-xs-6 mpr">
+            <p><b><big style="font-size:18px"><%= post.available_seats%></big></b>
+              <% if post.available_seats == 1 %>
+                seat
+              <%else%>
+                seats
+              <%end%>
+              available</p>
+          </div>
+
+          <div class="col-xs-6 mpr mpl">
+            <p> IDR <b><big style="font-size:18px"><%= post.price %></big></b> per seat</p>
+          </div>
+
+          <div class="col-xs-12 ptph pbth"  style="padding-bottom:15px">
+            <% if post.note && post.note != "" %>
+              <p><img src="/images/notes.png" style="max-height:15px; margin-top:-3px;"> <%= post.note %></p>
+            <% end %>
+          </div>
+  <% end %>
       <% if post.reserved? %>
-        <div class="col-sm-12" style="margin: 10px 0 10px 0">
-          <p style="font-weight:400; padding-left:10px;"><b>Passengers:</p></b>
+        <div class="col-xs-12">
+          <p><b>Passengers:</p></b>
           <ul>
-
           <% for request in post.reserved_requests %>
             <%= link_to user_profile_path(request.user.username) do%>
-              <li  style="display:inline-block" data-toggle="tooltip" data-placement="top" title="<%= request.user.username %>"><%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded avatar-hover", style: "margin: 5px 5px 5px 15px" %></li> <% end %>
+              <li  style="display:inline-block" data-toggle="tooltip" data-placement="top" title="<%= request.user.username %>"><%= image_tag request.user.profile.avatar.url(:thumb), class: "avatar avatar-post-pass img-rounded avatar-hover", style: "margin: 5px 0px 5px 10px" %></li> <% end %>
           <% end %>
           </ul>
         </div>
@@ -54,18 +73,30 @@
         </div>
         <% if post.user != current_user %>
           <% if !post.reserved_by_user?(current_user.id) %>
+          <% if !current_user.profile.phone? %>
+          <fieldset disabled>
+          <div class="col-xs-offset-9 col-xs-3 mpr" style="padding-top:15px;">
+            <div id="phonedetails" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Phone Number" data-placement="top" data-container="body"  data-content="You need to fill your phone number to join this ride." class="btn btn-xs btn-primary" style="float:right"> Join this ride</div>
+          </div>
+            <fieldset>
+          <% else %>
             <%= form_for DirectBooking.new, url: direct_bookings_path do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %></td>
               <%= f.hidden_field :driver_post_id, value: post.id %></td>
               <%= submit_tag "Join this ride", class: "btn-accept", style: "float:right" %>
             <% end %>
+          <% end %>
           <% else %>
+            <div class="col-xs-12">
             <% case post.get_reserve_status_by_user(current_user.id)
-            when 0 %> <div class="alert alert-danger" style="padding: 5px 0px 5px 10px;"> Status: Waiting for driver's approval</div>
-            <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;">You are in this ride </div>
+            when 0 %> <div class="alert alert-danger" style="padding: 5px 0px 5px 10px;"> <p>Status: Waiting for driver's approval</p></div>
+            <% when 1 %> <div class="alert alert-success" style="padding: 5px 0px 5px 10px;"><p>You are in this ride. <%= post.user.username %>'s phone <b>+62<%= post.user.profile.phone %></b></p> </div>
             <% end %>
+          </div>
           <% end %>
         <% end %>
+
+
         <% if post.user == current_user %>
           <span class="post-icon pull-right">
             <%= link_to post, method: :delete do %>
@@ -73,21 +104,12 @@
             <% end %>
           </span>
         <% end %>
+
       </div>
     </div>
   </div>
-  <!--<div class="panel-footer" style="height: 40px;" >  row for comments
-    <div class="col-xs-2">
-      <p>avatar</p>
-    </div>
-    <div class="col-xs-8">
-      <p>comment section</p>
-    </div>
-    <div class="col-xs-2">
-      <p>submit</p>
-    </div>
-  </div> -->
 </div>
+
 <% end %>
 <% else %>
 <div style="text-align:center">

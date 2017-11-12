@@ -1,0 +1,184 @@
+<div class="col-xs-12 col-sm-6 col-sm-offset-3 mpr mpl">
+  <div class="panel panel-default">
+    <div class="row">
+      <div class="col-sm-12 panel-title">
+        <h4> Ride Details</h4>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="row" style="margin-bottom:15px;">
+        <div class="col-xs-2">
+          <%= image_tag @post.user.profile.avatar.url(:thumb), class: "avatar avatar-post img-rounded" %>
+        </div>
+        <div class="col-xs-10">
+          <h4><%= @post.user.username %>'s ride request<h4>
+        </div>
+      </div>
+
+      <div class="row lbbg" style="padding: 10px; margin-bottom:10px">
+        <div class="col-xs-12" style="margin-bottom:10px;padding-left:0">
+            <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b> Route Information</p></b>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+          <div class="col-sm-3 col-xs-5">
+            <p> Pick-up point </p>
+          </div>
+          <div class="col-sm-9 col-xs-7">
+            <p><b> <%= @post.from %> </b></p>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+          <div class="col-sm-3 col-xs-5">
+            <p> Drop-off point </p>
+          </div>
+          <div class="col-sm-9 col-xs-7">
+            <p><b> <%= @post.destination %> </b></p>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+        <div class="col-sm-3 col-xs-5">
+          <p> Date </p>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+           <p><b><span class="post-date-time">
+              <% if @post.date === Date.today %>
+                <%= @post.date.strftime("Today, %-d %b") %>
+              <% else %>
+                <%= @post.date.strftime("%A, %-d %b") %>
+              <% end %>
+              - <%= @post.time.strftime("%H:%M")  %>
+            </span></b></p>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-5">
+            <p> Driver's note </p>
+          </div>
+          <div class="col-sm-9 col-xs-7">
+            <p> <b><%= @post.note %> </b></p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <% if @post.user == current_user %>
+        <span class="post-icon pull-right">
+          <%= link_to @post, method: :delete, class: "btn-inverse", style: "text-decoration:none;padding: 5px 10px 5px 10px" do %>
+            Delete Ride
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+    <div class="panel panel-default">
+      <div class="row">
+        <div class="col-sm-12 panel-title">
+          <h4> Pick Up This Ride</h4>
+        </div>
+      </div>
+
+      <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12 mpl mpr">
+          <% if !@post.reserved? %>
+            <% if @post.user != current_user %>
+              <%= form_for DriverPost.new, url: driver_posts_with_indirect_booking_path do |f| %>
+                <%= f.hidden_field :from, value: @post.from %>
+                <%= f.hidden_field :destination, value: @post.destination %>
+                <%= f.hidden_field :date, value: @post.date %>
+                <%= f.hidden_field :time, value: @post.time %>
+                <%= f.hidden_field :post_id, value: @post.id %>
+                <%= f.hidden_field :user_id, value: @post.user.id %>
+
+
+                <!-- boundaries -->
+                <div class="col-sm-6">
+                <img src="/images/seats.png" style="max-height:15px; margin-top:-4px;">
+                <%= f.label :number_of_seats %>
+                  <div class="field form-group" style="font-size:12px;">
+                    Available seats <%= f.select :quantity, 1..5 %>
+                  </div>
+                </div>
+                <div class="col-sm-6" style="padding-right: 10px;">
+                  <img src="/images/price.png" style="max-height:12px; margin-top:-3px;">
+                  <%= f.label :passenger_contribution %>
+                  <div class="field form-group">
+                    <%= f.text_field :price, placeholder: "Example: 20000", class: "form-control", style: "font-size: 12px"  %>
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="field form-group">
+                    <img src="/images/notes.png" style="max-height:15px; margin-top:-4px;">
+                    <%= f.label :Ride_details %>
+                    <br>
+                    <%= f.text_area :note, placeholder:"Example: Saya mau ke Jakarta nih karena ada acara, Kalau mau ikut klik join aja ya, nanti saya kontak via message atau saya japri", class: "form-control", style: "font-size: 12px"  %> <br>
+                    <p> Your offer will be adjusted based on current ride request </p>
+                  </div>
+                </div>
+
+                <% if !current_user.profile.phone? %>
+
+                    <div class="col-xs-9" style="padding: 5px 8px 0 0">
+                      <p style="padding-left:10px">You need to fill your phone number to pick up this ride. <%= link_to 'Add Phone number', verification_profile_path(current_user.profile)%></p>
+                    </div>
+                      <div class="col-xs-3" style="padding-top:10px;">
+                        <fieldset disabled>
+                        <div class="btn btn-xs btn-primary" style="float:right"> Pick Up</div>
+                      </fieldset>
+                      </div>
+
+                <% else %>
+                  <div class="col-sm-6 col-sm-offset-6">
+                    <div class="actions">
+                      <%= submit_tag "Pick Up and Create Ride" ,class: "btn btn-primary btn-xs", style: "float:right" %>
+                    </div>
+                  </div>
+                <% end %>
+
+
+
+
+              <% end %>
+            <% else %>
+
+            <p>You can not pick up your own ride</p>
+            <%end%>
+          <% else %>
+          <div class="col-xs-12 mpr">
+            <% if @post.pending? %><div class="alert alert-danger" style="padding: 5px 0px 5px 10px;">
+              <p><%= link_to user_profile_path(@post.get_reserver), class: "alert-link" do %>
+                <% if @post.get_reserver == current_user.username %>
+                  <b>You</b> are
+                <%else%>
+                  <%= @post.get_reserver %> is
+                <%end%>
+              <%end%> picking up this ride request. See <%= link_to driver_post_path(@post.indirect_bookings[0].driver_post_id), class: "alert-link" do %>
+              post <% end %></p></div>
+            <% else %>
+
+              <div class="alert alert-success" style="padding: 5px 0px 5px 10px;"><p>This ride request has been picked up by
+                <% if @post.get_reserver == current_user.username %>
+                <b>you</b>
+                <%else %>
+                <%= link_to user_profile_path(@post.get_reserver), class: "alert-link" do %><%= @post.get_reserver %><%end%><% end %>. see <%= link_to driver_post_path(@post.indirect_bookings[0].driver_post_id), class: "alert-link" do %>
+                post <% end %></div>
+            <% end %>
+
+          </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12 mpl mpr">
+
+    </div>
+  </div>
+
+</div>

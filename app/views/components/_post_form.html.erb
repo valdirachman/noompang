@@ -99,7 +99,6 @@
 
           <%= f.text_area :note, placeholder:"Example: Saya mau ke Jakarta nih karena ada acara, Kalau mau ikut klik join aja ya, nanti saya kontak via message atau saya japri", class: "form-control", style: "font-size: 12px"  %> <br>
 
-          <p> Your details can be only seen by your friends </p>
 
         </div>
 
@@ -107,12 +106,22 @@
 
       <div class="col-sm-12">
 
-        <div class="col-sm-3 col-sm-offset-9">
 
-          <div class="actions">
+                <% if !current_user.profile.phone? %>
+                  <fieldset disabled>
+                    <div class="col-sm-9" style="padding-left:0">
+                        <p>You need to fill your phone number to offer a ride. <%= link_to 'Add Phone number', verification_profile_path(current_user.profile)%></p>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="actions">
+                      <%= f.submit "Offer a Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
 
-            <%= f.submit "Offer a Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
-
+                  <fieldset>
+                <%else%>
+                <div class="col-sm-3 col-sm-offset-9">
+                  <div class="actions">
+                    <%= f.submit "Offer a Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; width:80%; height:35px;"%>
+                <%end%>
               </div>
 
             </div>
@@ -203,20 +212,26 @@
 
           <%= f.text_area :note, placeholder:"Example: Saya mau ke Jakarta nih karena ada acara, Kalau mau ikut klik join aja ya, nanti saya kontak via message atau saya japri", class: "form-control", style: "font-size: 12px"  %> <br>
 
-          <p> Your details can be only seen by your friends </p>
-
         </div>
 
       </div>
       <hr>
       <div class="col-sm-12">
 
-        <div class="col-sm-3 col-sm-offset-9">
-
-          <div class="actions">
-
+        <% if !current_user.profile.phone? %>
+          <fieldset disabled>
+            <div class="col-sm-9" style="padding-left:0">
+                <p>You need to fill your phone number to request a ride. <%= link_to 'Add Phone number', verification_profile_path(current_user.profile)%></p>
+            </div>
+            <div class="col-sm-3">
+              <div class="actions">
             <%= f.submit "Request a Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; height:35px;"%>
-
+            <fieldset>
+          <%else%>
+          <div class="col-sm-3 col-sm-offset-9">
+            <div class="actions">
+              <%= f.submit "Request a Ride", class: "btn btn-success", style: "font-weight:300; font-size:13px; height:35px;"%>
+          <%end%>
               </div>
 
             </div>

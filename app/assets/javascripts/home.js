@@ -12,6 +12,7 @@ $(document).ready(function(){
     }
   })
 })
-
+$('#phonedetails').popover('toggle')
+$('#phonedetails').popover('hide')
 })
 })

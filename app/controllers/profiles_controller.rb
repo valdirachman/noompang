@@ -20,13 +20,25 @@ class ProfilesController < ApplicationController
       new_friends = User.find_not_friends(current_user)
       @recommended_friends = User.where(id: new_friends.map(&:id).sample(4)) - [current_user]
     end
-
   end
+
+  def avatar
+    @profile = current_user.profile
+  end
+
+  def car
+    @profile = current_user.profile
+  end
+
+  def verification
+    @profile = current_user.profile
+  end
+
 
   def update
     @profile = current_user.profile
     if @profile.update_attributes(profile_params)
-      redirect_to user_profile_path(current_user.username)
+      redirect_to edit_profile_path(current_user.profile)
     else
       if @profile.errors.any?
         flash[:notice] = @profile.errors.full_messages.first
@@ -38,6 +50,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.require(:profile).permit(:name, :description, :occupation, :occupation_place, :avatar, :hobby, :age, :gender, :university, :major, :about)
+    params.require(:profile).permit(:name, :description, :occupation, :occupation_place, :avatar, :hobby, :age, :gender, :university, :major, :about, :phone)
   end
 end
