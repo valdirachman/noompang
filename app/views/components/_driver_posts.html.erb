@@ -82,7 +82,7 @@
           <% else %>
             <%= form_for DirectBooking.new, url: direct_bookings_path do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %></td>
-              <%= f.hidden_field :driver_post_id, value: @post.id %></td>
+              <%= f.hidden_field :driver_post_id, value: post.id %></td>
               <%= submit_tag "Join this ride", class: "btn-accept", style: "float:right" %>
             <% end %>
           <% end %>
