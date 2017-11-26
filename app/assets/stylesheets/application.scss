@@ -201,10 +201,23 @@ h1{
 }
 
 
-@media(max-width:415px){
+
+@media(max-width:420px){
   .panel {
     border-radius: 0;
     margin-bottom: 5px;
+  }
+}
+
+@media(min-width:420px){
+  #panel-about li{
+    display: inline-block;
+    color: #8a8f9c;
+    font-size: 12px;
+    line-height: 19px;
+  }
+  #panel-about li::After {
+    margin-left: 4px;
   }
 }
 

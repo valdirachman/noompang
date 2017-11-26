@@ -104,6 +104,8 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    encrypted_id (1.1.1)
+      activerecord (>= 3.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     figaro (1.1.1)
@@ -230,6 +232,7 @@ DEPENDENCIES
   daemons
   delayed_job_active_record
   devise
+  encrypted_id
   figaro
   jbuilder (~> 2.0)
   jquery-rails
@@ -246,4 +249,4 @@ DEPENDENCIES
   will_paginate (~> 3.0.5)
 
 BUNDLED WITH
-   1.13.7
+   1.14.6
